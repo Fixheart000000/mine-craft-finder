@@ -47,6 +47,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        mc: {
+          blue: "hsl(var(--mc-blue))",
+          "blue-light": "hsl(var(--mc-blue-light))",
+          "blue-dark": "hsl(var(--mc-blue-dark))",
+          text: "hsl(var(--mc-text))",
+          "text-muted": "hsl(var(--mc-text-muted))",
+          link: "hsl(var(--mc-link))",
+          border: "hsl(var(--mc-border))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -57,6 +66,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+      },
+      boxShadow: {
+        'card': '0 2px 8px hsl(var(--mc-card-shadow))',
+        'card-hover': '0 4px 16px hsl(var(--mc-card-shadow))',
       },
       borderRadius: {
         lg: "var(--radius)",
