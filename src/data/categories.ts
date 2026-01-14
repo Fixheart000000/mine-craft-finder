@@ -124,7 +124,7 @@ export const toolCategories = {
   },
   mapmaking: {
     id: "mapmaking",
-    label: "地图制作",
+    label: "地形制作",
     subCategories: [
       { id: "editor", label: "地图编辑器" },
       { id: "command", label: "命令生成器" },

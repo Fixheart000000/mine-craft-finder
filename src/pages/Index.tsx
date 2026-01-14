@@ -48,7 +48,7 @@ const contentCategoryList: { id: ContentCategory; label: string; icon: React.Rea
 
 const toolCategoryList: { id: ToolCategory; label: string; icon: React.ReactNode }[] = [
   { id: "moddev", label: "模组开发", icon: <ModIcon className="w-4 h-4" /> },
-  { id: "mapmaking", label: "地图制作", icon: <MapIcon className="w-4 h-4" /> },
+  { id: "mapmaking", label: "地形制作", icon: <MapIcon className="w-4 h-4" /> },
   { id: "buildtool", label: "建筑创作", icon: <BuildingIcon className="w-4 h-4" /> },
   { id: "resourcetool", label: "资源创作", icon: <ResourcePackIcon className="w-4 h-4" /> },
   { id: "general", label: "通用工具", icon: <ToolIcon className="w-4 h-4" /> },
@@ -253,7 +253,7 @@ const Index = () => {
       {/* Bottom navigation */}
       <div className="sticky bottom-0 bg-card border-t border-border shadow-lg">
         <div className="max-w-7xl mx-auto px-4 py-3">
-          {/* Main categories row */}
+          {/* Main categories selector - only show active one */}
           <div className="flex items-center gap-4 mb-3">
             <div className="w-48">
               <SearchBar
@@ -264,14 +264,41 @@ const Index = () => {
             </div>
             <div className="flex items-center gap-1 border-l border-border pl-4">
               {mainCategories.map((cat) => (
-                <CategoryTab
+                <button
                   key={cat.id}
-                  icon={getMainCategoryIcon(cat.id)}
-                  label={cat.label}
-                  active={mainCategory === cat.id}
                   onClick={() => handleMainCategoryChange(cat.id)}
-                />
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
+                    mainCategory === cat.id
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted hidden"
+                  }`}
+                >
+                  {getMainCategoryIcon(cat.id)}
+                  <span>{cat.label}</span>
+                </button>
               ))}
+              {/* Dropdown for switching main category */}
+              <div className="relative group">
+                <button className="flex items-center gap-1 px-2 py-1.5 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-all">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="absolute bottom-full left-0 mb-1 bg-popover border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 min-w-[120px]">
+                  {mainCategories
+                    .filter((cat) => cat.id !== mainCategory)
+                    .map((cat) => (
+                      <button
+                        key={cat.id}
+                        onClick={() => handleMainCategoryChange(cat.id)}
+                        className="flex items-center gap-2 w-full px-3 py-2 text-sm text-left hover:bg-muted transition-colors first:rounded-t-lg last:rounded-b-lg"
+                      >
+                        {getMainCategoryIcon(cat.id)}
+                        <span>{cat.label}</span>
+                      </button>
+                    ))}
+                </div>
+              </div>
             </div>
           </div>
 
