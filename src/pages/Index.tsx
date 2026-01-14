@@ -1,8 +1,7 @@
 import { useState } from "react";
 import SearchBar from "@/components/SearchBar";
-import CategoryTab from "@/components/CategoryTab";
 import ResourceCard from "@/components/ResourceCard";
-import SubCategoryDropdown from "@/components/SubCategoryDropdown";
+import { BreadcrumbNavigation } from "@/components/BreadcrumbDropdown";
 import ModIcon from "@/components/icons/ModIcon";
 import ResourcePackIcon from "@/components/icons/ResourcePackIcon";
 import ShaderIcon from "@/components/icons/ShaderIcon";
@@ -250,7 +249,7 @@ const Index = () => {
         </button>
       </div>
 
-      {/* Bottom navigation - single row layout */}
+      {/* Bottom navigation - breadcrumb style */}
       <div className="sticky bottom-0 bg-card border-t border-border shadow-lg">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center gap-3">
@@ -263,70 +262,47 @@ const Index = () => {
               />
             </div>
 
-            {/* Main category selector */}
-            <div className="flex items-center gap-1 border-l border-border pl-3 flex-shrink-0">
-              {mainCategories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => handleMainCategoryChange(cat.id)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
-                    mainCategory === cat.id
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted hidden"
-                  }`}
-                >
-                  {getMainCategoryIcon(cat.id)}
-                  <span>{cat.label}</span>
-                </button>
-              ))}
-              {/* Dropdown for switching main category */}
-              <div className="relative group">
-                <button className="flex items-center gap-1 px-2 py-1.5 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-all">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div className="absolute bottom-full left-0 mb-1 bg-popover border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 min-w-[120px]">
-                  {mainCategories
-                    .filter((cat) => cat.id !== mainCategory)
-                    .map((cat) => (
-                      <button
-                        key={cat.id}
-                        onClick={() => handleMainCategoryChange(cat.id)}
-                        className="flex items-center gap-2 w-full px-3 py-2 text-sm text-left hover:bg-muted transition-colors first:rounded-t-lg last:rounded-b-lg"
-                      >
-                        {getMainCategoryIcon(cat.id)}
-                        <span>{cat.label}</span>
-                      </button>
-                    ))}
-                </div>
-              </div>
+            {/* Breadcrumb navigation */}
+            <div className="flex items-center border-l border-border pl-3">
+              <BreadcrumbNavigation
+                levels={[
+                  {
+                    items: mainCategories.map((cat) => ({
+                      id: cat.id,
+                      label: cat.label,
+                    })),
+                    value: mainCategory,
+                    onChange: (val) => handleMainCategoryChange(val as MainCategory),
+                    placeholder: "分类",
+                  },
+                  {
+                    items: getCategoryList().map((cat) => ({
+                      id: cat.id,
+                      label: cat.label,
+                    })),
+                    value: getActiveCategory(),
+                    onChange: handleCategoryClick,
+                    placeholder: "类型",
+                  },
+                  ...(subCategories.length > 0
+                    ? [
+                        {
+                          items: [
+                            { id: "", label: "全部" },
+                            ...subCategories.map((cat) => ({
+                              id: cat.id,
+                              label: cat.label,
+                            })),
+                          ],
+                          value: subCategory,
+                          onChange: setSubCategory,
+                          placeholder: "全部",
+                        },
+                      ]
+                    : []),
+                ]}
+              />
             </div>
-
-            {/* Secondary categories */}
-            <div className="flex items-center gap-1 border-l border-border pl-3 overflow-x-auto flex-1">
-              {getCategoryList().map((category) => (
-                <CategoryTab
-                  key={category.id}
-                  icon={category.icon}
-                  label={category.label}
-                  active={getActiveCategory() === category.id}
-                  onClick={() => handleCategoryClick(category.id)}
-                />
-              ))}
-            </div>
-
-            {/* Sub-category dropdown */}
-            {subCategories.length > 0 && (
-              <div className="flex-shrink-0 border-l border-border pl-3">
-                <SubCategoryDropdown
-                  categories={subCategories}
-                  value={subCategory}
-                  onChange={setSubCategory}
-                  placeholder="全部子分类"
-                />
-              </div>
-            )}
           </div>
         </div>
       </div>
