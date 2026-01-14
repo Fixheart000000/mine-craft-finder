@@ -250,19 +250,21 @@ const Index = () => {
         </button>
       </div>
 
-      {/* Bottom navigation */}
+      {/* Bottom navigation - single row layout */}
       <div className="sticky bottom-0 bg-card border-t border-border shadow-lg">
         <div className="max-w-7xl mx-auto px-4 py-3">
-          {/* Main categories selector - only show active one */}
-          <div className="flex items-center gap-4 mb-3">
-            <div className="w-48">
+          <div className="flex items-center gap-3">
+            {/* Search */}
+            <div className="w-40 flex-shrink-0">
               <SearchBar
                 value={searchQuery}
                 onChange={setSearchQuery}
                 placeholder="搜索..."
               />
             </div>
-            <div className="flex items-center gap-1 border-l border-border pl-4">
+
+            {/* Main category selector */}
+            <div className="flex items-center gap-1 border-l border-border pl-3 flex-shrink-0">
               {mainCategories.map((cat) => (
                 <button
                   key={cat.id}
@@ -300,27 +302,23 @@ const Index = () => {
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Sub categories row */}
-          <div className="flex items-center gap-2">
-            <div className="flex-1 overflow-x-auto">
-              <div className="flex items-center gap-1">
-                {getCategoryList().map((category) => (
-                  <CategoryTab
-                    key={category.id}
-                    icon={category.icon}
-                    label={category.label}
-                    active={getActiveCategory() === category.id}
-                    onClick={() => handleCategoryClick(category.id)}
-                  />
-                ))}
-              </div>
+            {/* Secondary categories */}
+            <div className="flex items-center gap-1 border-l border-border pl-3 overflow-x-auto flex-1">
+              {getCategoryList().map((category) => (
+                <CategoryTab
+                  key={category.id}
+                  icon={category.icon}
+                  label={category.label}
+                  active={getActiveCategory() === category.id}
+                  onClick={() => handleCategoryClick(category.id)}
+                />
+              ))}
             </div>
 
             {/* Sub-category dropdown */}
             {subCategories.length > 0 && (
-              <div className="flex-shrink-0 border-l border-border pl-2">
+              <div className="flex-shrink-0 border-l border-border pl-3">
                 <SubCategoryDropdown
                   categories={subCategories}
                   value={subCategory}
