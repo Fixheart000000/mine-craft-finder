@@ -14,7 +14,7 @@ import ServerIcon from "@/components/icons/ServerIcon";
 import ToolIcon from "@/components/icons/ToolIcon";
 import SkinIcon from "@/components/icons/SkinIcon";
 import BuildingIcon from "@/components/icons/BuildingIcon";
-import AudioIcon from "@/components/icons/AudioIcon";
+
 import DocIcon from "@/components/icons/DocIcon";
 import { QrCode, Languages, Box, Wrench, BookOpen } from "lucide-react";
 import {
@@ -32,14 +32,13 @@ type DocCategory = keyof typeof docCategories;
 
 const contentCategoryList: { id: ContentCategory; label: string; icon: React.ReactNode }[] = [
   { id: "mod", label: "模组", icon: <ModIcon className="w-4 h-4" /> },
-  { id: "resourcepack", label: "材质包", icon: <ResourcePackIcon className="w-4 h-4" /> },
+  { id: "resourcepack", label: "资源包", icon: <ResourcePackIcon className="w-4 h-4" /> },
   { id: "shader", label: "光影", icon: <ShaderIcon className="w-4 h-4" /> },
   { id: "map", label: "地图", icon: <MapIcon className="w-4 h-4" /> },
   { id: "building", label: "建筑", icon: <BuildingIcon className="w-4 h-4" /> },
   { id: "skin", label: "形象", icon: <SkinIcon className="w-4 h-4" /> },
   { id: "datapack", label: "数据包", icon: <DataPackIcon className="w-4 h-4" /> },
   { id: "modpack", label: "整合包", icon: <ModpackIcon className="w-4 h-4" /> },
-  { id: "audio", label: "音频", icon: <AudioIcon className="w-4 h-4" /> },
   { id: "project", label: "项目", icon: <ProjectIcon className="w-4 h-4" /> },
   { id: "user", label: "用户", icon: <UserIcon className="w-4 h-4" /> },
   { id: "server", label: "服务器", icon: <ServerIcon className="w-4 h-4" /> },
@@ -91,9 +90,9 @@ const mockResources = {
       likes: 456,
     },
   ],
-  audio: [
+  resourcepack: [
     {
-      icon: <AudioIcon className="w-10 h-10" />,
+      icon: <ResourcePackIcon className="w-10 h-10" />,
       title: "自然环境音效包",
       author: "SoundScape",
       description: "替换游戏内的环境音效，包含更真实的风声、雨声和动物叫声。",
