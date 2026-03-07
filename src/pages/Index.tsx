@@ -205,6 +205,9 @@ const Index = () => {
       case "doc":
         setDocCategory(id as DocCategory);
         break;
+      case "community":
+        setCommunityCategory(id as CommunityCategory);
+        break;
     }
   };
 
