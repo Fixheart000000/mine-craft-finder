@@ -223,7 +223,7 @@ export const docCategories = {
   },
 };
 
-// 社区相关分类
+// 社交社区分类
 export const communityCategories = {
   project: {
     id: "project",
@@ -234,6 +234,17 @@ export const communityCategories = {
     id: "user",
     label: "用户",
     subCategories: [],
+  },
+  communitySkin: {
+    id: "communitySkin",
+    label: "社区形象",
+    subCategories: [
+      { id: "avatar", label: "动态头像" },
+      { id: "badge", label: "徽章" },
+      { id: "frame", label: "头像框" },
+      { id: "banner", label: "个人横幅" },
+      { id: "themed", label: "主题形象" },
+    ],
   },
   server: {
     id: "server",
