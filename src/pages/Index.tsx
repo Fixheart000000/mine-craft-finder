@@ -215,6 +215,7 @@ const Index = () => {
   const handleMainCategoryChange = (id: MainCategory) => {
     setMainCategory(id);
     setSubCategory("");
+    setDimensionTag("");
   };
 
   const getCurrentResources = () => {
