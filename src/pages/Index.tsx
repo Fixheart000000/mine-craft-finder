@@ -147,7 +147,7 @@ const Index = () => {
   const [docCategory, setDocCategory] = useState<DocCategory>("tutorial");
   const [communityCategory, setCommunityCategory] = useState<CommunityCategory>("project");
   const [subCategory, setSubCategory] = useState("");
-
+  const [dimensionTag, setDimensionTag] = useState("");
   const getActiveCategory = () => {
     switch (mainCategory) {
       case "content":
