@@ -25,6 +25,7 @@ import {
   docCategories,
   communityCategories,
 } from "@/data/categories";
+import { modDimensions } from "@/data/modDimensions";
 
 type ContentCategory = keyof typeof gameContentCategories;
 type ToolCategory = keyof typeof toolCategories;
