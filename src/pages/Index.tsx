@@ -155,6 +155,8 @@ const Index = () => {
         return toolCategory;
       case "doc":
         return docCategory;
+      case "community":
+        return communityCategory;
     }
   };
 
@@ -166,6 +168,8 @@ const Index = () => {
         return toolCategoryList;
       case "doc":
         return docCategoryList;
+      case "community":
+        return communityCategoryList;
     }
   };
 
