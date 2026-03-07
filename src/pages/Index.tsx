@@ -245,9 +245,12 @@ const Index = () => {
       <div className="flex-1 p-6">
         <div className="max-w-7xl mx-auto">
           {/* Current filter info */}
-          {subCategory && (
+          {(subCategory || dimensionTag) && (
             <div className="mb-4 text-sm text-muted-foreground">
               当前筛选: {subCategories.find((c) => c.id === subCategory)?.label}
+              {dimensionTag && mainCategory === "content" && contentCategory === "mod" && subCategory && modDimensions[subCategory] && (
+                <span> › {modDimensions[subCategory].tags.find((t) => t.id === dimensionTag)?.label}</span>
+              )}
             </div>
           )}
 
