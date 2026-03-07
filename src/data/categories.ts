@@ -62,7 +62,7 @@ export const gameContentCategories = {
   },
   skin: {
     id: "skin",
-    label: "形象",
+    label: "游戏形象",
     subCategories: [
       { id: "skin", label: "皮肤" },
       { id: "cape", label: "披风" },
