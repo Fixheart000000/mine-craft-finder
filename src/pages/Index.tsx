@@ -16,7 +16,7 @@ import SkinIcon from "@/components/icons/SkinIcon";
 import BuildingIcon from "@/components/icons/BuildingIcon";
 import AudioIcon from "@/components/icons/AudioIcon";
 import DocIcon from "@/components/icons/DocIcon";
-import { QrCode, Languages, Box, Wrench, BookOpen } from "lucide-react";
+import { QrCode, Languages, Box, Wrench, BookOpen, Users } from "lucide-react";
 import {
   MainCategory,
   mainCategories,
