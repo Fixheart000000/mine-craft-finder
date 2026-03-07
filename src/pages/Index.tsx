@@ -25,7 +25,6 @@ import {
   docCategories,
   communityCategories,
 } from "@/data/categories";
-import { modDimensions } from "@/data/modDimensions";
 
 type ContentCategory = keyof typeof gameContentCategories;
 type ToolCategory = keyof typeof toolCategories;
@@ -147,7 +146,7 @@ const Index = () => {
   const [docCategory, setDocCategory] = useState<DocCategory>("tutorial");
   const [communityCategory, setCommunityCategory] = useState<CommunityCategory>("project");
   const [subCategory, setSubCategory] = useState("");
-  const [dimensionTag, setDimensionTag] = useState("");
+
   const getActiveCategory = () => {
     switch (mainCategory) {
       case "content":
@@ -196,7 +195,6 @@ const Index = () => {
 
   const handleCategoryClick = (id: string) => {
     setSubCategory("");
-    setDimensionTag("");
     switch (mainCategory) {
       case "content":
         setContentCategory(id as ContentCategory);
@@ -216,7 +214,6 @@ const Index = () => {
   const handleMainCategoryChange = (id: MainCategory) => {
     setMainCategory(id);
     setSubCategory("");
-    setDimensionTag("");
   };
 
   const getCurrentResources = () => {
@@ -245,12 +242,9 @@ const Index = () => {
       <div className="flex-1 p-6">
         <div className="max-w-7xl mx-auto">
           {/* Current filter info */}
-          {(subCategory || dimensionTag) && (
+          {subCategory && (
             <div className="mb-4 text-sm text-muted-foreground">
               当前筛选: {subCategories.find((c) => c.id === subCategory)?.label}
-              {dimensionTag && mainCategory === "content" && contentCategory === "mod" && subCategory && modDimensions[subCategory] && (
-                <span> › {modDimensions[subCategory].tags.find((t) => t.id === dimensionTag)?.label}</span>
-              )}
             </div>
           )}
 
@@ -319,26 +313,7 @@ const Index = () => {
                             })),
                           ],
                           value: subCategory,
-                          onChange: (val: string) => {
-                            setSubCategory(val);
-                            setDimensionTag("");
-                          },
-                          placeholder: "全部",
-                        },
-                      ]
-                    : []),
-                  ...(mainCategory === "content" && contentCategory === "mod" && subCategory && modDimensions[subCategory]
-                    ? [
-                        {
-                          items: [
-                            { id: "", label: "全部" },
-                            ...modDimensions[subCategory].tags.map((tag) => ({
-                              id: tag.id,
-                              label: tag.label,
-                            })),
-                          ],
-                          value: dimensionTag,
-                          onChange: setDimensionTag,
+                          onChange: setSubCategory,
                           placeholder: "全部",
                         },
                       ]
