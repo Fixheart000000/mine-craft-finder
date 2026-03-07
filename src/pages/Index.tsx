@@ -185,6 +185,9 @@ const Index = () => {
       case "doc":
         const docCat = docCategories[active as keyof typeof docCategories];
         return docCat?.subCategories || [];
+      case "community":
+        const commCat = communityCategories[active as keyof typeof communityCategories];
+        return commCat?.subCategories || [];
       default:
         return [];
     }
