@@ -272,6 +272,8 @@ export const getCategoriesByMain = (main: MainCategory) => {
       return toolCategories;
     case "doc":
       return docCategories;
+    case "community":
+      return communityCategories;
     default:
       return gameContentCategories;
   }
