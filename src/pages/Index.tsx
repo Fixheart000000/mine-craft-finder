@@ -144,6 +144,7 @@ const Index = () => {
   const [contentCategory, setContentCategory] = useState<ContentCategory>("mod");
   const [toolCategory, setToolCategory] = useState<ToolCategory>("moddev");
   const [docCategory, setDocCategory] = useState<DocCategory>("tutorial");
+  const [communityCategory, setCommunityCategory] = useState<CommunityCategory>("project");
   const [subCategory, setSubCategory] = useState("");
 
   const getActiveCategory = () => {
