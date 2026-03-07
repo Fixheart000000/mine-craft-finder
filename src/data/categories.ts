@@ -254,12 +254,13 @@ export const communityCategories = {
 };
 
 // 主分类
-export type MainCategory = "content" | "tool" | "doc";
+export type MainCategory = "content" | "tool" | "doc" | "community";
 
 export const mainCategories: { id: MainCategory; label: string }[] = [
   { id: "content", label: "游戏内容" },
   { id: "tool", label: "创作工具" },
   { id: "doc", label: "知识文档" },
+  { id: "community", label: "社交社区" },
 ];
 
 // 获取主分类下的所有子分类
