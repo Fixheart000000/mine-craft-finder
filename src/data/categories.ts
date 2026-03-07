@@ -62,7 +62,7 @@ export const gameContentCategories = {
   },
   skin: {
     id: "skin",
-    label: "形象",
+    label: "游戏形象",
     subCategories: [
       { id: "skin", label: "皮肤" },
       { id: "cape", label: "披风" },
@@ -223,7 +223,7 @@ export const docCategories = {
   },
 };
 
-// 社区相关分类
+// 社交社区分类
 export const communityCategories = {
   project: {
     id: "project",
@@ -235,6 +235,17 @@ export const communityCategories = {
     label: "用户",
     subCategories: [],
   },
+  communitySkin: {
+    id: "communitySkin",
+    label: "社区形象",
+    subCategories: [
+      { id: "avatar", label: "动态头像" },
+      { id: "badge", label: "徽章" },
+      { id: "frame", label: "头像框" },
+      { id: "banner", label: "个人横幅" },
+      { id: "themed", label: "主题形象" },
+    ],
+  },
   server: {
     id: "server",
     label: "服务器",
@@ -243,12 +254,13 @@ export const communityCategories = {
 };
 
 // 主分类
-export type MainCategory = "content" | "tool" | "doc";
+export type MainCategory = "content" | "tool" | "doc" | "community";
 
 export const mainCategories: { id: MainCategory; label: string }[] = [
   { id: "content", label: "游戏内容" },
   { id: "tool", label: "创作工具" },
   { id: "doc", label: "知识文档" },
+  { id: "community", label: "社交社区" },
 ];
 
 // 获取主分类下的所有子分类
@@ -260,6 +272,8 @@ export const getCategoriesByMain = (main: MainCategory) => {
       return toolCategories;
     case "doc":
       return docCategories;
+    case "community":
+      return communityCategories;
     default:
       return gameContentCategories;
   }
