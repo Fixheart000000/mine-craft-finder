@@ -229,6 +229,8 @@ const Index = () => {
         return <Wrench className="w-4 h-4" />;
       case "doc":
         return <BookOpen className="w-4 h-4" />;
+      case "community":
+        return <Users className="w-4 h-4" />;
     }
   };
 
