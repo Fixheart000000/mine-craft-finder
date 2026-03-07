@@ -197,6 +197,7 @@ const Index = () => {
   const handleCategoryClick = (id: string) => {
     setSubCategory("");
     setDimensionTag("");
+    switch (mainCategory) {
       case "content":
         setContentCategory(id as ContentCategory);
         break;
