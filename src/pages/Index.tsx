@@ -26,9 +26,10 @@ import {
   communityCategories,
 } from "@/data/categories";
 
-type ContentCategory = keyof typeof gameContentCategories | keyof typeof communityCategories;
+type ContentCategory = keyof typeof gameContentCategories;
 type ToolCategory = keyof typeof toolCategories;
 type DocCategory = keyof typeof docCategories;
+type CommunityCategory = keyof typeof communityCategories;
 
 const contentCategoryList: { id: ContentCategory; label: string; icon: React.ReactNode }[] = [
   { id: "mod", label: "模组", icon: <ModIcon className="w-4 h-4" /> },
@@ -36,13 +37,10 @@ const contentCategoryList: { id: ContentCategory; label: string; icon: React.Rea
   { id: "shader", label: "光影", icon: <ShaderIcon className="w-4 h-4" /> },
   { id: "map", label: "地图", icon: <MapIcon className="w-4 h-4" /> },
   { id: "building", label: "建筑", icon: <BuildingIcon className="w-4 h-4" /> },
-  { id: "skin", label: "形象", icon: <SkinIcon className="w-4 h-4" /> },
+  { id: "skin", label: "游戏形象", icon: <SkinIcon className="w-4 h-4" /> },
   { id: "datapack", label: "数据包", icon: <DataPackIcon className="w-4 h-4" /> },
   { id: "modpack", label: "整合包", icon: <ModpackIcon className="w-4 h-4" /> },
   { id: "audio", label: "音频", icon: <AudioIcon className="w-4 h-4" /> },
-  { id: "project", label: "项目", icon: <ProjectIcon className="w-4 h-4" /> },
-  { id: "user", label: "用户", icon: <UserIcon className="w-4 h-4" /> },
-  { id: "server", label: "服务器", icon: <ServerIcon className="w-4 h-4" /> },
 ];
 
 const toolCategoryList: { id: ToolCategory; label: string; icon: React.ReactNode }[] = [
@@ -59,6 +57,13 @@ const docCategoryList: { id: DocCategory; label: string; icon: React.ReactNode }
   { id: "solution", label: "技术方案", icon: <DocIcon className="w-4 h-4" /> },
   { id: "practice", label: "最佳实践", icon: <DocIcon className="w-4 h-4" /> },
   { id: "reference", label: "参考资料", icon: <DocIcon className="w-4 h-4" /> },
+];
+
+const communityCategoryList: { id: CommunityCategory; label: string; icon: React.ReactNode }[] = [
+  { id: "project", label: "项目", icon: <ProjectIcon className="w-4 h-4" /> },
+  { id: "user", label: "用户", icon: <UserIcon className="w-4 h-4" /> },
+  { id: "communitySkin", label: "社区形象", icon: <SkinIcon className="w-4 h-4" /> },
+  { id: "server", label: "服务器", icon: <ServerIcon className="w-4 h-4" /> },
 ];
 
 // Mock data for resources
