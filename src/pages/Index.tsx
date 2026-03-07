@@ -316,7 +316,26 @@ const Index = () => {
                             })),
                           ],
                           value: subCategory,
-                          onChange: setSubCategory,
+                          onChange: (val: string) => {
+                            setSubCategory(val);
+                            setDimensionTag("");
+                          },
+                          placeholder: "全部",
+                        },
+                      ]
+                    : []),
+                  ...(mainCategory === "content" && contentCategory === "mod" && subCategory && modDimensions[subCategory]
+                    ? [
+                        {
+                          items: [
+                            { id: "", label: "全部" },
+                            ...modDimensions[subCategory].tags.map((tag) => ({
+                              id: tag.id,
+                              label: tag.label,
+                            })),
+                          ],
+                          value: dimensionTag,
+                          onChange: setDimensionTag,
                           placeholder: "全部",
                         },
                       ]
