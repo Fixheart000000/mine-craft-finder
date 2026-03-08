@@ -48,6 +48,7 @@ const toolCategoryList: { id: ToolCategory; label: string; icon: React.ReactNode
   { id: "mapmaking", label: "地形制作", icon: <MapIcon className="w-4 h-4" /> },
   { id: "buildtool", label: "建筑创作", icon: <BuildingIcon className="w-4 h-4" /> },
   { id: "resourcetool", label: "资源创作", icon: <ResourcePackIcon className="w-4 h-4" /> },
+  { id: "servertool", label: "服务器工具", icon: <ServerIcon className="w-4 h-4" /> },
   { id: "general", label: "通用工具", icon: <ToolIcon className="w-4 h-4" /> },
 ];
 
