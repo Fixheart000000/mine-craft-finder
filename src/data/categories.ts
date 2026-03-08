@@ -152,6 +152,22 @@ export const toolCategories = {
       { id: "audio", label: "音频处理工具" },
     ],
   },
+  servertool: {
+    id: "servertool",
+    label: "服务器工具",
+    subCategories: [
+      { id: "core", label: "服务器核心/管理工具" },
+      { id: "config", label: "服务器配置工具" },
+      { id: "plugin", label: "插件管理工具" },
+      { id: "monitor", label: "服务器监控工具" },
+      { id: "security", label: "服务器安全工具" },
+      { id: "backup", label: "服务器备份工具" },
+      { id: "optimize", label: "服务器优化工具" },
+      { id: "panel", label: "服务器面板工具" },
+      { id: "network", label: "服务器网络工具" },
+      { id: "log", label: "服务器日志工具" },
+    ],
+  },
   general: {
     id: "general",
     label: "通用工具",
