@@ -154,7 +154,7 @@ export const toolCategories = {
   },
   servertool: {
     id: "servertool",
-    label: "服务器工具",
+    label: "服务器工具/插件",
     subCategories: [
       { id: "core", label: "服务器核心/管理工具" },
       { id: "config", label: "服务器配置工具" },
