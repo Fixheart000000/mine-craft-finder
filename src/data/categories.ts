@@ -60,17 +60,6 @@ export const gameContentCategories = {
       { id: "assets", label: "建筑素材" },
     ],
   },
-  skin: {
-    id: "skin",
-    label: "游戏形象",
-    subCategories: [
-      { id: "skin", label: "皮肤" },
-      { id: "cape", label: "披风" },
-      { id: "halo", label: "光环" },
-      { id: "themed", label: "主题形象" },
-      { id: "original", label: "原创形象" },
-    ],
-  },
   datapack: {
     id: "datapack",
     label: "数据包",
