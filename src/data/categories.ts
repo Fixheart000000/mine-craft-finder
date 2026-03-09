@@ -176,6 +176,7 @@ export const toolCategories = {
       { id: "download", label: "资源下载工具" },
       { id: "backup", label: "备份恢复工具" },
       { id: "performance", label: "性能优化工具" },
+      { id: "launcher", label: "启动/联机工具" },
     ],
   },
 };
