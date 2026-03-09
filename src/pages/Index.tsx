@@ -16,7 +16,7 @@ import SkinIcon from "@/components/icons/SkinIcon";
 import BuildingIcon from "@/components/icons/BuildingIcon";
 import AudioIcon from "@/components/icons/AudioIcon";
 import DocIcon from "@/components/icons/DocIcon";
-import { QrCode, Languages, Box, Wrench, BookOpen, Users } from "lucide-react";
+import { QrCode, Languages, Box, Wrench, BookOpen, Users, ShoppingBag } from "lucide-react";
 import {
   MainCategory,
   mainCategories,
@@ -25,6 +25,11 @@ import {
   docCategories,
   communityCategories,
 } from "@/data/categories";
+import {
+  StoreCategory,
+  storeCategories,
+  storeCategoryDetails,
+} from "@/data/storeCategories";
 
 type ContentCategory = keyof typeof gameContentCategories;
 type ToolCategory = keyof typeof toolCategories;
@@ -37,7 +42,6 @@ const contentCategoryList: { id: ContentCategory; label: string; icon: React.Rea
   { id: "shader", label: "光影", icon: <ShaderIcon className="w-4 h-4" /> },
   { id: "map", label: "地图", icon: <MapIcon className="w-4 h-4" /> },
   { id: "building", label: "建筑", icon: <BuildingIcon className="w-4 h-4" /> },
-  { id: "skin", label: "游戏形象", icon: <SkinIcon className="w-4 h-4" /> },
   { id: "datapack", label: "数据包", icon: <DataPackIcon className="w-4 h-4" /> },
   { id: "modpack", label: "整合包", icon: <ModpackIcon className="w-4 h-4" /> },
   { id: "audio", label: "音频", icon: <AudioIcon className="w-4 h-4" /> },
@@ -63,7 +67,6 @@ const docCategoryList: { id: DocCategory; label: string; icon: React.ReactNode }
 const communityCategoryList: { id: CommunityCategory; label: string; icon: React.ReactNode }[] = [
   { id: "project", label: "项目", icon: <ProjectIcon className="w-4 h-4" /> },
   { id: "user", label: "用户", icon: <UserIcon className="w-4 h-4" /> },
-  { id: "communitySkin", label: "社区形象", icon: <SkinIcon className="w-4 h-4" /> },
   { id: "server", label: "服务器", icon: <ServerIcon className="w-4 h-4" /> },
 ];
 
@@ -107,7 +110,7 @@ const mockResources = {
       likes: 234,
     },
   ],
-  skin: [
+  gameSkin: [
     {
       icon: <SkinIcon className="w-10 h-10" />,
       title: "星辰骑士皮肤包",
@@ -115,6 +118,16 @@ const mockResources = {
       description: "精心设计的星辰主题皮肤系列，包含多款独特的骑士造型。",
       downloads: 512,
       likes: 234,
+    },
+  ],
+  communitySkin: [
+    {
+      icon: <SkinIcon className="w-10 h-10" />,
+      title: "炫彩动态头像框",
+      author: "DesignPro",
+      description: "多款精美动态头像框，让你的社区形象更加出众。",
+      downloads: 320,
+      likes: 156,
     },
   ],
   moddev: [
@@ -147,6 +160,11 @@ const Index = () => {
   const [docCategory, setDocCategory] = useState<DocCategory>("tutorial");
   const [communityCategory, setCommunityCategory] = useState<CommunityCategory>("project");
   const [subCategory, setSubCategory] = useState("");
+
+  // Store state
+  const [storeCategory, setStoreCategory] = useState<StoreCategory>("gameSkin");
+  const [storeSubCategory, setStoreSubCategory] = useState("");
+  const [showStore, setShowStore] = useState(false);
 
   const getActiveCategory = () => {
     switch (mainCategory) {
@@ -215,27 +233,23 @@ const Index = () => {
   const handleMainCategoryChange = (id: MainCategory) => {
     setMainCategory(id);
     setSubCategory("");
+    setShowStore(false);
   };
 
   const getCurrentResources = () => {
+    if (showStore) {
+      return mockResources[storeCategory as keyof typeof mockResources] || [];
+    }
     const active = getActiveCategory();
     return mockResources[active as keyof typeof mockResources] || mockResources.mod;
   };
 
-  const getMainCategoryIcon = (id: MainCategory) => {
-    switch (id) {
-      case "content":
-        return <Box className="w-4 h-4" />;
-      case "tool":
-        return <Wrench className="w-4 h-4" />;
-      case "doc":
-        return <BookOpen className="w-4 h-4" />;
-      case "community":
-        return <Users className="w-4 h-4" />;
-    }
+  const getStoreSubCategories = () => {
+    return storeCategoryDetails[storeCategory]?.subCategories || [];
   };
 
   const subCategories = getSubCategories();
+  const storeSubCategories = getStoreSubCategories();
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -243,9 +257,14 @@ const Index = () => {
       <div className="flex-1 p-6">
         <div className="max-w-7xl mx-auto">
           {/* Current filter info */}
-          {subCategory && (
+          {!showStore && subCategory && (
             <div className="mb-4 text-sm text-muted-foreground">
               当前筛选: {subCategories.find((c) => c.id === subCategory)?.label}
+            </div>
+          )}
+          {showStore && storeSubCategory && (
+            <div className="mb-4 text-sm text-muted-foreground">
+              平台商城 · {storeCategoryDetails[storeCategory]?.label} · {storeSubCategories.find((c) => c.id === storeSubCategory)?.label}
             </div>
           )}
 
@@ -268,59 +287,122 @@ const Index = () => {
         </button>
       </div>
 
-      {/* Bottom navigation - breadcrumb style */}
+      {/* Bottom navigation */}
       <div className="sticky bottom-0 bg-card border-t border-border shadow-lg">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center gap-3">
-            {/* Search */}
-            <div className="w-40 flex-shrink-0">
-              <SearchBar
-                value={searchQuery}
-                onChange={setSearchQuery}
-                placeholder="搜索..."
-              />
+            {/* Search + Breadcrumb */}
+            <div className="flex items-center gap-3 flex-1 min-w-0">
+              <div className="w-40 flex-shrink-0">
+                <SearchBar
+                  value={searchQuery}
+                  onChange={setSearchQuery}
+                  placeholder="搜索..."
+                />
+              </div>
+
+              <div className="flex items-center border-l border-border pl-3 min-w-0">
+                <BreadcrumbNavigation
+                  levels={[
+                    {
+                      items: mainCategories.map((cat) => ({
+                        id: cat.id,
+                        label: cat.label,
+                      })),
+                      value: mainCategory,
+                      onChange: (val) => {
+                        handleMainCategoryChange(val as MainCategory);
+                      },
+                      placeholder: "分类",
+                    },
+                    {
+                      items: getCategoryList().map((cat) => ({
+                        id: cat.id,
+                        label: cat.label,
+                      })),
+                      value: getActiveCategory(),
+                      onChange: handleCategoryClick,
+                      placeholder: "类型",
+                    },
+                    ...(subCategories.length > 0
+                      ? [
+                          {
+                            items: [
+                              { id: "", label: "全部" },
+                              ...subCategories.map((cat) => ({
+                                id: cat.id,
+                                label: cat.label,
+                              })),
+                            ],
+                            value: subCategory,
+                            onChange: setSubCategory,
+                            placeholder: "全部",
+                          },
+                        ]
+                      : []),
+                  ]}
+                />
+              </div>
             </div>
 
-            {/* Breadcrumb navigation */}
-            <div className="flex items-center border-l border-border pl-3">
-              <BreadcrumbNavigation
-                levels={[
-                  {
-                    items: mainCategories.map((cat) => ({
-                      id: cat.id,
-                      label: cat.label,
-                    })),
-                    value: mainCategory,
-                    onChange: (val) => handleMainCategoryChange(val as MainCategory),
-                    placeholder: "分类",
-                  },
-                  {
-                    items: getCategoryList().map((cat) => ({
-                      id: cat.id,
-                      label: cat.label,
-                    })),
-                    value: getActiveCategory(),
-                    onChange: handleCategoryClick,
-                    placeholder: "类型",
-                  },
-                  ...(subCategories.length > 0
-                    ? [
-                        {
-                          items: [
-                            { id: "", label: "全部" },
-                            ...subCategories.map((cat) => ({
-                              id: cat.id,
-                              label: cat.label,
-                            })),
-                          ],
-                          value: subCategory,
-                          onChange: setSubCategory,
-                          placeholder: "全部",
+            {/* Divider */}
+            <div className="w-px h-8 bg-border flex-shrink-0" />
+
+            {/* Platform Store */}
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <button
+                onClick={() => {
+                  setShowStore(!showStore);
+                  if (!showStore) {
+                    setStoreSubCategory("");
+                  }
+                }}
+                className={`flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md transition-colors ${
+                  showStore
+                    ? "bg-primary text-primary-foreground font-medium"
+                    : "text-muted-foreground hover:bg-secondary/80 hover:text-foreground"
+                }`}
+              >
+                <ShoppingBag className="w-4 h-4" />
+                <span>平台商城</span>
+              </button>
+
+              {showStore && (
+                <div className="flex items-center border-l border-border pl-2">
+                  <BreadcrumbNavigation
+                    levels={[
+                      {
+                        items: storeCategories.map((cat) => ({
+                          id: cat.id,
+                          label: cat.label,
+                        })),
+                        value: storeCategory,
+                        onChange: (val) => {
+                          setStoreCategory(val as StoreCategory);
+                          setStoreSubCategory("");
                         },
-                      ]
-                    : []),
-                ]}
-              />
+                        placeholder: "形象类型",
+                      },
+                      ...(storeSubCategories.length > 0
+                        ? [
+                            {
+                              items: [
+                                { id: "", label: "全部" },
+                                ...storeSubCategories.map((cat) => ({
+                                  id: cat.id,
+                                  label: cat.label,
+                                })),
+                              ],
+                              value: storeSubCategory,
+                              onChange: setStoreSubCategory,
+                              placeholder: "全部",
+                            },
+                          ]
+                        : []),
+                    ]}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
