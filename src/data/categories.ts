@@ -275,7 +275,7 @@ export type MainCategory = "content" | "tool" | "doc" | "community";
 
 export const mainCategories: { id: MainCategory; label: string }[] = [
   { id: "content", label: "游戏内容" },
-  { id: "tool", label: "创作工具" },
+  { id: "tool", label: "生态工具" },
   { id: "doc", label: "知识文档" },
   { id: "community", label: "社交社区" },
 ];
