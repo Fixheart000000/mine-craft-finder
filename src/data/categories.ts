@@ -241,17 +241,6 @@ export const communityCategories = {
     label: "用户",
     subCategories: [],
   },
-  communitySkin: {
-    id: "communitySkin",
-    label: "社区形象",
-    subCategories: [
-      { id: "avatar", label: "动态头像" },
-      { id: "badge", label: "徽章" },
-      { id: "frame", label: "头像框" },
-      { id: "banner", label: "个人横幅" },
-      { id: "themed", label: "主题形象" },
-    ],
-  },
   server: {
     id: "server",
     label: "服务器",
