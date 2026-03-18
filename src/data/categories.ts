@@ -1,105 +1,20 @@
-// 游戏内容分类及子分类
+// 游戏内容分类（内容资源）
 export const gameContentCategories = {
-  mod: {
-    id: "mod",
-    label: "模组",
-    subCategories: [
-      { id: "functional", label: "功能性模组" },
-      { id: "adventure", label: "冒险模组" },
-      { id: "tech", label: "科技模组" },
-      { id: "magic", label: "魔法模组" },
-      { id: "decoration", label: "装饰模组" },
-      { id: "biome", label: "生物群系模组" },
-    ],
-  },
-  resourcepack: {
-    id: "resourcepack",
-    label: "材质包",
-    subCategories: [
-      { id: "realistic", label: "写实风格" },
-      { id: "cartoon", label: "卡通风格" },
-      { id: "pixel", label: "像素风格" },
-      { id: "minimal", label: "简约风格" },
-      { id: "themed", label: "主题材质包" },
-    ],
-  },
-  shader: {
-    id: "shader",
-    label: "光影",
-    subCategories: [
-      { id: "realistic", label: "真实系光影" },
-      { id: "cartoon", label: "卡通系光影" },
-      { id: "performance", label: "性能优化光影" },
-      { id: "cinematic", label: "电影级光影" },
-      { id: "retro", label: "复古光影" },
-    ],
-  },
-  map: {
-    id: "map",
-    label: "地图",
-    subCategories: [
-      { id: "terrain", label: "地形作品" },
-      { id: "landscape", label: "景观作品" },
-      { id: "recreation", label: "复刻作品" },
-      { id: "parkour", label: "跑酷地图" },
-      { id: "puzzle", label: "解密地图" },
-      { id: "adventure", label: "冒险地图" },
-      { id: "survival", label: "生存地图" },
-      { id: "pvp", label: "PVP地图" },
-      { id: "minigame", label: "小游戏地图" },
-    ],
-  },
-  building: {
-    id: "building",
-    label: "建筑",
-    subCategories: [
-      { id: "single", label: "单体建筑" },
-      { id: "complex", label: "建筑群" },
-      { id: "city", label: "城市作品" },
-      { id: "themed", label: "主题建筑" },
-      { id: "assets", label: "建筑素材" },
-    ],
-  },
-  datapack: {
-    id: "datapack",
-    label: "数据包",
-    subCategories: [
-      { id: "functional", label: "功能数据包" },
-      { id: "challenge", label: "挑战数据包" },
-      { id: "optimization", label: "优化数据包" },
-      { id: "custom", label: "自定义数据包" },
-    ],
-  },
-  modpack: {
-    id: "modpack",
-    label: "整合包",
-    subCategories: [
-      { id: "tech", label: "科技整合包" },
-      { id: "magic", label: "魔法整合包" },
-      { id: "adventure", label: "冒险整合包" },
-      { id: "survival", label: "生存整合包" },
-      { id: "light", label: "轻量整合包" },
-      { id: "heavy", label: "重型整合包" },
-      { id: "themed", label: "主题整合包" },
-    ],
-  },
-  audio: {
-    id: "audio",
-    label: "音频",
-    subCategories: [
-      { id: "ambient", label: "环境音效" },
-      { id: "item", label: "物品音效" },
-      { id: "mob", label: "生物音效" },
-      { id: "ui", label: "UI音效" },
-      { id: "weapon", label: "武器音效" },
-      { id: "bgm", label: "背景音乐" },
-      { id: "battle", label: "战斗音乐" },
-      { id: "atmosphere", label: "氛围音乐" },
-    ],
-  },
+  mod: { id: "mod", label: "模组" },
+  map: { id: "map", label: "地图" },
+  datapack: { id: "datapack", label: "数据包" },
+  modpack: { id: "modpack", label: "整合包" },
 };
 
-// 创作工具分类及子分类
+// 辅助资源分类
+export const auxiliaryCategories = {
+  resourcepack: { id: "resourcepack", label: "材质" },
+  shader: { id: "shader", label: "光影" },
+  building: { id: "building", label: "建筑" },
+  audio: { id: "audio", label: "音频" },
+};
+
+// 生态工具分类
 export const toolCategories = {
   moddev: {
     id: "moddev",
@@ -170,7 +85,7 @@ export const toolCategories = {
   },
 };
 
-// 知识文档分类及子分类
+// 知识文档分类
 export const docCategories = {
   tutorial: {
     id: "tutorial",
@@ -231,28 +146,17 @@ export const docCategories = {
 
 // 社交社区分类
 export const communityCategories = {
-  project: {
-    id: "project",
-    label: "项目",
-    subCategories: [],
-  },
-  user: {
-    id: "user",
-    label: "用户",
-    subCategories: [],
-  },
-  server: {
-    id: "server",
-    label: "服务器",
-    subCategories: [],
-  },
+  project: { id: "project", label: "项目", subCategories: [] as { id: string; label: string }[] },
+  user: { id: "user", label: "用户", subCategories: [] as { id: string; label: string }[] },
+  server: { id: "server", label: "服务器", subCategories: [] as { id: string; label: string }[] },
 };
 
 // 主分类
-export type MainCategory = "content" | "tool" | "doc" | "community";
+export type MainCategory = "content" | "auxiliary" | "tool" | "doc" | "community";
 
 export const mainCategories: { id: MainCategory; label: string }[] = [
   { id: "content", label: "游戏内容" },
+  { id: "auxiliary", label: "辅助资源" },
   { id: "tool", label: "生态工具" },
   { id: "doc", label: "知识文档" },
   { id: "community", label: "社交社区" },
@@ -263,6 +167,8 @@ export const getCategoriesByMain = (main: MainCategory) => {
   switch (main) {
     case "content":
       return gameContentCategories;
+    case "auxiliary":
+      return auxiliaryCategories;
     case "tool":
       return toolCategories;
     case "doc":
