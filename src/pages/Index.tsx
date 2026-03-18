@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SearchBar from "@/components/SearchBar";
 import ResourceCard from "@/components/ResourceCard";
+import FilterPanel from "@/components/FilterPanel";
 import { BreadcrumbNavigation } from "@/components/BreadcrumbDropdown";
 import ModIcon from "@/components/icons/ModIcon";
 import ResourcePackIcon from "@/components/icons/ResourcePackIcon";
@@ -12,15 +13,15 @@ import ProjectIcon from "@/components/icons/ProjectIcon";
 import UserIcon from "@/components/icons/UserIcon";
 import ServerIcon from "@/components/icons/ServerIcon";
 import ToolIcon from "@/components/icons/ToolIcon";
-import SkinIcon from "@/components/icons/SkinIcon";
 import BuildingIcon from "@/components/icons/BuildingIcon";
 import AudioIcon from "@/components/icons/AudioIcon";
 import DocIcon from "@/components/icons/DocIcon";
-import { QrCode, Languages, Box, Wrench, BookOpen, Users, ShoppingBag } from "lucide-react";
+import { QrCode, Languages, BookOpen, ShoppingBag } from "lucide-react";
 import {
   MainCategory,
   mainCategories,
   gameContentCategories,
+  auxiliaryCategories,
   toolCategories,
   docCategories,
   communityCategories,
@@ -32,18 +33,22 @@ import {
 } from "@/data/storeCategories";
 
 type ContentCategory = keyof typeof gameContentCategories;
+type AuxiliaryCategory = keyof typeof auxiliaryCategories;
 type ToolCategory = keyof typeof toolCategories;
 type DocCategory = keyof typeof docCategories;
 type CommunityCategory = keyof typeof communityCategories;
 
 const contentCategoryList: { id: ContentCategory; label: string; icon: React.ReactNode }[] = [
   { id: "mod", label: "模组", icon: <ModIcon className="w-4 h-4" /> },
-  { id: "resourcepack", label: "材质包", icon: <ResourcePackIcon className="w-4 h-4" /> },
-  { id: "shader", label: "光影", icon: <ShaderIcon className="w-4 h-4" /> },
   { id: "map", label: "地图", icon: <MapIcon className="w-4 h-4" /> },
-  { id: "building", label: "建筑", icon: <BuildingIcon className="w-4 h-4" /> },
   { id: "datapack", label: "数据包", icon: <DataPackIcon className="w-4 h-4" /> },
   { id: "modpack", label: "整合包", icon: <ModpackIcon className="w-4 h-4" /> },
+];
+
+const auxiliaryCategoryList: { id: AuxiliaryCategory; label: string; icon: React.ReactNode }[] = [
+  { id: "resourcepack", label: "材质", icon: <ResourcePackIcon className="w-4 h-4" /> },
+  { id: "shader", label: "光影", icon: <ShaderIcon className="w-4 h-4" /> },
+  { id: "building", label: "建筑", icon: <BuildingIcon className="w-4 h-4" /> },
   { id: "audio", label: "音频", icon: <AudioIcon className="w-4 h-4" /> },
 ];
 
@@ -112,7 +117,7 @@ const mockResources = {
   ],
   gameSkin: [
     {
-      icon: <SkinIcon className="w-10 h-10" />,
+      icon: <ModIcon className="w-10 h-10" />,
       title: "星辰骑士皮肤包",
       author: "SkinMaster",
       description: "精心设计的星辰主题皮肤系列，包含多款独特的骑士造型。",
@@ -122,7 +127,7 @@ const mockResources = {
   ],
   communitySkin: [
     {
-      icon: <SkinIcon className="w-10 h-10" />,
+      icon: <ModIcon className="w-10 h-10" />,
       title: "炫彩动态头像框",
       author: "DesignPro",
       description: "多款精美动态头像框，让你的社区形象更加出众。",
@@ -156,10 +161,12 @@ const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [mainCategory, setMainCategory] = useState<MainCategory>("content");
   const [contentCategory, setContentCategory] = useState<ContentCategory>("mod");
+  const [auxiliaryCategory, setAuxiliaryCategory] = useState<AuxiliaryCategory>("resourcepack");
   const [toolCategory, setToolCategory] = useState<ToolCategory>("moddev");
   const [docCategory, setDocCategory] = useState<DocCategory>("tutorial");
   const [communityCategory, setCommunityCategory] = useState<CommunityCategory>("project");
   const [subCategory, setSubCategory] = useState("");
+  const [filterTags, setFilterTags] = useState<Record<string, string[]>>({});
 
   // Store state
   const [storeCategory, setStoreCategory] = useState<StoreCategory>("gameSkin");
@@ -168,71 +175,58 @@ const Index = () => {
 
   const getActiveCategory = () => {
     switch (mainCategory) {
-      case "content":
-        return contentCategory;
-      case "tool":
-        return toolCategory;
-      case "doc":
-        return docCategory;
-      case "community":
-        return communityCategory;
+      case "content": return contentCategory;
+      case "auxiliary": return auxiliaryCategory;
+      case "tool": return toolCategory;
+      case "doc": return docCategory;
+      case "community": return communityCategory;
     }
   };
 
   const getCategoryList = () => {
     switch (mainCategory) {
-      case "content":
-        return contentCategoryList;
-      case "tool":
-        return toolCategoryList;
-      case "doc":
-        return docCategoryList;
-      case "community":
-        return communityCategoryList;
+      case "content": return contentCategoryList;
+      case "auxiliary": return auxiliaryCategoryList;
+      case "tool": return toolCategoryList;
+      case "doc": return docCategoryList;
+      case "community": return communityCategoryList;
     }
   };
 
   const getSubCategories = () => {
     const active = getActiveCategory();
-    switch (mainCategory) {
-      case "content":
-        const contentCat = gameContentCategories[active as keyof typeof gameContentCategories];
-        return contentCat?.subCategories || [];
-      case "tool":
-        const toolCat = toolCategories[active as keyof typeof toolCategories];
-        return toolCat?.subCategories || [];
-      case "doc":
-        const docCat = docCategories[active as keyof typeof docCategories];
-        return docCat?.subCategories || [];
-      case "community":
-        const commCat = communityCategories[active as keyof typeof communityCategories];
-        return commCat?.subCategories || [];
-      default:
-        return [];
+    // Only tool and doc categories have traditional subcategories now
+    if (mainCategory === "tool") {
+      const toolCat = toolCategories[active as keyof typeof toolCategories];
+      return toolCat?.subCategories || [];
     }
+    if (mainCategory === "doc") {
+      const docCat = docCategories[active as keyof typeof docCategories];
+      return docCat?.subCategories || [];
+    }
+    if (mainCategory === "community") {
+      const commCat = communityCategories[active as keyof typeof communityCategories];
+      return commCat?.subCategories || [];
+    }
+    return [];
   };
 
   const handleCategoryClick = (id: string) => {
     setSubCategory("");
+    setFilterTags({});
     switch (mainCategory) {
-      case "content":
-        setContentCategory(id as ContentCategory);
-        break;
-      case "tool":
-        setToolCategory(id as ToolCategory);
-        break;
-      case "doc":
-        setDocCategory(id as DocCategory);
-        break;
-      case "community":
-        setCommunityCategory(id as CommunityCategory);
-        break;
+      case "content": setContentCategory(id as ContentCategory); break;
+      case "auxiliary": setAuxiliaryCategory(id as AuxiliaryCategory); break;
+      case "tool": setToolCategory(id as ToolCategory); break;
+      case "doc": setDocCategory(id as DocCategory); break;
+      case "community": setCommunityCategory(id as CommunityCategory); break;
     }
   };
 
   const handleMainCategoryChange = (id: MainCategory) => {
     setMainCategory(id);
     setSubCategory("");
+    setFilterTags({});
     setShowStore(false);
   };
 
@@ -248,11 +242,28 @@ const Index = () => {
     return storeCategoryDetails[storeCategory]?.subCategories || [];
   };
 
+  // Determine if current resource type supports tag filtering
+  const hasTagSystem = mainCategory === "content" || mainCategory === "auxiliary";
   const subCategories = getSubCategories();
   const storeSubCategories = getStoreSubCategories();
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      {/* Filter panel for content/auxiliary resources */}
+      {hasTagSystem && !showStore && (
+        <div className="sticky top-0 z-10 bg-background border-b border-border">
+          <div className="max-w-7xl mx-auto px-4">
+            <FilterPanel
+              resourceId={getActiveCategory()}
+              isContentResource={mainCategory === "content"}
+              isAuxiliaryResource={mainCategory === "auxiliary"}
+              selectedTags={filterTags}
+              onTagsChange={setFilterTags}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Main content area */}
       <div className="flex-1 p-6">
         <div className="max-w-7xl mx-auto">
@@ -294,51 +305,34 @@ const Index = () => {
             {/* Search + Breadcrumb */}
             <div className="flex items-center gap-3 flex-1 min-w-0">
               <div className="w-40 flex-shrink-0">
-                <SearchBar
-                  value={searchQuery}
-                  onChange={setSearchQuery}
-                  placeholder="搜索..."
-                />
+                <SearchBar value={searchQuery} onChange={setSearchQuery} placeholder="搜索..." />
               </div>
 
               <div className="flex items-center border-l border-border pl-3 min-w-0">
                 <BreadcrumbNavigation
                   levels={[
                     {
-                      items: mainCategories.map((cat) => ({
-                        id: cat.id,
-                        label: cat.label,
-                      })),
+                      items: mainCategories.map((cat) => ({ id: cat.id, label: cat.label })),
                       value: mainCategory,
-                      onChange: (val) => {
-                        handleMainCategoryChange(val as MainCategory);
-                      },
+                      onChange: (val) => handleMainCategoryChange(val as MainCategory),
                       placeholder: "分类",
                     },
                     {
-                      items: getCategoryList().map((cat) => ({
-                        id: cat.id,
-                        label: cat.label,
-                      })),
+                      items: getCategoryList().map((cat) => ({ id: cat.id, label: cat.label })),
                       value: getActiveCategory(),
                       onChange: handleCategoryClick,
                       placeholder: "类型",
                     },
                     ...(subCategories.length > 0
-                      ? [
-                          {
-                            items: [
-                              { id: "", label: "全部" },
-                              ...subCategories.map((cat) => ({
-                                id: cat.id,
-                                label: cat.label,
-                              })),
-                            ],
-                            value: subCategory,
-                            onChange: setSubCategory,
-                            placeholder: "全部",
-                          },
-                        ]
+                      ? [{
+                          items: [
+                            { id: "", label: "全部" },
+                            ...subCategories.map((cat) => ({ id: cat.id, label: cat.label })),
+                          ],
+                          value: subCategory,
+                          onChange: setSubCategory,
+                          placeholder: "全部",
+                        }]
                       : []),
                   ]}
                 />
@@ -353,9 +347,7 @@ const Index = () => {
               <button
                 onClick={() => {
                   setShowStore(!showStore);
-                  if (!showStore) {
-                    setStoreSubCategory("");
-                  }
+                  if (!showStore) setStoreSubCategory("");
                 }}
                 className={`flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md transition-colors ${
                   showStore
@@ -372,10 +364,7 @@ const Index = () => {
                   <BreadcrumbNavigation
                     levels={[
                       {
-                        items: storeCategories.map((cat) => ({
-                          id: cat.id,
-                          label: cat.label,
-                        })),
+                        items: storeCategories.map((cat) => ({ id: cat.id, label: cat.label })),
                         value: storeCategory,
                         onChange: (val) => {
                           setStoreCategory(val as StoreCategory);
@@ -384,20 +373,15 @@ const Index = () => {
                         placeholder: "形象类型",
                       },
                       ...(storeSubCategories.length > 0
-                        ? [
-                            {
-                              items: [
-                                { id: "", label: "全部" },
-                                ...storeSubCategories.map((cat) => ({
-                                  id: cat.id,
-                                  label: cat.label,
-                                })),
-                              ],
-                              value: storeSubCategory,
-                              onChange: setStoreSubCategory,
-                              placeholder: "全部",
-                            },
-                          ]
+                        ? [{
+                            items: [
+                              { id: "", label: "全部" },
+                              ...storeSubCategories.map((cat) => ({ id: cat.id, label: cat.label })),
+                            ],
+                            value: storeSubCategory,
+                            onChange: setStoreSubCategory,
+                            placeholder: "全部",
+                          }]
                         : []),
                     ]}
                   />
