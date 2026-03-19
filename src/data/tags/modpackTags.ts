@@ -122,7 +122,7 @@ export const modpackTags: ResourceTagSystem = {
             { id: "lowPoly", label: "低多边形" },
             { id: "steampunk", label: "蒸汽朋克" },
             { id: "anime", label: "日式动漫" },
-            { id: "western", label: "欧美写实" },
+            
           ],
         },
         {
