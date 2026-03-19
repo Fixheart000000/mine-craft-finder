@@ -122,7 +122,7 @@ export const modpackTags: ResourceTagSystem = {
             { id: "lowPoly", label: "低多边形" },
             { id: "steampunk", label: "蒸汽朋克" },
             { id: "anime", label: "日式动漫" },
-            { id: "western", label: "欧美写实" },
+            
           ],
         },
         {
@@ -194,9 +194,6 @@ export const modpackTags: ResourceTagSystem = {
           options: [
             { id: "noGuide", label: "无引导" },
             { id: "questBook", label: "内置任务书" },
-            { id: "wiki", label: "Wiki文档" },
-            { id: "video", label: "视频教程" },
-            { id: "forcedTutorial", label: "强制教学" },
           ],
         },
         {
@@ -235,10 +232,9 @@ export const modpackTags: ResourceTagSystem = {
           id: "specs",
           label: "配置要求",
           options: [
-            { id: "low", label: "低配友好" },
-            { id: "mid", label: "中配推荐" },
-            { id: "high", label: "高配必需" },
-            { id: "gpu", label: "需独立显卡" },
+            { id: "low", label: "低配" },
+            { id: "mid", label: "中配" },
+            { id: "high", label: "高配" },
           ],
         },
       ],
