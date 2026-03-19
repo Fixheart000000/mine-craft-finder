@@ -249,20 +249,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Filter panel for content/auxiliary resources */}
-      {hasTagSystem && !showStore && (
-        <div className="sticky top-0 z-10 bg-background border-b border-border">
-          <div className="max-w-7xl mx-auto px-4">
-            <FilterPanel
-              resourceId={getActiveCategory()}
-              isContentResource={mainCategory === "content"}
-              isAuxiliaryResource={mainCategory === "auxiliary"}
-              selectedTags={filterTags}
-              onTagsChange={setFilterTags}
-            />
-          </div>
-        </div>
-      )}
 
       {/* Main content area */}
       <div className="flex-1 p-6">
