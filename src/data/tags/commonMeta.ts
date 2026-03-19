@@ -8,6 +8,7 @@ export const contentCommonMeta: MainTag[] = [
     type: "flat",
     multiSelect: false,
     options: [
+      { id: "none", label: "无" },
       { id: "light", label: "轻体量" },
       { id: "normal", label: "普通" },
       { id: "heavy", label: "大体量" },
@@ -19,9 +20,10 @@ export const contentCommonMeta: MainTag[] = [
     type: "flat",
     multiSelect: false,
     options: [
+      { id: "none", label: "无" },
       { id: "instant", label: "即时 1-60分钟" },
       { id: "basic", label: "基础 60-300分钟" },
-      { id: "endless", label: "无尽 300分钟+" },
+      { id: "large", label: "大型 300分钟+" },
     ],
   },
   {
@@ -36,26 +38,16 @@ export const contentCommonMeta: MainTag[] = [
     ],
   },
   {
-    id: "audience",
-    label: "受众群体",
-    type: "flat",
-    multiSelect: false,
-    options: [
-      { id: "all", label: "全年龄" },
-      { id: "teen", label: "青少年 (12+)" },
-      { id: "adult", label: "成人 (18+)" },
-    ],
-  },
-  {
     id: "difficulty",
     label: "难易度",
     type: "flat",
     multiSelect: false,
     options: [
+      { id: "none", label: "无" },
       { id: "casual", label: "休闲/简单" },
       { id: "standard", label: "标准" },
-      { id: "hardcore", label: "硬核/挑战" },
-      { id: "extreme", label: "变态/极限" },
+      { id: "hard", label: "困难/挑战" },
+      { id: "extreme", label: "硬核/极限" },
     ],
   },
   {
@@ -64,6 +56,7 @@ export const contentCommonMeta: MainTag[] = [
     type: "flat",
     multiSelect: true,
     options: [
+      { id: "none", label: "无" },
       { id: "creative", label: "快乐/创造" },
       { id: "combat", label: "刺激/战斗" },
       { id: "horror", label: "恐怖/惊悚" },
@@ -77,7 +70,7 @@ export const contentCommonMeta: MainTag[] = [
     type: "flat",
     multiSelect: true,
     options: [
-      { id: "none", label: "无警示" },
+      { id: "none", label: "无" },
       { id: "horror", label: "恐怖警告" },
       { id: "flash", label: "闪光警告" },
     ],
@@ -88,6 +81,7 @@ export const contentCommonMeta: MainTag[] = [
     type: "flat",
     multiSelect: false,
     options: [
+      { id: "none", label: "无" },
       { id: "gentle", label: "温和数值" },
       { id: "vanilla", label: "原版平衡" },
       { id: "enhanced", label: "强化数值" },
@@ -104,6 +98,7 @@ export const auxiliaryCommonMeta: MainTag[] = [
     type: "flat",
     multiSelect: false,
     options: [
+      { id: "none", label: "无" },
       { id: "light", label: "轻体量" },
       { id: "normal", label: "普通" },
       { id: "heavy", label: "大体量" },
@@ -115,9 +110,10 @@ export const auxiliaryCommonMeta: MainTag[] = [
     type: "flat",
     multiSelect: false,
     options: [
+      { id: "none", label: "无" },
       { id: "instant", label: "即时 1-60分钟" },
       { id: "basic", label: "基础 60-300分钟" },
-      { id: "endless", label: "无尽 300分钟+" },
+      { id: "large", label: "大型 300分钟+" },
     ],
   },
   {
@@ -132,22 +128,12 @@ export const auxiliaryCommonMeta: MainTag[] = [
     ],
   },
   {
-    id: "audience",
-    label: "受众群体",
-    type: "flat",
-    multiSelect: false,
-    options: [
-      { id: "all", label: "全年龄" },
-      { id: "teen", label: "青少年" },
-      { id: "adult", label: "成人" },
-    ],
-  },
-  {
     id: "emotion",
     label: "情感导向",
     type: "flat",
     multiSelect: true,
     options: [
+      { id: "none", label: "无" },
       { id: "creative", label: "快乐/创造" },
       { id: "combat", label: "刺激/战斗" },
       { id: "horror", label: "恐怖/惊悚" },
@@ -161,7 +147,7 @@ export const auxiliaryCommonMeta: MainTag[] = [
     type: "flat",
     multiSelect: true,
     options: [
-      { id: "none", label: "无警示" },
+      { id: "none", label: "无" },
       { id: "horror", label: "恐怖警告" },
       { id: "flash", label: "闪光警告" },
     ],

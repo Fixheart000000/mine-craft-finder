@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { MainTag, TagGroup, TagOption } from "@/data/tags/types";
+import { MainTag } from "@/data/tags/types";
 import { tagSystemMap, contentCommonMeta, auxiliaryCommonMeta } from "@/data/tags";
 import { ChevronDown, ChevronUp, X, Filter } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface FilterPanelProps {
   resourceId: string;
-  isContentResource?: boolean; // mod/map/datapack/modpack
-  isAuxiliaryResource?: boolean; // texture/shader/building/audio
+  isContentResource?: boolean;
+  isAuxiliaryResource?: boolean;
   selectedTags: Record<string, string[]>;
   onTagsChange: (tags: Record<string, string[]>) => void;
 }
@@ -18,20 +24,18 @@ const FilterPanel = ({
   selectedTags,
   onTagsChange,
 }: FilterPanelProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
 
   const tagSystem = tagSystemMap[resourceId];
   if (!tagSystem) return null;
 
-  // Combine resource-specific tags with common metadata
   const allTags: MainTag[] = [
     ...tagSystem.mainTags,
     ...(isContentResource ? contentCommonMeta : []),
     ...(isAuxiliaryResource ? auxiliaryCommonMeta : []),
   ];
 
-  // Filter out conditional tags whose condition is not met
   const visibleTags = allTags.filter((tag) => {
     if (!tag.conditionalOn) return true;
     const parentSelected = selectedTags[tag.conditionalOn.tagId] || [];
@@ -43,7 +47,6 @@ const FilterPanel = ({
   const toggleTag = (tagId: string, optionId: string, multiSelect: boolean) => {
     const current = selectedTags[tagId] || [];
     let updated: string[];
-
     if (multiSelect) {
       updated = current.includes(optionId)
         ? current.filter((id) => id !== optionId)
@@ -51,9 +54,7 @@ const FilterPanel = ({
     } else {
       updated = current.includes(optionId) ? [] : [optionId];
     }
-
     const newTags = { ...selectedTags, [tagId]: updated };
-    // Clean up empty arrays
     if (updated.length === 0) delete newTags[tagId];
     onTagsChange(newTags);
   };
@@ -113,11 +114,7 @@ const FilterPanel = ({
                   </span>
                 )}
               </span>
-              {isGroupExpanded ? (
-                <ChevronUp className="w-3 h-3" />
-              ) : (
-                <ChevronDown className="w-3 h-3" />
-              )}
+              {isGroupExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
             </button>
             {isGroupExpanded && (
               <div className="px-3 pb-2 flex flex-wrap gap-1.5">
@@ -147,11 +144,10 @@ const FilterPanel = ({
   );
 
   return (
-    <div className="w-full">
-      {/* Toggle bar */}
+    <>
       <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="flex items-center gap-2 px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        onClick={() => setIsOpen(true)}
+        className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/80 rounded-md transition-colors"
       >
         <Filter className="w-3.5 h-3.5" />
         <span>筛选</span>
@@ -160,30 +156,26 @@ const FilterPanel = ({
             {totalSelected}
           </span>
         )}
-        {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
       </button>
 
-      {/* Expanded panel */}
-      {isExpanded && (
-        <div className="mt-2 p-4 bg-card border border-border rounded-lg shadow-sm max-h-[60vh] overflow-y-auto">
-          {/* Header with clear button */}
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-medium text-foreground">
-              {tagSystem.resourceLabel}筛选条件
-            </h3>
-            {totalSelected > 0 && (
-              <button
-                onClick={clearAll}
-                className="flex items-center gap-1 text-xs text-muted-foreground hover:text-destructive transition-colors"
-              >
-                <X className="w-3 h-3" />
-                清除全部 ({totalSelected})
-              </button>
-            )}
-          </div>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center justify-between">
+              <span>{tagSystem.resourceLabel}筛选条件</span>
+              {totalSelected > 0 && (
+                <button
+                  onClick={clearAll}
+                  className="flex items-center gap-1 text-xs text-muted-foreground hover:text-destructive transition-colors font-normal"
+                >
+                  <X className="w-3 h-3" />
+                  清除全部 ({totalSelected})
+                </button>
+              )}
+            </DialogTitle>
+          </DialogHeader>
 
-          {/* Tag sections */}
-          <div className="space-y-4">
+          <div className="space-y-4 mt-2">
             {visibleTags.map((tag) => (
               <div key={tag.id}>
                 <div className="flex items-center gap-2 mb-2">
@@ -196,9 +188,9 @@ const FilterPanel = ({
               </div>
             ))}
           </div>
-        </div>
-      )}
-    </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 

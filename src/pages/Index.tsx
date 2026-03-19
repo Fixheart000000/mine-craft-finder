@@ -294,6 +294,16 @@ const Index = () => {
                 <SearchBar value={searchQuery} onChange={setSearchQuery} placeholder="搜索..." />
               </div>
 
+              {hasTagSystem && !showStore && (
+                <FilterPanel
+                  resourceId={getActiveCategory()}
+                  isContentResource={mainCategory === "content"}
+                  isAuxiliaryResource={mainCategory === "auxiliary"}
+                  selectedTags={filterTags}
+                  onTagsChange={setFilterTags}
+                />
+              )}
+
               <div className="flex items-center border-l border-border pl-3 min-w-0">
                 <BreadcrumbNavigation
                   levels={[
