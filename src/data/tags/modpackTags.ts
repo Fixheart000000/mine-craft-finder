@@ -194,9 +194,6 @@ export const modpackTags: ResourceTagSystem = {
           options: [
             { id: "noGuide", label: "无引导" },
             { id: "questBook", label: "内置任务书" },
-            { id: "wiki", label: "Wiki文档" },
-            { id: "video", label: "视频教程" },
-            { id: "forcedTutorial", label: "强制教学" },
           ],
         },
         {
