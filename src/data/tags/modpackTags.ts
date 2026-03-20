@@ -105,7 +105,7 @@ export const modpackTags: ResourceTagSystem = {
     },
     {
       id: "artStyle",
-      label: "内容风格",
+      label: "整合风格",
       type: "grouped",
       multiSelect: true,
       groups: [
@@ -122,7 +122,6 @@ export const modpackTags: ResourceTagSystem = {
             { id: "lowPoly", label: "低多边形" },
             { id: "steampunk", label: "蒸汽朋克" },
             { id: "anime", label: "日式动漫" },
-            
           ],
         },
         {
@@ -164,7 +163,7 @@ export const modpackTags: ResourceTagSystem = {
       type: "flat",
       multiSelect: false,
       options: [
-        { id: "none", label: "无节奏", description: "完全自由沙盒，无强制引导" },
+        { id: "none", label: "不涉及", description: "完全自由沙盒，无强制引导" },
         { id: "linear", label: "线性推进", description: "按章节/阶段解锁，引导性强" },
         { id: "openParallel", label: "开放并行", description: "多路线自由选，非线性结构" },
         { id: "metaProgress", label: "局外成长", description: "死亡保留部分进度，Roguelite元素" },
@@ -194,16 +193,6 @@ export const modpackTags: ResourceTagSystem = {
           options: [
             { id: "noGuide", label: "无引导" },
             { id: "questBook", label: "内置任务书" },
-          ],
-        },
-        {
-          id: "modpackMeta",
-          label: "整合包专用",
-          options: [
-            { id: "modsLight", label: "轻量 (<50)" },
-            { id: "modsNormal", label: "普通 (50-150)" },
-            { id: "modsHeavy", label: "大量 (150-300)" },
-            { id: "modsMassive", label: "海量 (300+)" },
           ],
         },
         {

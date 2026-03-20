@@ -86,6 +86,20 @@ export const shaderTags: ResourceTagSystem = {
   resourceLabel: "光影",
   mainTags: [
     {
+      id: "shaderLoader",
+      label: "着色器",
+      type: "flat",
+      multiSelect: true,
+      options: [
+        { id: "optifine", label: "Optifine" },
+        { id: "iris", label: "Iris Shaders" },
+        { id: "vanillaShader", label: "Vanilla Shader" },
+        { id: "forgeShaders", label: "Forge Shaders Mod" },
+        { id: "canvas", label: "Canvas" },
+        { id: "nativeShader", label: "原生着色器" },
+      ],
+    },
+    {
       id: "styleType",
       label: "风格类型",
       type: "flat",

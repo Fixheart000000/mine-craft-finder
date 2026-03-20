@@ -45,6 +45,7 @@ const contentCategoryList: { id: string; label: string }[] = [
   { id: "map", label: "地图" },
   { id: "datapack", label: "数据包" },
   { id: "modpack", label: "整合包" },
+  { id: "server", label: "服务器" },
 ];
 
 const auxiliaryCategoryList: { id: string; label: string }[] = [
@@ -65,8 +66,8 @@ const toolCategoryList: { id: string; label: string }[] = [
   { id: "mapmaking", label: "地形制作" },
   { id: "buildtool", label: "建筑创作" },
   { id: "resourcetool", label: "资源创作" },
-  { id: "servertool", label: "服务器工具/插件" },
   { id: "general", label: "通用工具" },
+  { id: "servertool", label: "服务工具/插件" },
 ];
 
 const docCategoryList: { id: string; label: string }[] = [
@@ -80,7 +81,7 @@ const docCategoryList: { id: string; label: string }[] = [
 const communityCategoryList: { id: string; label: string }[] = [
   { id: "project", label: "项目" },
   { id: "user", label: "用户" },
-  { id: "server", label: "服务器" },
+  { id: "team", label: "团队" },
 ];
 
 // Mock data for resources
@@ -138,7 +139,8 @@ const Index = () => {
   const getFilterResourceId = () => {
     if (activeNav === "content") return contentCategory;
     if (activeNav === "auxiliary") return auxiliaryCategory;
-    return "";
+    // Even when on eco, default to content category for filter
+    return contentCategory;
   };
 
   // Get current resources for display
@@ -264,8 +266,8 @@ const Index = () => {
               placeholder="辅助内容"
             />
 
-            {/* 筛选 */}
-            {(activeNav === "content" || activeNav === "auxiliary") && !showStore && (
+            {/* 筛选 - always visible */}
+            {!showStore && (
               <FilterPanel
                 resourceId={getFilterResourceId()}
                 selectedTags={filterTags}

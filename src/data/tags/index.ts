@@ -3,6 +3,7 @@ export { modTags } from "./modTags";
 export { mapTags } from "./mapTags";
 export { datapackTags } from "./datapackTags";
 export { modpackTags } from "./modpackTags";
+export { serverTags } from "./serverTags";
 export { textureTags, shaderTags, buildingTags, audioTags } from "./auxiliaryTags";
 export { contentCommonMeta, auxiliaryCommonMeta } from "./commonMeta";
 
@@ -10,6 +11,7 @@ import { modTags } from "./modTags";
 import { mapTags } from "./mapTags";
 import { datapackTags } from "./datapackTags";
 import { modpackTags } from "./modpackTags";
+import { serverTags } from "./serverTags";
 import { textureTags, shaderTags, buildingTags, audioTags } from "./auxiliaryTags";
 import { ResourceTagSystem } from "./types";
 
@@ -19,6 +21,7 @@ export const tagSystemMap: Record<string, ResourceTagSystem> = {
   map: mapTags,
   datapack: datapackTags,
   modpack: modpackTags,
+  server: serverTags,
   resourcepack: textureTags,
   shader: shaderTags,
   building: buildingTags,

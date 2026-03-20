@@ -8,7 +8,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { gameContentCategories, auxiliaryCategories } from "@/data/categories";
 import ModIcon from "@/components/icons/ModIcon";
 import MapIcon from "@/components/icons/MapIcon";
 import DataPackIcon from "@/components/icons/DataPackIcon";
@@ -17,6 +16,7 @@ import ResourcePackIcon from "@/components/icons/ResourcePackIcon";
 import ShaderIcon from "@/components/icons/ShaderIcon";
 import BuildingIcon from "@/components/icons/BuildingIcon";
 import AudioIcon from "@/components/icons/AudioIcon";
+import ServerIcon from "@/components/icons/ServerIcon";
 import { cn } from "@/lib/utils";
 
 const allResourceTypes: { id: string; label: string; icon: React.ReactNode; group: "content" | "auxiliary" }[] = [
@@ -24,6 +24,7 @@ const allResourceTypes: { id: string; label: string; icon: React.ReactNode; grou
   { id: "map", label: "地图", icon: <MapIcon className="w-4 h-4" />, group: "content" },
   { id: "datapack", label: "数据包", icon: <DataPackIcon className="w-4 h-4" />, group: "content" },
   { id: "modpack", label: "整合包", icon: <ModpackIcon className="w-4 h-4" />, group: "content" },
+  { id: "server", label: "服务器", icon: <ServerIcon className="w-4 h-4" />, group: "content" },
   { id: "resourcepack", label: "材质", icon: <ResourcePackIcon className="w-4 h-4" />, group: "auxiliary" },
   { id: "shader", label: "光影", icon: <ShaderIcon className="w-4 h-4" />, group: "auxiliary" },
   { id: "building", label: "建筑", icon: <BuildingIcon className="w-4 h-4" />, group: "auxiliary" },
