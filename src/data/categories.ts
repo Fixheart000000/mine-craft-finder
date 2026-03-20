@@ -4,6 +4,7 @@ export const gameContentCategories = {
   map: { id: "map", label: "地图" },
   datapack: { id: "datapack", label: "数据包" },
   modpack: { id: "modpack", label: "整合包" },
+  server: { id: "server", label: "服务器" },
 };
 
 // 辅助资源分类
@@ -56,9 +57,20 @@ export const toolCategories = {
       { id: "audio", label: "音频处理工具" },
     ],
   },
+  general: {
+    id: "general",
+    label: "通用工具",
+    subCategories: [
+      { id: "version", label: "版本管理工具" },
+      { id: "download", label: "资源下载工具" },
+      { id: "backup", label: "备份恢复工具" },
+      { id: "performance", label: "性能优化工具" },
+      { id: "launcher", label: "启动/联机工具" },
+    ],
+  },
   servertool: {
     id: "servertool",
-    label: "服务器工具/插件",
+    label: "服务工具/插件",
     subCategories: [
       { id: "core", label: "服务器核心/管理工具" },
       { id: "config", label: "服务器配置工具" },
@@ -70,17 +82,6 @@ export const toolCategories = {
       { id: "panel", label: "服务器面板工具" },
       { id: "network", label: "服务器网络工具" },
       { id: "log", label: "服务器日志工具" },
-    ],
-  },
-  general: {
-    id: "general",
-    label: "通用工具",
-    subCategories: [
-      { id: "version", label: "版本管理工具" },
-      { id: "download", label: "资源下载工具" },
-      { id: "backup", label: "备份恢复工具" },
-      { id: "performance", label: "性能优化工具" },
-      { id: "launcher", label: "启动/联机工具" },
     ],
   },
 };
@@ -148,7 +149,7 @@ export const docCategories = {
 export const communityCategories = {
   project: { id: "project", label: "项目", subCategories: [] as { id: string; label: string }[] },
   user: { id: "user", label: "用户", subCategories: [] as { id: string; label: string }[] },
-  server: { id: "server", label: "服务器", subCategories: [] as { id: string; label: string }[] },
+  team: { id: "team", label: "团队", subCategories: [] as { id: string; label: string }[] },
 };
 
 // 主分类
