@@ -86,6 +86,20 @@ export const shaderTags: ResourceTagSystem = {
   resourceLabel: "光影",
   mainTags: [
     {
+      id: "direction",
+      label: "内容方向",
+      type: "flat",
+      multiSelect: true,
+      options: [
+        { id: "realistic", label: "写实" },
+        { id: "cartoon", label: "卡通" },
+        { id: "fantasy", label: "魔幻奇幻" },
+        { id: "minimal", label: "简约" },
+        { id: "retro", label: "复古怀旧" },
+        { id: "scifi", label: "科幻" },
+      ],
+    },
+    {
       id: "shaderLoader",
       label: "着色器",
       type: "flat",
@@ -97,20 +111,6 @@ export const shaderTags: ResourceTagSystem = {
         { id: "forgeShaders", label: "Forge Shaders Mod" },
         { id: "canvas", label: "Canvas" },
         { id: "nativeShader", label: "原生着色器" },
-      ],
-    },
-    {
-      id: "styleType",
-      label: "风格类型",
-      type: "flat",
-      multiSelect: true,
-      options: [
-        { id: "realistic", label: "写实" },
-        { id: "cartoon", label: "卡通" },
-        { id: "fantasy", label: "魔幻奇幻" },
-        { id: "minimal", label: "简约" },
-        { id: "retro", label: "复古怀旧" },
-        { id: "scifi", label: "科幻" },
       ],
     },
     {
