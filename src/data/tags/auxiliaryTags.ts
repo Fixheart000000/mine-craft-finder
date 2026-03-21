@@ -5,6 +5,20 @@ export const textureTags: ResourceTagSystem = {
   resourceLabel: "材质",
   mainTags: [
     {
+      id: "direction",
+      label: "内容方向",
+      type: "flat",
+      multiSelect: true,
+      options: [
+        { id: "realistic", label: "写实风" },
+        { id: "cartoon", label: "卡通风" },
+        { id: "pixel", label: "像素风" },
+        { id: "fantasy", label: "奇幻风" },
+        { id: "ancient", label: "古风" },
+        { id: "modern", label: "现代风" },
+      ],
+    },
+    {
       id: "resolution",
       label: "精度规格",
       type: "flat",
@@ -15,20 +29,6 @@ export const textureTags: ResourceTagSystem = {
         { id: "64x", label: "64x" },
         { id: "128x", label: "128x" },
         { id: "256x", label: "256x+" },
-      ],
-    },
-    {
-      id: "artStyle",
-      label: "艺术风格",
-      type: "flat",
-      multiSelect: true,
-      options: [
-        { id: "realistic", label: "写实风" },
-        { id: "cartoon", label: "卡通风" },
-        { id: "pixel", label: "像素风" },
-        { id: "fantasy", label: "奇幻风" },
-        { id: "ancient", label: "古风" },
-        { id: "modern", label: "现代风" },
       ],
     },
     {
@@ -86,6 +86,20 @@ export const shaderTags: ResourceTagSystem = {
   resourceLabel: "光影",
   mainTags: [
     {
+      id: "direction",
+      label: "内容方向",
+      type: "flat",
+      multiSelect: true,
+      options: [
+        { id: "realistic", label: "写实" },
+        { id: "cartoon", label: "卡通" },
+        { id: "fantasy", label: "魔幻奇幻" },
+        { id: "minimal", label: "简约" },
+        { id: "retro", label: "复古怀旧" },
+        { id: "scifi", label: "科幻" },
+      ],
+    },
+    {
       id: "shaderLoader",
       label: "着色器",
       type: "flat",
@@ -97,20 +111,6 @@ export const shaderTags: ResourceTagSystem = {
         { id: "forgeShaders", label: "Forge Shaders Mod" },
         { id: "canvas", label: "Canvas" },
         { id: "nativeShader", label: "原生着色器" },
-      ],
-    },
-    {
-      id: "styleType",
-      label: "风格类型",
-      type: "flat",
-      multiSelect: true,
-      options: [
-        { id: "realistic", label: "写实" },
-        { id: "cartoon", label: "卡通" },
-        { id: "fantasy", label: "魔幻奇幻" },
-        { id: "minimal", label: "简约" },
-        { id: "retro", label: "复古怀旧" },
-        { id: "scifi", label: "科幻" },
       ],
     },
     {
@@ -134,8 +134,8 @@ export const buildingTags: ResourceTagSystem = {
   resourceLabel: "建筑",
   mainTags: [
     {
-      id: "buildType",
-      label: "类型",
+      id: "direction",
+      label: "内容方向",
       type: "flat",
       multiSelect: true,
       options: [
@@ -170,8 +170,8 @@ export const audioTags: ResourceTagSystem = {
   resourceLabel: "音频",
   mainTags: [
     {
-      id: "audioType",
-      label: "音频类型",
+      id: "direction",
+      label: "内容方向",
       type: "flat",
       multiSelect: true,
       options: [

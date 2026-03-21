@@ -5,6 +5,23 @@ export const modTags: ResourceTagSystem = {
   resourceLabel: "模组",
   mainTags: [
     {
+      id: "direction",
+      label: "内容方向",
+      type: "flat",
+      multiSelect: true,
+      options: [
+        { id: "tech", label: "科技工业", description: "包含自动化流水线、电力系统、工厂建设等" },
+        { id: "magic", label: "魔法神秘", description: "包含魔力值系统、咒术施放、仪式召唤等" },
+        { id: "adventure", label: "冒险探索", description: "包含新维度世界、地牢副本、Boss挑战等" },
+        { id: "survival", label: "生存农业", description: "包含作物种植、动物养殖、食物烹饪等" },
+        { id: "decoration", label: "建筑装饰", description: "包含新建筑方块、家具摆设、室内装修等" },
+        { id: "weapon", label: "武器战斗", description: "包含新武器类型、盔甲套装、战斗动作等" },
+        { id: "creature", label: "生物生态", description: "包含新生物种类、动物行为、怪物AI等" },
+        { id: "storage", label: "存储物流", description: "包含背包扩容、仓库管理、物品自动传输等" },
+        { id: "utility", label: "辅助内容", description: "杂项功能、性能优化、前置依赖库、信息查询等" },
+      ],
+    },
+    {
       id: "loader",
       label: "加载器",
       type: "flat",
@@ -23,23 +40,6 @@ export const modTags: ResourceTagSystem = {
         { id: "babric", label: "Babric" },
         { id: "risugami", label: "Risugami's ModLoader" },
         { id: "javaagent", label: "Java Agent" },
-      ],
-    },
-    {
-      id: "direction",
-      label: "内容方向",
-      type: "flat",
-      multiSelect: true,
-      options: [
-        { id: "tech", label: "科技工业", description: "包含自动化流水线、电力系统、工厂建设等" },
-        { id: "magic", label: "魔法神秘", description: "包含魔力值系统、咒术施放、仪式召唤等" },
-        { id: "adventure", label: "冒险探索", description: "包含新维度世界、地牢副本、Boss挑战等" },
-        { id: "survival", label: "生存农业", description: "包含作物种植、动物养殖、食物烹饪等" },
-        { id: "decoration", label: "建筑装饰", description: "包含新建筑方块、家具摆设、室内装修等" },
-        { id: "weapon", label: "武器战斗", description: "包含新武器类型、盔甲套装、战斗动作等" },
-        { id: "creature", label: "生物生态", description: "包含新生物种类、动物行为、怪物AI等" },
-        { id: "storage", label: "存储物流", description: "包含背包扩容、仓库管理、物品自动传输等" },
-        { id: "utility", label: "辅助内容", description: "杂项功能、性能优化、前置依赖库、信息查询等" },
       ],
     },
     {

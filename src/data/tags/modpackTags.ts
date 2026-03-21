@@ -6,7 +6,7 @@ export const modpackTags: ResourceTagSystem = {
   mainTags: [
     {
       id: "genre",
-      label: "整合类型",
+      label: "内容方向",
       type: "flat",
       multiSelect: true,
       options: [
