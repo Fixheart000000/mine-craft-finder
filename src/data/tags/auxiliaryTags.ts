@@ -5,6 +5,20 @@ export const textureTags: ResourceTagSystem = {
   resourceLabel: "材质",
   mainTags: [
     {
+      id: "direction",
+      label: "内容方向",
+      type: "flat",
+      multiSelect: true,
+      options: [
+        { id: "realistic", label: "写实风" },
+        { id: "cartoon", label: "卡通风" },
+        { id: "pixel", label: "像素风" },
+        { id: "fantasy", label: "奇幻风" },
+        { id: "ancient", label: "古风" },
+        { id: "modern", label: "现代风" },
+      ],
+    },
+    {
       id: "resolution",
       label: "精度规格",
       type: "flat",
@@ -15,20 +29,6 @@ export const textureTags: ResourceTagSystem = {
         { id: "64x", label: "64x" },
         { id: "128x", label: "128x" },
         { id: "256x", label: "256x+" },
-      ],
-    },
-    {
-      id: "artStyle",
-      label: "艺术风格",
-      type: "flat",
-      multiSelect: true,
-      options: [
-        { id: "realistic", label: "写实风" },
-        { id: "cartoon", label: "卡通风" },
-        { id: "pixel", label: "像素风" },
-        { id: "fantasy", label: "奇幻风" },
-        { id: "ancient", label: "古风" },
-        { id: "modern", label: "现代风" },
       ],
     },
     {
