@@ -134,8 +134,8 @@ export const buildingTags: ResourceTagSystem = {
   resourceLabel: "建筑",
   mainTags: [
     {
-      id: "buildType",
-      label: "类型",
+      id: "direction",
+      label: "内容方向",
       type: "flat",
       multiSelect: true,
       options: [
