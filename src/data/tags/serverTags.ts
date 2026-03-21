@@ -60,7 +60,7 @@ export const serverTags: ResourceTagSystem = {
     // ========== 整合服标签（与整合包一致） ==========
     {
       id: "moddedGenre",
-      label: "整合类型",
+      label: "内容方向",
       type: "flat",
       multiSelect: true,
       conditionalOn: { tagId: "serverType", optionId: "modded" },

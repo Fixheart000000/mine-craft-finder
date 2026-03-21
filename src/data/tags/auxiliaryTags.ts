@@ -170,8 +170,8 @@ export const audioTags: ResourceTagSystem = {
   resourceLabel: "音频",
   mainTags: [
     {
-      id: "audioType",
-      label: "音频类型",
+      id: "direction",
+      label: "内容方向",
       type: "flat",
       multiSelect: true,
       options: [

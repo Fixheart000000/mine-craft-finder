@@ -287,6 +287,13 @@ export const auxiliaryCommonMeta: MainTag[] = [
       { id: "none", label: "不涉及" },
       { id: "horror", label: "恐怖警告" },
       { id: "flash", label: "闪光警告" },
+      { id: "gore", label: "血腥暴力" },
+      { id: "psycho", label: "心理压力" },
+      { id: "jumpScare", label: "突发惊吓" },
+      { id: "darkTheme", label: "黑暗主题" },
+      { id: "dizziness", label: "眩晕警告" },
+      { id: "loudNoise", label: "高分贝噪音" },
+      { id: "sensitiveContent", label: "敏感内容" },
     ],
   },
 ];
