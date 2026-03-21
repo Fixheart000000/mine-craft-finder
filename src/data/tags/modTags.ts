@@ -5,27 +5,6 @@ export const modTags: ResourceTagSystem = {
   resourceLabel: "模组",
   mainTags: [
     {
-      id: "loader",
-      label: "加载器",
-      type: "flat",
-      multiSelect: true,
-      options: [
-        { id: "fabric", label: "Fabric" },
-        { id: "neoforge", label: "NeoForge" },
-        { id: "forge", label: "Forge" },
-        { id: "quilt", label: "Quilt" },
-        { id: "liteloader", label: "LiteLoader" },
-        { id: "rift", label: "Rift" },
-        { id: "ornithe", label: "Ornithe" },
-        { id: "nilloader", label: "NilLoader" },
-        { id: "legacyfabric", label: "Legacy Fabric" },
-        { id: "bta", label: "BTA(Babric)" },
-        { id: "babric", label: "Babric" },
-        { id: "risugami", label: "Risugami's ModLoader" },
-        { id: "javaagent", label: "Java Agent" },
-      ],
-    },
-    {
       id: "direction",
       label: "内容方向",
       type: "flat",
