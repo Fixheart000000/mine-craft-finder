@@ -47,7 +47,7 @@ export const serverTags: ResourceTagSystem = {
     // ========== 纯净服标签 ==========
     {
       id: "vanillaGameplay",
-      label: "玩法模式",
+      label: "内容方向",
       type: "flat",
       multiSelect: false,
       conditionalOn: { tagId: "serverType", optionId: "vanilla" },
