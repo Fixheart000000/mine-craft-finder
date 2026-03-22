@@ -57,11 +57,12 @@ export const textureTags: ResourceTagSystem = {
       ],
     },
     {
-      id: "colorStyle",
-      label: "色彩风格",
+      id: "contentStyle",
+      label: "内容风格",
       type: "flat",
       multiSelect: false,
       options: [
+        { id: "none", label: "不涉及" },
         { id: "highSat", label: "高饱和" },
         { id: "lowSat", label: "低饱和" },
         { id: "retro", label: "复古色调" },
