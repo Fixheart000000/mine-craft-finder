@@ -153,6 +153,7 @@ export const buildingTags: ResourceTagSystem = {
       type: "flat",
       multiSelect: true,
       options: [
+        { id: "none", label: "不涉及" },
         { id: "medieval", label: "中世纪" },
         { id: "modern", label: "现代" },
         { id: "scifi", label: "科幻" },
