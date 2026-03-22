@@ -25,8 +25,6 @@ export const modpackTags: ResourceTagSystem = {
         { id: "simRpg", label: "模拟角色扮演类" },
         { id: "arpg", label: "动作角色扮演类" },
         { id: "qte", label: "快速反应事件类" },
-        { id: "sandboxRts", label: "沙盒即时战略对抗类" },
-        { id: "sandboxSurvival", label: "沙盒即时战略生存类" },
         { id: "fps", label: "第一/第三人称射击类" },
         { id: "moba", label: "多人在线战术擂台类" },
         { id: "survival", label: "生存类" },
