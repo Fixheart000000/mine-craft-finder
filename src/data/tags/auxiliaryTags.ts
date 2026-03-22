@@ -57,11 +57,12 @@ export const textureTags: ResourceTagSystem = {
       ],
     },
     {
-      id: "colorStyle",
-      label: "色彩风格",
+      id: "contentStyle",
+      label: "内容风格",
       type: "flat",
       multiSelect: false,
       options: [
+        { id: "none", label: "不涉及" },
         { id: "highSat", label: "高饱和" },
         { id: "lowSat", label: "低饱和" },
         { id: "retro", label: "复古色调" },
@@ -147,11 +148,12 @@ export const buildingTags: ResourceTagSystem = {
       ],
     },
     {
-      id: "buildStyle",
-      label: "风格",
+      id: "contentStyle",
+      label: "内容风格",
       type: "flat",
       multiSelect: true,
       options: [
+        { id: "none", label: "不涉及" },
         { id: "medieval", label: "中世纪" },
         { id: "modern", label: "现代" },
         { id: "scifi", label: "科幻" },
@@ -188,8 +190,8 @@ export const audioTags: ResourceTagSystem = {
       ],
     },
     {
-      id: "musicStyle",
-      label: "音乐风格",
+      id: "contentStyle",
+      label: "内容风格",
       type: "grouped",
       multiSelect: true,
       groups: [

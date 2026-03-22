@@ -34,11 +34,12 @@ export const mapTags: ResourceTagSystem = {
       ],
     },
     {
-      id: "style",
-      label: "场景风格",
+      id: "contentStyle",
+      label: "内容风格",
       type: "flat",
       multiSelect: true,
       options: [
+        { id: "none", label: "不涉及" },
         { id: "realistic", label: "写实风" },
         { id: "cartoon", label: "卡通风" },
         { id: "fantasy", label: "奇幻风" },

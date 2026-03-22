@@ -24,6 +24,21 @@ export const datapackTags: ResourceTagSystem = {
       ],
     },
     {
+      id: "contentStyle",
+      label: "内容风格",
+      type: "flat",
+      multiSelect: true,
+      options: [
+        { id: "none", label: "不涉及" },
+        { id: "realistic", label: "写实风" },
+        { id: "cartoon", label: "卡通风" },
+        { id: "fantasy", label: "奇幻风" },
+        { id: "scifi", label: "科幻风" },
+        { id: "medieval", label: "中世纪" },
+        { id: "modern", label: "现代风" },
+      ],
+    },
+    {
       id: "narrative",
       label: "是否有叙事",
       type: "flat",
