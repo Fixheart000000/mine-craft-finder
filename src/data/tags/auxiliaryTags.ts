@@ -148,8 +148,8 @@ export const buildingTags: ResourceTagSystem = {
       ],
     },
     {
-      id: "buildStyle",
-      label: "风格",
+      id: "contentStyle",
+      label: "内容风格",
       type: "flat",
       multiSelect: true,
       options: [
