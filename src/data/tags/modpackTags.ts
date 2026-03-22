@@ -197,8 +197,8 @@ export const modpackTags: ResourceTagSystem = {
       ],
     },
     {
-      id: "artStyle",
-      label: "整合风格",
+      id: "contentStyle",
+      label: "内容风格",
       type: "grouped",
       multiSelect: true,
       groups: [

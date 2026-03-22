@@ -190,8 +190,8 @@ export const audioTags: ResourceTagSystem = {
       ],
     },
     {
-      id: "musicStyle",
-      label: "音乐风格",
+      id: "contentStyle",
+      label: "内容风格",
       type: "grouped",
       multiSelect: true,
       groups: [

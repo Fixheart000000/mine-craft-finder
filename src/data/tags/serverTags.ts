@@ -253,8 +253,8 @@ export const serverTags: ResourceTagSystem = {
       ],
     },
     {
-      id: "moddedArtStyle",
-      label: "整合风格",
+      id: "moddedContentStyle",
+      label: "内容风格",
       type: "grouped",
       multiSelect: true,
       conditionalOn: { tagId: "serverType", optionId: "modded" },
