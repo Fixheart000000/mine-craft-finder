@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 25% 27%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    --primary: 210 70% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 30% 94%;
+    --secondary-foreground: 215 25% 35%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 210 60% 92%;
+    --accent-foreground: 210 70% 45%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 25% 90%;
+    --input: 210 25% 90%;
+    --ring: 210 70% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom Minecraft theme colors */
+    --mc-blue: 210 70% 55%;
+    --mc-blue-light: 210 60% 92%;
+    --mc-blue-dark: 210 70% 45%;
+    --mc-text: 215 25% 27%;
+    --mc-text-muted: 215 15% 55%;
+    --mc-link: 210 80% 50%;
+    --mc-border: 210 25% 88%;
+    --mc-card-shadow: 210 30% 85%;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 18% 14%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 18% 14%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 210 70% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 18% 20%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 215 15% 60%;
+
+    --accent: 220 20% 22%;
+    --accent-foreground: 210 60% 70%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 210 70% 55%;
+
+    --mc-blue: 210 70% 55%;
+    --mc-blue-light: 210 30% 25%;
+    --mc-blue-dark: 210 70% 65%;
+    --mc-text: 210 20% 95%;
+    --mc-text-muted: 215 15% 60%;
+    --mc-link: 210 80% 60%;
+    --mc-border: 220 15% 25%;
+    --mc-card-shadow: 220 20% 8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

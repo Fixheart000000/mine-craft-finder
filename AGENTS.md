@@ -1,0 +1,70 @@
+<!-- intent-skills:start -->
+# Skill mappings - when working in these areas, load the linked skill file into context.
+skills:
+  - task: "TanStack Devtools 事件客户端 (双向事件)
+    load: "node_modules/@tanstack/devtools-event-client/skills/devtools-bidirectional/SKILL.md"
+  - task: "TanStack Devtools 事件客户端 (EventClient)
+    load: "node_modules/@tanstack/devtools-event-client/skills/devtools-event-client/SKILL.md"
+  - task: "TanStack Devtools 事件客户端 (仪器化)
+    load: "node_modules/@tanstack/devtools-event-client/skills/devtools-instrumentation/SKILL.md"
+  - task: "TanStack Devtools Vite 插件配置"
+    load: "node_modules/@tanstack/devtools-vite/skills/devtools-vite-plugin/SKILL.md"
+  - task: "TanStack React Start 集成"
+    load: "node_modules/@tanstack/react-start/skills/react-start/SKILL.md"
+  - task: "TanStack Router Plugin 路由生成"
+    load: "node_modules/@tanstack/router-plugin/skills/router-plugin/SKILL.md"
+  - task: "Nitro 通用服务器部署"
+    load: "node_modules/nitro/skills/nitro/SKILL.md"
+  - task: "TanStack Router 核心路由"
+    load: "node_modules/.bun/@tanstack+router-core@1.168.6/node_modules/@tanstack/router-core/skills/router-core/SKILL.md"
+  - task: "TanStack Router 认证与守卫"
+    load: "node_modules/.bun/@tanstack+router-core@1.168.6/node_modules/@tanstack/router-core/skills/router-core/auth-and-guards/SKILL.md"
+  - task: "TanStack Router 代码拆分"
+    load: "node_modules/.bun/@tanstack+router-core@1.168.6/node_modules/@tanstack/router-core/skills/router-core/code-splitting/SKILL.md"
+  - task: "TanStack Router 数据加载"
+    load: "node_modules/.bun/@tanstack+router-core@1.168.6/node_modules/@tanstack/router-core/skills/router-core/data-loading/SKILL.md"
+  - task: "TanStack Router 导航"
+    load: "node_modules/.bun/@tanstack+router-core@1.168.6/node_modules/@tanstack/router-core/skills/router-core/navigation/SKILL.md"
+  - task: "TanStack Router 404与错误处理"
+    load: "node_modules/.bun/@tanstack+router-core@1.168.6/node_modules/@tanstack/router-core/skills/router-core/not-found-and-errors/SKILL.md"
+  - task: "TanStack Router 路径参数"
+    load: "node_modules/.bun/@tanstack+router-core@1.168.6/node_modules/@tanstack/router-core/skills/router-core/path-params/SKILL.md"
+  - task: "TanStack Router 搜索参数"
+    load: "node_modules/.bun/@tanstack+router-core@1.168.6/node_modules/@tanstack/router-core/skills/router-core/search-params/SKILL.md"
+  - task: "TanStack Router SSR"
+    load: "node_modules/.bun/@tanstack+router-core@1.168.6/node_modules/@tanstack/router-core/skills/router-core/ssr/SKILL.md"
+  - task: "TanStack Router 类型安全"
+    load: "node_modules/.bun/@tanstack+router-core@1.168.6/node_modules/@tanstack/router-core/skills/router-core/type-safety/SKILL.md"
+  - task: "TanStack Start 客户端核心"
+    load: "node_modules/.bun/@tanstack+start-client-core@1.167.6/node_modules/@tanstack/start-client-core/skills/start-core/SKILL.md"
+  - task: "TanStack Start 部署策略"
+    load: "node_modules/.bun/@tanstack+start-client-core@1.167.6/node_modules/@tanstack/start-client-core/skills/start-core/deployment/SKILL.md"
+  - task: "TanStack Start 执行模型"
+    load: "node_modules/.bun/@tanstack+start-client-core@1.167.6/node_modules/@tanstack/start-client-core/skills/start-core/execution-model/SKILL.md"
+  - task: "TanStack Start 中间件"
+    load: "node_modules/.bun/@tanstack+start-client-core@1.167.6/node_modules/@tanstack/start-client-core/skills/start-core/middleware/SKILL.md"
+  - task: "TanStack Start Server 函数"
+    load: "node_modules/.bun/@tanstack+start-client-core@1.167.6/node_modules/@tanstack/start-client-core/skills/start-core/server-functions/SKILL.md"
+  - task: "TanStack Start 服务器路由"
+    load: "node_modules/.bun/@tanstack+start-client-core@1.167.6/node_modules/@tanstack/start-client-core/skills/start-core/server-routes/SKILL.md"
+  - task: "TanStack Start Server 核心"
+    load: "node_modules/.bun/@tanstack+start-server-core@1.167.6+14047587bf013dd6/node_modules/@tanstack/start-server-core/skills/start-server-core/SKILL.md"
+  - task: "H3 HTTP 服务"
+    load: "node_modules/.bun/h3@2.0.1-rc.16+14047587bf013dd6/node_modules/h3/skills/h3/SKILL.md"
+  - task: "TanStack 虚拟文件路由"
+    load: "node_modules/.bun/@tanstack+virtual-file-routes@1.161.7/node_modules/@tanstack/virtual-file-routes/skills/virtual-file-routes/SKILL.md"
+  - task: "TanStack Devtools 应用设置"
+    load: "node_modules/.bun/@tanstack+react-devtools@0.10.0+fd814167594d0c93/node_modules/@tanstack/devtools/skills/devtools-app-setup/SKILL.md"
+  - task: "TanStack Devtools Marketplace"
+    load: "node_modules/.bun/@tanstack+react-devtools@0.10.0+fd814167594d0c93/node_modules/@tanstack/devtools/skills/devtools-marketplace/SKILL.md"
+  - task: "TanStack Devtools 插件面板"
+    load: "node_modules/.bun/@tanstack+react-devtools@0.10.0+fd814167594d0c93/node_modules/@tanstack/devtools/skills/devtools-plugin-panel/SKILL.md"
+  - task: "TanStack Devtools 生产模式"
+    load: "node_modules/.bun/@tanstack+react-devtools@0.10.0+fd814167594d0c93/node_modules/@tanstack/devtools/skills/devtools-production/SKILL.md"
+<!-- intent-skills:end -->
+
+# AGENTS
+
+这个文件的作用是为了描述在这个项目中，可能遇到的一些常见错误和困惑。如果在项目中遇到任何奇怪的事情，请通知正在与你合作的开发人员，并在AgentMD文件中指出这一点
+
+这个应用还没有用户，现在还没有真实数据，你可以随心所遇地修改，不用担心，把数据库schema全改了也没有关系
