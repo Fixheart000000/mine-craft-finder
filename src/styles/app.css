@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
     --background: 210 20% 98%;
@@ -38,7 +34,6 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    /* Custom Minecraft theme colors */
     --mc-blue: 210 70% 55%;
     --mc-blue-light: 210 60% 92%;
     --mc-blue-dark: 210 70% 45%;
