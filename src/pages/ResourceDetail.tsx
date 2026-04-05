@@ -1254,6 +1254,35 @@ const ResourceDetail = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [entryContent, setEntryContent] = useState<Record<string, WikiEntry>>({});
   
+  const elementTypes = [
+    { id: "mod", label: "模组", icon: "🔧" },
+    { id: "map", label: "地图", icon: "🗺️" },
+    { id: "datapack", label: "数据包", icon: "📦" },
+    { id: "resourcepack", label: "材质", icon: "🎨" },
+    { id: "building", label: "建筑", icon: "🏠" },
+    { id: "audio", label: "音频", icon: "🎵" },
+    { id: "shader", label: "光影", icon: "✨" },
+  ];
+  
+  const [elements, setElements] = useState<Array<{
+    id: string;
+    type: string;
+    name: string;
+    description: string;
+    version?: string;
+    author?: string;
+  }>>([
+    { id: "1", type: "mod", name: "机械动力", description: "机械自动化模组", version: "0.5.1", author: "Create Team" },
+    { id: "2", type: "mod", name: "JEI物品管理器", description: "物品和配方查看", version: "15.2.0", author: "mezz" },
+    { id: "3", type: "mod", name: "小地图", description: "游戏内小地图显示", version: "1.20.1", author: "TechBrew" },
+    { id: "4", type: "resourcepack", name: "Faithful材质包", description: "高清原版风格材质", version: "32x", author: "Faithful Team" },
+    { id: "5", type: "shader", name: "BSL光影", description: "高质量光影包", version: "8.2", author: "capttatsu" },
+    { id: "6", type: "datapack", name: "更多合成", description: "添加新合成配方", version: "1.0", author: "DataPack Creator" },
+  ]);
+  const [showElementModal, setShowElementModal] = useState(false);
+  const [newElement, setNewElement] = useState({ type: "mod", name: "", description: "", version: "", author: "" });
+  const [selectedElementType, setSelectedElementType] = useState<string>("all");
+  
   const [galleryImages, setGalleryImages] = useState<Array<{
     id: string;
     url: string;
@@ -1672,7 +1701,8 @@ A: 检查模组版本兼容性...`,
     ([_, value]) => value && value !== "不涉及"
   );
 
-  const hasContentDetails = ["mod", "modpack", "datapack"].includes(resource.type);
+  const hasContentDetails = ["mod", "modpack", "datapack", "server"].includes(resource.type);
+  const isModpackOrServer = ["modpack", "server"].includes(resource.type);
   const hasGallery = resource.type !== "audio";
   const isAuxiliaryResource = ["resourcepack", "shader", "building", "audio"].includes(resource.type);
 
@@ -2027,252 +2057,418 @@ A: 检查模组版本兼容性...`,
 
               {hasContentDetails && (
                 <TabsContent value="content" className="mt-0">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <h2 className="text-xl font-bold text-foreground">内容详情</h2>
-                      <Button 
-                        size="sm" 
-                        variant="outline"
-                        className="h-7 px-2 text-xs"
-                        onClick={() => setShowContentUploadModal(true)}
-                      >
-                        <Plus className="w-3 h-3 mr-1" /> 添加内容
-                      </Button>
-                    </div>
-
-                    <div className="flex gap-4 min-h-[600px]">
-                    <div className="w-64 flex-shrink-0 border border-border rounded-lg bg-card overflow-hidden">
-                      <div className="p-3 border-b border-border bg-secondary/50">
-                        <h3 className="text-sm font-semibold text-foreground">内容分类</h3>
-                        <p className="text-xs text-muted-foreground mt-1">点击词条查看详情</p>
+                  {isModpackOrServer ? (
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <h2 className="text-xl font-bold text-foreground">内容详情</h2>
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          className="h-7 px-2 text-xs"
+                          onClick={() => setShowElementModal(true)}
+                        >
+                          <Plus className="w-3 h-3 mr-1" /> 添加元素
+                        </Button>
                       </div>
-                      <div className="overflow-y-auto max-h-[520px]">
-                        {withContent.map((category) => (
-                          <div key={category.id} className="border-b border-border">
-                            <div
-                              className="flex items-center justify-between p-2.5 cursor-pointer hover:bg-secondary/30 transition-colors"
-                              onClick={() => toggleCategory(category.id)}
+
+                      <div className="flex gap-2 mb-4 flex-wrap">
+                        <Button
+                          size="sm"
+                          variant={selectedElementType === "all" ? "default" : "outline"}
+                          className="h-7 text-xs"
+                          onClick={() => setSelectedElementType("all")}
+                        >
+                          全部 ({elements.length})
+                        </Button>
+                        {elementTypes.map(type => {
+                          const count = elements.filter(e => e.type === type.id).length;
+                          return (
+                            <Button
+                              key={type.id}
+                              size="sm"
+                              variant={selectedElementType === type.id ? "default" : "outline"}
+                              className="h-7 text-xs"
+                              onClick={() => setSelectedElementType(type.id)}
                             >
-                              <div className="flex items-center gap-2">
-                                {expandedCategories.has(category.id) ? (
-                                  <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />
-                                ) : (
-                                  <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
-                                )}
-                                <span className="text-sm font-medium text-foreground">{category.label}</span>
-                              </div>
-                              <Badge variant="default" className="text-xs h-5">{category.items.length}</Badge>
-                            </div>
-                            {expandedCategories.has(category.id) && (
-                              <div className="bg-secondary/10 py-1">
-                                {category.items.map((item: string, index: number) => (
-                                  <div
-                                    key={index}
-                                    className={`px-3 py-1.5 pl-8 text-xs cursor-pointer hover:bg-secondary/50 transition-colors flex items-center justify-between group ${
-                                      selectedEntry?.category === category.label && selectedEntry?.item === item
-                                        ? "bg-primary/10 text-primary font-medium"
-                                        : "text-muted-foreground"
-                                    }`}
-                                    onClick={() => setSelectedEntry({ category: category.label, item })}
-                                  >
-                                    <span>{item}</span>
-                                    <button
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleRemoveHotWord(category.label, index);
-                                        if (selectedEntry?.item === item) setSelectedEntry(null);
-                                      }}
-                                      className="opacity-0 group-hover:opacity-100 hover:bg-destructive/20 rounded p-0.5 transition-opacity"
-                                    >
-                                      <X className="w-3 h-3" />
-                                    </button>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                        
-                        {withoutContent.length > 0 && (
-                          <>
-                            <div className="px-3 py-2 text-xs text-muted-foreground bg-muted/30">
-                              未涉及的分类
-                            </div>
-                            {withoutContent.map((category) => (
-                              <div key={category.id} className="border-b border-border opacity-50">
-                                <div
-                                  className="flex items-center justify-between p-2.5 cursor-pointer hover:bg-secondary/30 transition-colors"
-                                  onClick={() => toggleCategory(category.id)}
-                                >
-                                  <div className="flex items-center gap-2">
-                                    {expandedCategories.has(category.id) ? (
-                                      <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />
-                                    ) : (
-                                      <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
-                                    )}
-                                    <span className="text-sm text-muted-foreground">{category.label}</span>
-                                  </div>
-                                  <Badge variant="secondary" className="text-xs h-5">0</Badge>
-                                </div>
-                                {expandedCategories.has(category.id) && (
-                                  <div className="bg-secondary/10 py-2 px-3 pl-8">
-                                    <p className="text-xs text-muted-foreground">{category.description}</p>
-                                  </div>
-                                )}
-                              </div>
-                            ))}
-                          </>
-                        )}
+                              {type.icon} {type.label} ({count})
+                            </Button>
+                          );
+                        })}
                       </div>
-                    </div>
 
-                    <div className="flex-1 min-w-0">
-                      {selectedEntry ? (
-                        <WikiEntryPanel
-                          entry={mockWikiEntries[selectedEntry.item] || createDefaultEntry(selectedEntry.item, selectedEntry.category)}
-                          isEditing={isEditing}
-                          onEdit={() => setIsEditing(true)}
-                          onSave={(entry) => {
-                            setEntryContent(prev => ({ ...prev, [selectedEntry.item]: entry }));
-                            setIsEditing(false);
-                          }}
-                          onCancel={() => setIsEditing(false)}
-                          onRelatedClick={(item) => {
-                            const cat = withContent.find(c => c.items.includes(item))?.label;
-                            if (cat) setSelectedEntry({ category: cat, item });
-                          }}
-                        />
-                      ) : (
-                        <div className="h-full flex items-center justify-center border border-border rounded-lg bg-card">
-                          <div className="text-center">
-                            <div className="w-16 h-16 bg-secondary rounded-lg mx-auto mb-4 flex items-center justify-center">
-                              <Eye className="w-8 h-8 text-muted-foreground" />
+                      <div className="border border-border rounded-lg overflow-hidden">
+                        <div className="grid grid-cols-12 gap-4 p-3 bg-secondary/50 border-b border-border text-xs font-medium text-muted-foreground">
+                          <div className="col-span-2">类型</div>
+                          <div className="col-span-3">名称</div>
+                          <div className="col-span-3">描述</div>
+                          <div className="col-span-1">版本</div>
+                          <div className="col-span-2">作者</div>
+                          <div className="col-span-1">操作</div>
+                        </div>
+                        <div className="divide-y divide-border max-h-[500px] overflow-y-auto">
+                          {elements
+                            .filter(e => selectedElementType === "all" || e.type === selectedElementType)
+                            .map(element => {
+                              const typeInfo = elementTypes.find(t => t.id === element.type);
+                              return (
+                                <div key={element.id} className="grid grid-cols-12 gap-4 p-3 text-sm hover:bg-secondary/20 transition-colors">
+                                  <div className="col-span-2 flex items-center gap-2">
+                                    <span>{typeInfo?.icon}</span>
+                                    <span className="text-muted-foreground">{typeInfo?.label}</span>
+                                  </div>
+                                  <div className="col-span-3 font-medium text-foreground truncate">{element.name}</div>
+                                  <div className="col-span-3 text-muted-foreground truncate">{element.description}</div>
+                                  <div className="col-span-1 text-muted-foreground">{element.version || "-"}</div>
+                                  <div className="col-span-2 text-muted-foreground truncate">{element.author || "-"}</div>
+                                  <div className="col-span-1">
+                                    <Button
+                                      size="sm"
+                                      variant="ghost"
+                                      className="h-6 w-6 p-0 hover:bg-destructive/20"
+                                      onClick={() => setElements(prev => prev.filter(e => e.id !== element.id))}
+                                    >
+                                      <Trash2 className="w-3 h-3 text-muted-foreground hover:text-destructive" />
+                                    </Button>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          {elements.filter(e => selectedElementType === "all" || e.type === selectedElementType).length === 0 && (
+                            <div className="p-8 text-center text-muted-foreground text-sm">
+                              暂无{selectedElementType !== "all" ? elementTypes.find(t => t.id === selectedElementType)?.label : ""}元素
                             </div>
-                            <h3 className="text-sm font-medium text-foreground mb-1">选择词条查看详情</h3>
-                            <p className="text-xs text-muted-foreground">从左侧分类导航中选择一个词条</p>
+                          )}
+                        </div>
+                      </div>
+
+                      {showElementModal && (
+                        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                          <div className="bg-card border border-border rounded-lg w-full max-w-md p-4">
+                            <div className="flex items-center justify-between mb-4">
+                              <h3 className="text-sm font-semibold text-foreground">添加元素</h3>
+                              <Button size="sm" variant="ghost" className="h-6 w-6 p-0" onClick={() => setShowElementModal(false)}>
+                                <X className="w-4 h-4" />
+                              </Button>
+                            </div>
+                            <div className="space-y-3">
+                              <div>
+                                <label className="text-xs text-muted-foreground mb-1 block">元素类型</label>
+                                <select
+                                  value={newElement.type}
+                                  onChange={(e) => setNewElement({ ...newElement, type: e.target.value })}
+                                  className="w-full h-9 px-3 text-sm border border-input rounded-md bg-background"
+                                >
+                                  {elementTypes.map(type => (
+                                    <option key={type.id} value={type.id}>{type.icon} {type.label}</option>
+                                  ))}
+                                </select>
+                              </div>
+                              <div>
+                                <label className="text-xs text-muted-foreground mb-1 block">名称 *</label>
+                                <Input
+                                  value={newElement.name}
+                                  onChange={(e) => setNewElement({ ...newElement, name: e.target.value })}
+                                  placeholder="输入元素名称..."
+                                  className="text-sm"
+                                />
+                              </div>
+                              <div>
+                                <label className="text-xs text-muted-foreground mb-1 block">描述</label>
+                                <Input
+                                  value={newElement.description}
+                                  onChange={(e) => setNewElement({ ...newElement, description: e.target.value })}
+                                  placeholder="输入元素描述..."
+                                  className="text-sm"
+                                />
+                              </div>
+                              <div className="flex gap-3">
+                                <div className="flex-1">
+                                  <label className="text-xs text-muted-foreground mb-1 block">版本</label>
+                                  <Input
+                                    value={newElement.version}
+                                    onChange={(e) => setNewElement({ ...newElement, version: e.target.value })}
+                                    placeholder="版本号..."
+                                    className="text-sm"
+                                  />
+                                </div>
+                                <div className="flex-1">
+                                  <label className="text-xs text-muted-foreground mb-1 block">作者</label>
+                                  <Input
+                                    value={newElement.author}
+                                    onChange={(e) => setNewElement({ ...newElement, author: e.target.value })}
+                                    placeholder="作者名..."
+                                    className="text-sm"
+                                  />
+                                </div>
+                              </div>
+                              <div className="flex justify-end gap-2 pt-2">
+                                <Button size="sm" variant="outline" onClick={() => setShowElementModal(false)}>取消</Button>
+                                <Button 
+                                  size="sm" 
+                                  onClick={() => {
+                                    if (!newElement.name.trim()) return;
+                                    setElements(prev => [...prev, { ...newElement, id: Date.now().toString() }]);
+                                    setNewElement({ type: "mod", name: "", description: "", version: "", author: "" });
+                                    setShowElementModal(false);
+                                  }}
+                                  disabled={!newElement.name.trim()}
+                                >
+                                  添加
+                                </Button>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       )}
                     </div>
-                  </div>
-                  </div>
+                  ) : (
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <h2 className="text-xl font-bold text-foreground">内容详情</h2>
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          className="h-7 px-2 text-xs"
+                          onClick={() => setShowContentUploadModal(true)}
+                        >
+                          <Plus className="w-3 h-3 mr-1" /> 添加内容
+                        </Button>
+                      </div>
 
-                  {showContentUploadModal && (
-                    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                      <div className="bg-card border border-border rounded-lg w-full max-w-2xl p-4">
-                        <div className="flex items-center justify-between mb-4">
-                          <h3 className="text-sm font-semibold text-foreground">添加内容</h3>
-                          <Button size="sm" variant="ghost" className="h-6 w-6 p-0" onClick={() => setShowContentUploadModal(false)}>
-                            ×
-                          </Button>
+                      <div className="flex gap-4 min-h-[600px]">
+                        <div className="w-64 flex-shrink-0 border border-border rounded-lg bg-card overflow-hidden">
+                        <div className="p-3 border-b border-border bg-secondary/50">
+                          <h3 className="text-sm font-semibold text-foreground">内容分类</h3>
+                          <p className="text-xs text-muted-foreground mt-1">点击词条查看详情</p>
                         </div>
-
-                        <Tabs value={addFunctionTab} onValueChange={(v) => setAddFunctionTab(v as "entry" | "category")}>
-                          <TabsList className="h-auto p-0 bg-transparent mb-3">
-                            <TabsTrigger 
-                              value="entry" 
-                              className="text-xs px-3 py-1.5 data-[state=active]:text-primary data-[state=active]:bg-primary/10"
-                            >
-                              添加词条
-                            </TabsTrigger>
-                            <TabsTrigger 
-                              value="category" 
-                              className="text-xs px-3 py-1.5 data-[state=active]:text-primary data-[state=active]:bg-primary/10"
-                            >
-                              创建热词
-                            </TabsTrigger>
-                          </TabsList>
-
-                          <TabsContent value="entry" className="mt-0">
-                            {selectedEntry && (
-                              <div className="mb-3 p-2 bg-primary/5 border border-primary/20 rounded-md flex items-center justify-between">
-                                <span className="text-xs text-primary">
-                                  快捷添加到当前分类：{selectedEntry.category}
-                                </span>
-                                <Button 
-                                  size="sm" 
-                                  variant="ghost"
-                                  className="h-6 text-xs"
-                                  onClick={() => {
-                                    const cat = allHotWordCategories.find(c => c.label === selectedEntry.category);
-                                    if (cat) {
-                                      setSelectedCategory(cat.id);
-                                    }
-                                  }}
-                                >
-                                  使用此分类
-                                </Button>
+                        <div className="overflow-y-auto max-h-[520px]">
+                          {withContent.map((category) => (
+                            <div key={category.id} className="border-b border-border">
+                              <div
+                                className="flex items-center justify-between p-2.5 cursor-pointer hover:bg-secondary/30 transition-colors"
+                                onClick={() => toggleCategory(category.id)}
+                              >
+                                <div className="flex items-center gap-2">
+                                  {expandedCategories.has(category.id) ? (
+                                    <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />
+                                  ) : (
+                                    <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
+                                  )}
+                                  <span className="text-sm font-medium text-foreground">{category.label}</span>
+                                </div>
+                                <Badge variant="default" className="text-xs h-5">{category.items.length}</Badge>
                               </div>
-                            )}
-                            
-                            <div className="flex gap-3">
-                              <div className="w-48 flex-shrink-0">
-                                <label className="text-xs text-muted-foreground mb-1 block">选择热词分类</label>
-                                <select
-                                  value={selectedCategory}
-                                  onChange={(e) => setSelectedCategory(e.target.value)}
-                                  className="w-full h-9 px-3 text-sm border border-input rounded-md bg-background"
-                                >
-                                  <option value="">请选择...</option>
-                                  {allHotWordCategories.map(cat => (
-                                    <option key={cat.id} value={cat.id}>{cat.label}</option>
+                              {expandedCategories.has(category.id) && (
+                                <div className="bg-secondary/10 py-1">
+                                  {category.items.map((item: string, index: number) => (
+                                    <div
+                                      key={index}
+                                      className={`px-3 py-1.5 pl-8 text-xs cursor-pointer hover:bg-secondary/50 transition-colors flex items-center justify-between group ${
+                                        selectedEntry?.category === category.label && selectedEntry?.item === item
+                                          ? "bg-primary/10 text-primary font-medium"
+                                          : "text-muted-foreground"
+                                      }`}
+                                      onClick={() => setSelectedEntry({ category: category.label, item })}
+                                    >
+                                      <span>{item}</span>
+                                      <button
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          handleRemoveHotWord(category.label, index);
+                                          if (selectedEntry?.item === item) setSelectedEntry(null);
+                                        }}
+                                        className="opacity-0 group-hover:opacity-100 hover:bg-destructive/20 rounded p-0.5 transition-opacity"
+                                      >
+                                        <X className="w-3 h-3" />
+                                      </button>
+                                    </div>
                                   ))}
-                                </select>
-                              </div>
-                              <div className="flex-1">
-                                <label className="text-xs text-muted-foreground mb-1 block">词条名称</label>
-                                <div className="flex gap-2">
-                                  <Input
-                                    value={newHotWord}
-                                    onChange={(e) => setNewHotWord(e.target.value)}
-                                    placeholder="输入词条名称后按 Enter 或点击添加..."
-                                    className="text-sm flex-1"
-                                    onKeyDown={(e) => {
-                                      if (e.key === "Enter") handleAddHotWord();
-                                    }}
-                                  />
-                                  <Button size="sm" onClick={handleAddHotWord} disabled={!selectedCategory || !newHotWord.trim()}>
-                                    <Plus className="w-4 h-4" />
-                                  </Button>
                                 </div>
-                              </div>
+                              )}
                             </div>
-                          </TabsContent>
+                          ))}
+                          
+                          {withoutContent.length > 0 && (
+                            <>
+                              <div className="px-3 py-2 text-xs text-muted-foreground bg-muted/30">
+                                未涉及的分类
+                              </div>
+                              {withoutContent.map((category) => (
+                                <div key={category.id} className="border-b border-border opacity-50">
+                                  <div
+                                    className="flex items-center justify-between p-2.5 cursor-pointer hover:bg-secondary/30 transition-colors"
+                                    onClick={() => toggleCategory(category.id)}
+                                  >
+                                    <div className="flex items-center gap-2">
+                                      {expandedCategories.has(category.id) ? (
+                                        <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />
+                                      ) : (
+                                        <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
+                                      )}
+                                      <span className="text-sm text-muted-foreground">{category.label}</span>
+                                    </div>
+                                    <Badge variant="secondary" className="text-xs h-5">0</Badge>
+                                  </div>
+                                  {expandedCategories.has(category.id) && (
+                                    <div className="bg-secondary/10 py-2 px-3 pl-8">
+                                      <p className="text-xs text-muted-foreground">{category.description}</p>
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </>
+                          )}
+                        </div>
+                      </div>
 
-                          <TabsContent value="category" className="mt-0">
-                            <div className="flex gap-3">
-                              <div className="flex-1">
-                                <label className="text-xs text-muted-foreground mb-1 block">热词名称</label>
-                                <Input
-                                  value={newCategoryName}
-                                  onChange={(e) => setNewCategoryName(e.target.value)}
-                                  placeholder="输入新热词名称..."
-                                  className="text-sm"
-                                  onKeyDown={(e) => {
-                                    if (e.key === "Enter") handleAddNewCategory();
-                                  }}
-                                />
+                      <div className="flex-1 min-w-0">
+                        {selectedEntry ? (
+                          <WikiEntryPanel
+                            entry={mockWikiEntries[selectedEntry.item] || createDefaultEntry(selectedEntry.item, selectedEntry.category)}
+                            isEditing={isEditing}
+                            onEdit={() => setIsEditing(true)}
+                            onSave={(entry) => {
+                              setEntryContent(prev => ({ ...prev, [selectedEntry.item]: entry }));
+                              setIsEditing(false);
+                            }}
+                            onCancel={() => setIsEditing(false)}
+                            onRelatedClick={(item) => {
+                              const cat = withContent.find(c => c.items.includes(item))?.label;
+                              if (cat) setSelectedEntry({ category: cat, item });
+                            }}
+                          />
+                        ) : (
+                          <div className="h-full flex items-center justify-center border border-border rounded-lg bg-card">
+                            <div className="text-center">
+                              <div className="w-16 h-16 bg-secondary rounded-lg mx-auto mb-4 flex items-center justify-center">
+                                <Eye className="w-8 h-8 text-muted-foreground" />
                               </div>
-                              <div className="flex-1">
-                                <label className="text-xs text-muted-foreground mb-1 block">描述（可选）</label>
-                                <div className="flex gap-2">
-                                  <Input
-                                    value={newCategoryDesc}
-                                    onChange={(e) => setNewCategoryDesc(e.target.value)}
-                                    placeholder="输入热词描述..."
-                                    className="text-sm flex-1"
-                                  />
-                                  <Button size="sm" onClick={handleAddNewCategory} disabled={!newCategoryName.trim()}>
-                                    <Plus className="w-4 h-4" />
-                                  </Button>
-                                </div>
-                              </div>
+                              <h3 className="text-sm font-medium text-foreground mb-1">选择词条查看详情</h3>
+                              <p className="text-xs text-muted-foreground">从左侧分类导航中选择一个词条</p>
                             </div>
-                          </TabsContent>
-                        </Tabs>
+                          </div>
+                        )}
                       </div>
                     </div>
+                  </div>
                   )}
+
+                    {showContentUploadModal && (
+                      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                        <div className="bg-card border border-border rounded-lg w-full max-w-2xl p-4">
+                          <div className="flex items-center justify-between mb-4">
+                            <h3 className="text-sm font-semibold text-foreground">添加内容</h3>
+                            <Button size="sm" variant="ghost" className="h-6 w-6 p-0" onClick={() => setShowContentUploadModal(false)}>
+                              ×
+                            </Button>
+                          </div>
+
+                          <Tabs value={addFunctionTab} onValueChange={(v) => setAddFunctionTab(v as "entry" | "category")}>
+                            <TabsList className="h-auto p-0 bg-transparent mb-3">
+                              <TabsTrigger 
+                                value="entry" 
+                                className="text-xs px-3 py-1.5 data-[state=active]:text-primary data-[state=active]:bg-primary/10"
+                              >
+                                添加词条
+                              </TabsTrigger>
+                              <TabsTrigger 
+                                value="category" 
+                                className="text-xs px-3 py-1.5 data-[state=active]:text-primary data-[state=active]:bg-primary/10"
+                              >
+                                创建热词
+                              </TabsTrigger>
+                            </TabsList>
+
+                            <TabsContent value="entry" className="mt-0">
+                              {selectedEntry && (
+                                <div className="mb-3 p-2 bg-primary/5 border border-primary/20 rounded-md flex items-center justify-between">
+                                  <span className="text-xs text-primary">
+                                    快捷添加到当前分类：{selectedEntry.category}
+                                  </span>
+                                  <Button 
+                                    size="sm" 
+                                    variant="ghost"
+                                    className="h-6 text-xs"
+                                    onClick={() => {
+                                      const cat = allHotWordCategories.find(c => c.label === selectedEntry.category);
+                                      if (cat) {
+                                        setSelectedCategory(cat.id);
+                                      }
+                                    }}
+                                  >
+                                    使用此分类
+                                  </Button>
+                                </div>
+                              )}
+                              
+                              <div className="flex gap-3">
+                                <div className="w-48 flex-shrink-0">
+                                  <label className="text-xs text-muted-foreground mb-1 block">选择热词分类</label>
+                                  <select
+                                    value={selectedCategory}
+                                    onChange={(e) => setSelectedCategory(e.target.value)}
+                                    className="w-full h-9 px-3 text-sm border border-input rounded-md bg-background"
+                                  >
+                                    <option value="">请选择...</option>
+                                    {allHotWordCategories.map(cat => (
+                                      <option key={cat.id} value={cat.id}>{cat.label}</option>
+                                    ))}
+                                  </select>
+                                </div>
+                                <div className="flex-1">
+                                  <label className="text-xs text-muted-foreground mb-1 block">词条名称</label>
+                                  <div className="flex gap-2">
+                                    <Input
+                                      value={newHotWord}
+                                      onChange={(e) => setNewHotWord(e.target.value)}
+                                      placeholder="输入词条名称后按 Enter 或点击添加..."
+                                      className="text-sm flex-1"
+                                      onKeyDown={(e) => {
+                                        if (e.key === "Enter") handleAddHotWord();
+                                      }}
+                                    />
+                                    <Button size="sm" onClick={handleAddHotWord} disabled={!selectedCategory || !newHotWord.trim()}>
+                                      <Plus className="w-4 h-4" />
+                                    </Button>
+                                  </div>
+                                </div>
+                              </div>
+                            </TabsContent>
+
+                            <TabsContent value="category" className="mt-0">
+                              <div className="flex gap-3">
+                                <div className="flex-1">
+                                  <label className="text-xs text-muted-foreground mb-1 block">热词名称</label>
+                                  <Input
+                                    value={newCategoryName}
+                                    onChange={(e) => setNewCategoryName(e.target.value)}
+                                    placeholder="输入新热词名称..."
+                                    className="text-sm"
+                                    onKeyDown={(e) => {
+                                      if (e.key === "Enter") handleAddNewCategory();
+                                    }}
+                                  />
+                                </div>
+                                <div className="flex-1">
+                                  <label className="text-xs text-muted-foreground mb-1 block">描述（可选）</label>
+                                  <div className="flex gap-2">
+                                    <Input
+                                      value={newCategoryDesc}
+                                      onChange={(e) => setNewCategoryDesc(e.target.value)}
+                                      placeholder="输入热词描述..."
+                                      className="text-sm flex-1"
+                                    />
+                                    <Button size="sm" onClick={handleAddNewCategory} disabled={!newCategoryName.trim()}>
+                                      <Plus className="w-4 h-4" />
+                                    </Button>
+                                  </div>
+                                </div>
+                              </div>
+                            </TabsContent>
+                          </Tabs>
+                        </div>
+                      </div>
+                    )}
                 </TabsContent>
               )}
 
