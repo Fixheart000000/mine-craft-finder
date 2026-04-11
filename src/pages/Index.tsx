@@ -83,7 +83,12 @@ const mockResources: Record<string, Array<{ icon: React.ReactNode; title: string
 };
 
 const mockCommunityResults = [
-  { type: "user" as const, name: "茜特菈莉", description: "独立模组开发者，Jade系列作者" },
+  { type: "user" as const, name: "茜特菈莉", description: "独立模组开发者，Jade系列作者", userType: "creator", socialIntent: "meetCreator" },
+  { type: "user" as const, name: "PixelArtist", description: "职业皮肤和材质创作者", userType: "creator", socialIntent: "meetFriend" },
+  { type: "user" as const, name: "矿业大亨", description: "专注服务器插件开发", userType: "producer", socialIntent: "meetInvestor" },
+  { type: "user" as const, name: "风投小明", description: "游戏行业天使投资人", userType: "investor", socialIntent: "meetProducer" },
+  { type: "user" as const, name: "普通玩家001", description: "热爱MC的休闲玩家一枚", userType: "normal", socialIntent: "none" },
+  { type: "user" as const, name: "建筑大师", description: "专业MC建筑设计", userType: "creator", socialIntent: "meetFriend" },
   { type: "team" as const, name: "FabricMC", description: "Fabric生态开发团队", memberCount: 45, status: "活跃中" },
   { type: "project" as const, name: "星辰骑士计划", description: "大型RPG整合包协作项目", memberCount: 12, status: "招募中", projectId: "modpack-1", projectType: "modpack", projectStatus: "筹备中" },
   { type: "project" as const, name: "星辰魔法：元素觉醒", description: "一款正在开发中的大型魔法模组", memberCount: 5, status: "开发中", projectId: "mod-1", projectType: "mod", projectStatus: "筹备中" },
@@ -119,12 +124,32 @@ const Index = () => {
     const projectTypeTags = filterTags["projectType"] || [];
     const projectStatusTags = filterTags["projectStatus"] || [];
     const teamTypeTags = filterTags["teamType"] || [];
+    const userTypeTags = filterTags["userType"] || [];
+    const socialIntentTags = filterTags["socialIntent"] || [];
     
     if (directionTags.length > 0) {
       results = results.filter(result => {
         if (directionTags.includes("user") && result.type === "user") return true;
         if (directionTags.includes("team") && result.type === "team") return true;
         if (directionTags.includes("project") && result.type === "project") return true;
+        return false;
+      });
+    }
+    
+    if (userTypeTags.length > 0) {
+      results = results.filter(result => {
+        if (result.type === "user" && "userType" in result) {
+          return userTypeTags.includes(result.userType as string);
+        }
+        return false;
+      });
+    }
+    
+    if (socialIntentTags.length > 0) {
+      results = results.filter(result => {
+        if (result.type === "user" && "socialIntent" in result) {
+          return socialIntentTags.includes(result.socialIntent as string);
+        }
         return false;
       });
     }
@@ -177,7 +202,33 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <div className="flex-1 p-6">
+      {/* Top Search Bar */}
+      <div className="sticky top-0 z-20 bg-card border-b border-border shadow-md">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <div className="flex items-center gap-2">
+            <div className="w-48 flex-shrink-0">
+              <SearchBar value={searchQuery} onChange={setSearchQuery} placeholder="搜索资源、用户、项目..." />
+            </div>
+
+            <FilterPanel
+              resourceId={getFilterResourceId()}
+              selectedTags={filterTags}
+              onTagsChange={setFilterTags}
+              onResourceChange={handleFilterResourceChange}
+            />
+
+            <Button
+              size="sm"
+              className="h-9 px-3 text-xs gap-1 ml-auto"
+              onClick={() => setShowCreateProjectModal(true)}
+            >
+              <Plus className="w-3.5 h-3.5" /> 创建项目
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex-1 p-6 pt-6">
         <div className="max-w-7xl mx-auto">
           {/* Resource cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -202,38 +253,13 @@ const Index = () => {
         </div>
       </div>
 
-      <div className="fixed right-4 top-1/2 -translate-y-1/2 flex flex-col gap-2">
+      <div className="fixed right-4 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-10">
         <button className="p-2 bg-card rounded-lg shadow-card border border-border hover:shadow-card-hover transition-shadow">
           <QrCode className="w-5 h-5 text-muted-foreground" />
         </button>
         <button className="p-2 bg-card rounded-lg shadow-card border border-border hover:shadow-card-hover transition-shadow">
           <Languages className="w-5 h-5 text-muted-foreground" />
         </button>
-      </div>
-
-      <div className="sticky bottom-0 bg-card border-t border-border shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <div className="flex items-center gap-2">
-            <div className="w-40 flex-shrink-0">
-              <SearchBar value={searchQuery} onChange={setSearchQuery} placeholder="搜索..." />
-            </div>
-
-            <FilterPanel
-              resourceId={getFilterResourceId()}
-              selectedTags={filterTags}
-              onTagsChange={setFilterTags}
-              onResourceChange={handleFilterResourceChange}
-            />
-
-            <Button
-              size="sm"
-              className="h-9 px-3 text-xs gap-1"
-              onClick={() => setShowCreateProjectModal(true)}
-            >
-              <Plus className="w-3.5 h-3.5" /> 创建项目
-            </Button>
-          </div>
-        </div>
       </div>
 
       <Dialog open={showCreateProjectModal} onOpenChange={setShowCreateProjectModal}>

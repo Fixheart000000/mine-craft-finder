@@ -905,9 +905,6 @@ const OtherResourceDetail = () => {
             <span className="flex items-center gap-1 text-xs text-muted-foreground">
               <Heart className="w-3.5 h-3.5" /> {resource.likes}
             </span>
-            <Button size="sm" className="text-xs">
-              <Download className="w-3.5 h-3.5 mr-1" /> {resource.type === "image" ? "获取" : "下载"}
-            </Button>
           </div>
         </div>
       </div>

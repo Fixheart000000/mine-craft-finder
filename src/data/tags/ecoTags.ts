@@ -120,13 +120,40 @@ export const communityResourceTags: ResourceTagSystem = {
   mainTags: [
     {
       id: "direction",
-      label: "内容方向",
+      label: "类别",
       type: "flat",
       multiSelect: true,
       options: [
         { id: "user", label: "用户" },
         { id: "team", label: "团队" },
         { id: "project", label: "项目" },
+      ],
+    },
+    {
+      id: "userType",
+      label: "用户类型",
+      type: "flat",
+      multiSelect: true,
+      conditionalOn: { tagId: "direction", optionId: "user" },
+      options: [
+        { id: "normal", label: "普通用户" },
+        { id: "creator", label: "创作者" },
+        { id: "producer", label: "生产者" },
+        { id: "investor", label: "投资者" },
+      ],
+    },
+    {
+      id: "socialIntent",
+      label: "社交意向",
+      type: "flat",
+      multiSelect: true,
+      conditionalOn: { tagId: "direction", optionId: "user" },
+      options: [
+        { id: "none", label: "不交友" },
+        { id: "meetCreator", label: "认识创作者" },
+        { id: "meetProducer", label: "认识生产者" },
+        { id: "meetInvestor", label: "认识投资者" },
+        { id: "meetFriend", label: "认识好朋友" },
       ],
     },
     {

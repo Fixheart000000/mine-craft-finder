@@ -265,11 +265,8 @@ const FilterPanel = ({
             <div className="space-y-4">
               {visibleTags.map((tag) => (
                 <div key={tag.id}>
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="mb-2">
                     <span className="text-xs font-medium text-foreground">{tag.label}</span>
-                    {tag.multiSelect !== false && (
-                      <span className="text-[10px] text-muted-foreground">(可多选)</span>
-                    )}
                   </div>
                   {tag.type === "flat" ? renderFlatOptions(tag) : renderGroupedOptions(tag)}
                 </div>

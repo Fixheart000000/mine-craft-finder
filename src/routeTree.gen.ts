@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as UserIdRouteImport } from './routes/user.$id'
+import { Route as TeamIdRouteImport } from './routes/team.$id'
 import { Route as ProjectIdRouteImport } from './routes/project.$id'
 import { Route as ResourceTypeIdRouteImport } from './routes/resource.$type.$id'
 import { Route as OtherTypeIdRouteImport } from './routes/other.$type.$id'
@@ -17,6 +19,16 @@ import { Route as OtherTypeIdRouteImport } from './routes/other.$type.$id'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UserIdRoute = UserIdRouteImport.update({
+  id: '/user/$id',
+  path: '/user/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamIdRoute = TeamIdRouteImport.update({
+  id: '/team/$id',
+  path: '/team/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectIdRoute = ProjectIdRouteImport.update({
@@ -38,12 +50,16 @@ const OtherTypeIdRoute = OtherTypeIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/project/$id': typeof ProjectIdRoute
+  '/team/$id': typeof TeamIdRoute
+  '/user/$id': typeof UserIdRoute
   '/other/$type/$id': typeof OtherTypeIdRoute
   '/resource/$type/$id': typeof ResourceTypeIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/project/$id': typeof ProjectIdRoute
+  '/team/$id': typeof TeamIdRoute
+  '/user/$id': typeof UserIdRoute
   '/other/$type/$id': typeof OtherTypeIdRoute
   '/resource/$type/$id': typeof ResourceTypeIdRoute
 }
@@ -51,18 +67,34 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/project/$id': typeof ProjectIdRoute
+  '/team/$id': typeof TeamIdRoute
+  '/user/$id': typeof UserIdRoute
   '/other/$type/$id': typeof OtherTypeIdRoute
   '/resource/$type/$id': typeof ResourceTypeIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/project/$id' | '/other/$type/$id' | '/resource/$type/$id'
+  fullPaths:
+    | '/'
+    | '/project/$id'
+    | '/team/$id'
+    | '/user/$id'
+    | '/other/$type/$id'
+    | '/resource/$type/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/project/$id' | '/other/$type/$id' | '/resource/$type/$id'
+  to:
+    | '/'
+    | '/project/$id'
+    | '/team/$id'
+    | '/user/$id'
+    | '/other/$type/$id'
+    | '/resource/$type/$id'
   id:
     | '__root__'
     | '/'
     | '/project/$id'
+    | '/team/$id'
+    | '/user/$id'
     | '/other/$type/$id'
     | '/resource/$type/$id'
   fileRoutesById: FileRoutesById
@@ -70,6 +102,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ProjectIdRoute: typeof ProjectIdRoute
+  TeamIdRoute: typeof TeamIdRoute
+  UserIdRoute: typeof UserIdRoute
   OtherTypeIdRoute: typeof OtherTypeIdRoute
   ResourceTypeIdRoute: typeof ResourceTypeIdRoute
 }
@@ -81,6 +115,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/user/$id': {
+      id: '/user/$id'
+      path: '/user/$id'
+      fullPath: '/user/$id'
+      preLoaderRoute: typeof UserIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team/$id': {
+      id: '/team/$id'
+      path: '/team/$id'
+      fullPath: '/team/$id'
+      preLoaderRoute: typeof TeamIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/project/$id': {
@@ -110,6 +158,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ProjectIdRoute: ProjectIdRoute,
+  TeamIdRoute: TeamIdRoute,
+  UserIdRoute: UserIdRoute,
   OtherTypeIdRoute: OtherTypeIdRoute,
   ResourceTypeIdRoute: ResourceTypeIdRoute,
 }

@@ -1980,9 +1980,6 @@ A: 检查模组版本兼容性...`,
             <span className="flex items-center gap-1 text-xs text-muted-foreground">
               <Heart className="w-3.5 h-3.5" /> {resource.likes}
             </span>
-            <Button size="sm" className="text-xs">
-              <Download className="w-3.5 h-3.5 mr-1" /> 下载
-            </Button>
           </div>
         </div>
       </div>

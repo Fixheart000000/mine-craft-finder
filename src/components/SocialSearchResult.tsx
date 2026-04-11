@@ -43,6 +43,18 @@ const SocialSearchResult = ({ type, name, description, memberCount, status, proj
   const handleClick = () => {
     if (type === "project" && projectId) {
       navigate({ to: "/project/$id", params: { id: projectId } });
+    } else if (type === "user") {
+      const userIdMap: Record<string, string> = {
+        "茜特菈莉": "1",
+        "PixelArtist": "2",
+        "矿业大亨": "3",
+        "风投小明": "4",
+        "普通玩家001": "5",
+        "建筑大师": "6",
+      };
+      navigate({ to: "/user/$id", params: { id: userIdMap[name] || "1" } });
+    } else if (type === "team") {
+      navigate({ to: "/team/$id", params: { id: "1" } });
     }
   };
 
