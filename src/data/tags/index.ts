@@ -33,3 +33,4 @@ export const tagSystemMap: Record<string, ResourceTagSystem> = {
   community: communityResourceTags,
   image: imageTags,
 };
+

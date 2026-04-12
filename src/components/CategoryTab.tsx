@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "#/lib/utils";
 
 interface CategoryTabProps {
   icon: React.ReactNode;
@@ -25,3 +25,4 @@ const CategoryTab = ({ icon, label, active, onClick }: CategoryTabProps) => {
 };
 
 export default CategoryTab;
+

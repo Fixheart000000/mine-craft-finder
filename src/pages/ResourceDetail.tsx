@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useParams, useRouter } from "@tanstack/react-router";
 import { ArrowLeft, Download, Heart, Send, User, Eye, BookmarkPlus, Plus, X, ChevronDown, ChevronRight, Edit2, Image, Link2, Trash2, Save, XCircle, History, Upload, Star, StarOff, Edit, Calendar, Users } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-import { Input } from "@/components/ui/input";
-import { tagSystemMap } from "@/data/tags";
-import { contentCommonMeta, auxiliaryCommonMeta, modpackServerCommonMeta } from "@/data/tags/commonMeta";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "#/components/ui/tabs";
+import { Textarea } from "#/components/ui/textarea";
+import { Avatar, AvatarFallback } from "#/components/ui/avatar";
+import { Separator } from "#/components/ui/separator";
+import { Input } from "#/components/ui/input";
+import { tagSystemMap } from "#/data/tags";
+import { contentCommonMeta, auxiliaryCommonMeta, modpackServerCommonMeta } from "#/data/tags/commonMeta";
 
 interface WikiEntry {
   id: string;
@@ -48,15 +48,15 @@ interface WikiEntry {
 }
 
 const mockWikiEntries: Record<string, WikiEntry> = {
-  "动力源": {
+  "动力�?: {
     id: "power-source",
-    name: "动力源",
+    name: "动力�?,
     category: "物品/方块",
     type: "block",
     images: [
-      { url: "/placeholder-power-source.png", caption: "动力源外观", isCover: true },
+      { url: "/placeholder-power-source.png", caption: "动力源外�?, isCover: true },
     ],
-    description: "动力源是机械动力的核心组件，提供旋转动能。它可以被多种方式驱动，包括水流、风力、蒸汽等。动力源是所有机械设备的能量起点，通过动力轴将动能传输到其他机器。",
+    description: "动力源是机械动力的核心组件，提供旋转动能。它可以被多种方式驱动，包括水流、风力、蒸汽等。动力源是所有机械设备的能量起点，通过动力轴将动能传输到其他机器�?,
     recipes: [
       {
         type: "crafting",
@@ -66,16 +66,16 @@ const mockWikiEntries: Record<string, WikiEntry> = {
           ["铁锭", "铁锭", "铁锭"],
         ],
         ingredients: { "铁锭": "iron_ingot", "活塞": "piston" },
-        result: { item: "动力源", count: 1 },
+        result: { item: "动力�?, count: 1 },
       },
     ],
     attributes: [
-      { name: "最大转速", value: "256", unit: "RPM" },
-      { name: "应力消耗", value: "4", unit: "SU" },
-      { name: "耐久度", value: "无限", unit: "" },
+      { name: "最大转�?, value: "256", unit: "RPM" },
+      { name: "应力消�?, value: "4", unit: "SU" },
+      { name: "耐久�?, value: "无限", unit: "" },
     ],
-    usage: "1. 将动力源放置在地面\n2. 使用动力轴连接到其他机器\n3. 提供动力源（水流、风力等）\n4. 机器开始运转",
-    relatedEntries: ["传送带", "机械臂", "动力轴", "齿轮箱"],
+    usage: "1. 将动力源放置在地面\n2. 使用动力轴连接到其他机器\n3. 提供动力源（水流、风力等）\n4. 机器开始运�?,
+    relatedEntries: ["传送带", "机械�?, "动力�?, "齿轮�?],
     author: "创世工匠",
     updatedAt: new Date("2024-11-15"),
     version: 2,
@@ -85,7 +85,7 @@ const mockWikiEntries: Record<string, WikiEntry> = {
         author: "创世工匠",
         updatedAt: new Date("2024-11-10"),
         changes: "创建词条",
-        snapshot: { description: "动力源是机械动力的核心组件。" }
+        snapshot: { description: "动力源是机械动力的核心组件�? }
       }
     ],
   },
@@ -95,14 +95,14 @@ const mockWikiEntries: Record<string, WikiEntry> = {
     category: "物品/方块",
     type: "block",
     images: [],
-    description: "传送带用于自动传输物品，是自动化产线的基础组件。可以连接多个传送带形成长距离传输线路，支持转弯和上下坡。",
+    description: "传送带用于自动传输物品，是自动化产线的基础组件。可以连接多个传送带形成长距离传输线路，支持转弯和上下坡�?,
     recipes: [],
     attributes: [
-      { name: "传输速度", value: "1", unit: "物品/秒" },
-      { name: "最大长度", value: "无限", unit: "" },
+      { name: "传输速度", value: "1", unit: "物品/�? },
+      { name: "最大长�?, value: "无限", unit: "" },
     ],
-    usage: "放置传送带并连接动力源即可开始传输物品。",
-    relatedEntries: ["动力源", "机械臂", "物品管道"],
+    usage: "放置传送带并连接动力源即可开始传输物品�?,
+    relatedEntries: ["动力�?, "机械�?, "物品管道"],
     author: "创世工匠",
     updatedAt: new Date("2024-11-15"),
     version: 1,
@@ -111,17 +111,17 @@ const mockWikiEntries: Record<string, WikiEntry> = {
   "动力网络": {
     id: "power-network",
     name: "动力网络",
-    category: "多方块结构",
+    category: "多方块结�?,
     type: "structure",
     images: [],
-    description: "动力网络是由动力源、动力轴、齿轮箱等组成的动能传输系统。通过合理的布局，可以将动能高效地分配到各个机器设备。",
+    description: "动力网络是由动力源、动力轴、齿轮箱等组成的动能传输系统。通过合理的布局，可以将动能高效地分配到各个机器设备�?,
     recipes: [],
     attributes: [
       { name: "网络类型", value: "独立网络", unit: "" },
-      { name: "总应力容量", value: "根据动力源计算", unit: "SU" },
+      { name: "总应力容�?, value: "根据动力源计�?, unit: "SU" },
     ],
-    usage: "1. 放置动力源作为网络起点\n2. 使用动力轴连接各个机器\n3. 使用齿轮箱分流动力\n4. 确保应力不超过容量",
-    relatedEntries: ["动力源", "动力轴", "齿轮箱", "应力计"],
+    usage: "1. 放置动力源作为网络起点\n2. 使用动力轴连接各个机器\n3. 使用齿轮箱分流动力\n4. 确保应力不超过容�?,
+    relatedEntries: ["动力�?, "动力�?, "齿轮�?, "应力�?],
     author: "创世工匠",
     updatedAt: new Date("2024-11-15"),
     version: 1,
@@ -147,7 +147,7 @@ const mockChangeLogs: ChangeLog[] = [
     action: "create",
     section: "基本介绍",
     description: "创建资源",
-    details: "首次发布模组资源，包含基础的机械动力系统"
+    details: "首次发布模组资源，包含基础的机械动力系�?
   },
   {
     id: "2",
@@ -155,7 +155,7 @@ const mockChangeLogs: ChangeLog[] = [
     author: "创世工匠",
     action: "update",
     section: "基本介绍",
-    description: "更新资源简介",
+    description: "更新资源简�?,
     details: "优化了资源简介的描述，增加了更多功能说明"
   },
   {
@@ -164,7 +164,7 @@ const mockChangeLogs: ChangeLog[] = [
     author: "创世工匠",
     action: "update",
     section: "下载",
-    description: "添加新版本 v1.2.0",
+    description: "添加新版�?v1.2.0",
     details: "新增了传送带系统，修复了动力源崩溃问题，优化了性能"
   },
   {
@@ -174,7 +174,7 @@ const mockChangeLogs: ChangeLog[] = [
     action: "update",
     section: "内容详情",
     description: "添加热词词条",
-    details: "在物品/方块分类下添加了「动力源」「传送带」等词条"
+    details: "在物�?方块分类下添加了「动力源」「传送带」等词条"
   },
   {
     id: "5",
@@ -183,7 +183,7 @@ const mockChangeLogs: ChangeLog[] = [
     action: "update",
     section: "下载",
     description: "添加联动模组",
-    details: "为 v1.2.0 版本添加了前置模组「机械核心」和联动模组「工业时代」"
+    details: "�?v1.2.0 版本添加了前置模组「机械核心」和联动模组「工业时代�?
   },
   {
     id: "6",
@@ -192,7 +192,7 @@ const mockChangeLogs: ChangeLog[] = [
     action: "update",
     section: "协议",
     description: "提交原创协议",
-    details: "提交并发布了资源的原创协议"
+    details: "提交并发布了资源的原创协�?
   },
   {
     id: "7",
@@ -201,7 +201,7 @@ const mockChangeLogs: ChangeLog[] = [
     action: "update",
     section: "基本介绍",
     description: "更新基本信息",
-    details: "修改了内容方向标签，从「科技」调整为「科技、辅助」"
+    details: "修改了内容方向标签，从「科技」调整为「科技、辅助�?
   },
   {
     id: "8",
@@ -210,7 +210,7 @@ const mockChangeLogs: ChangeLog[] = [
     action: "update",
     section: "内容详情",
     description: "编辑词条内容",
-    details: "更新了「动力源」词条的描述和配方信息"
+    details: "更新了「动力源」词条的描述和配方信�?
   },
   {
     id: "9",
@@ -218,8 +218,8 @@ const mockChangeLogs: ChangeLog[] = [
     author: "创世工匠",
     action: "update",
     section: "下载",
-    description: "添加新版本 v1.3.0",
-    details: "新增了多方块结构系统，添加了齿轮箱和应力计"
+    description: "添加新版�?v1.3.0",
+    details: "新增了多方块结构系统，添加了齿轮箱和应力�?
   },
   {
     id: "10",
@@ -227,8 +227,8 @@ const mockChangeLogs: ChangeLog[] = [
     author: "创世工匠",
     action: "update",
     section: "内容详情",
-    description: "创建新热词分类",
-    details: "创建了「多方块结构」热词分类，并添加了「动力网络」词条"
+    description: "创建新热词分�?,
+    details: "创建了「多方块结构」热词分类，并添加了「动力网络」词�?
   }
 ];
 
@@ -538,7 +538,7 @@ const WikiEntryPanel = ({
             </div>
 
             <div>
-              <label className="text-xs text-muted-foreground mb-2 block">属性数据</label>
+              <label className="text-xs text-muted-foreground mb-2 block">属性数�?/label>
               <div className="space-y-2">
                 {editData.attributes.map((attr, index) => (
                   <div key={index} className="flex items-center gap-2">
@@ -550,7 +550,7 @@ const WikiEntryPanel = ({
                         setEditData(prev => ({ ...prev, attributes: newAttrs }));
                       }}
                       className="text-sm flex-1"
-                      placeholder="属性名称"
+                      placeholder="属性名�?
                     />
                     <Input
                       value={attr.value}
@@ -560,7 +560,7 @@ const WikiEntryPanel = ({
                         setEditData(prev => ({ ...prev, attributes: newAttrs }));
                       }}
                       className="text-sm flex-1"
-                      placeholder="属性值"
+                      placeholder="属性�?
                     />
                     <Button size="sm" variant="ghost" onClick={() => handleRemoveAttribute(index)}>
                       <Trash2 className="w-4 h-4 text-destructive" />
@@ -572,13 +572,13 @@ const WikiEntryPanel = ({
                     value={newAttrName}
                     onChange={(e) => setNewAttrName(e.target.value)}
                     className="text-sm flex-1"
-                    placeholder="新属性名称"
+                    placeholder="新属性名�?
                   />
                   <Input
                     value={newAttrValue}
                     onChange={(e) => setNewAttrValue(e.target.value)}
                     className="text-sm flex-1"
-                    placeholder="属性值"
+                    placeholder="属性�?
                   />
                   <Button size="sm" variant="outline" onClick={handleAddAttribute}>
                     <Plus className="w-4 h-4" />
@@ -588,7 +588,7 @@ const WikiEntryPanel = ({
             </div>
 
             <div>
-              <label className="text-xs text-muted-foreground mb-1 block">相关词条（用逗号分隔）</label>
+              <label className="text-xs text-muted-foreground mb-1 block">相关词条（用逗号分隔�?/label>
               <Input
                 value={editData.relatedEntries.join(", ")}
                 onChange={(e) => setEditData(prev => ({ 
@@ -596,7 +596,7 @@ const WikiEntryPanel = ({
                   relatedEntries: e.target.value.split(",").map(s => s.trim()).filter(Boolean)
                 }))}
                 className="text-sm"
-                placeholder="传送带, 机械臂, 动力轴"
+                placeholder="传送带, 机械�? 动力�?
               />
             </div>
 
@@ -657,7 +657,7 @@ const WikiEntryPanel = ({
             )}
 
             <div>
-              <h3 className="text-sm font-semibold text-primary mb-2">简介</h3>
+              <h3 className="text-sm font-semibold text-primary mb-2">简�?/h3>
               <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-wrap">{entry.description}</p>
             </div>
 
@@ -667,7 +667,7 @@ const WikiEntryPanel = ({
                 <div className="bg-secondary/30 rounded-lg p-3">
                   {entry.recipes.map((recipe, rIndex) => (
                     <div key={rIndex} className="space-y-2">
-                      <div className="text-xs text-muted-foreground mb-1">{recipe.type === "crafting" ? "工作台合成" : recipe.type}</div>
+                      <div className="text-xs text-muted-foreground mb-1">{recipe.type === "crafting" ? "工作台合�? : recipe.type}</div>
                       <div className="grid grid-cols-3 gap-1 w-fit">
                         {recipe.pattern.flat().map((item, pIndex) => (
                           <div 
@@ -689,7 +689,7 @@ const WikiEntryPanel = ({
 
             {entry.attributes.length > 0 && (
               <div>
-                <h3 className="text-sm font-semibold text-primary mb-2">属性数据</h3>
+                <h3 className="text-sm font-semibold text-primary mb-2">属性数�?/h3>
                 <div className="bg-secondary/30 rounded-lg overflow-hidden">
                   <table className="w-full text-sm">
                     <tbody>
@@ -731,7 +731,7 @@ const WikiEntryPanel = ({
             )}
 
             <div className="text-xs text-muted-foreground pt-2 border-t border-border">
-              最后编辑: {entry.author} · {entry.updatedAt.toLocaleDateString()}
+              最后编�? {entry.author} · {entry.updatedAt.toLocaleDateString()}
             </div>
           </>
         )}
@@ -742,76 +742,76 @@ const WikiEntryPanel = ({
 
 const allHotWordCategories = [
   { id: "items", label: "物品/方块", description: "新增的物品、方块、材料等" },
-  { id: "tools", label: "工具/装备", description: "工具、武器、盔甲等装备类物品" },
-  { id: "crops", label: "农作物/食材", description: "作物、食材、原料等" },
+  { id: "tools", label: "工具/装备", description: "工具、武器、盔甲等装备类物�? },
+  { id: "crops", label: "农作�?食材", description: "作物、食材、原料等" },
   { id: "foods", label: "食物/料理", description: "可食用的食物、料理等" },
-  { id: "biomes", label: "群系/群落", description: "生物群系、地形类型" },
+  { id: "biomes", label: "群系/群落", description: "生物群系、地形类�? },
   { id: "dimensions", label: "世界/维度", description: "新维度、传送门" },
-  { id: "mobs", label: "生物/实体", description: "友好生物、中立生物、敌对生物、NPC等" },
+  { id: "mobs", label: "生物/实体", description: "友好生物、中立生物、敌对生物、NPC�? },
   { id: "bosses", label: "Boss/首领", description: "Boss怪物、首领级敌人" },
-  { id: "enchantments", label: "附魔/魔咒", description: "附魔效果、魔咒" },
-  { id: "potions", label: "药水/药剂", description: "药水、药剂、饮品效果" },
-  { id: "buffs", label: "BUFF/DEBUFF", description: "状态效果、增益/减益" },
-  { id: "machines", label: "机器/设备", description: "机器、设备、工作台等" },
-  { id: "multiblocks", label: "多方块结构", description: "需要多方块搭建的结构" },
-  { id: "energy", label: "能源/动力", description: "能源系统、动力系统" },
-  { id: "logistics", label: "物流/管道", description: "物流系统、管道传输" },
-  { id: "spells", label: "法术/咒语", description: "魔法系统、法术技能" },
-  { id: "rituals", label: "仪式/祭坛", description: "魔法仪式、祭坛结构" },
-  { id: "structures", label: "结构/建筑", description: "自然生成的结构、建筑" },
-  { id: "dungeons", label: "地牢/副本", description: "地牢、副本、迷宫" },
+  { id: "enchantments", label: "附魔/魔咒", description: "附魔效果、魔�? },
+  { id: "potions", label: "药水/药剂", description: "药水、药剂、饮品效�? },
+  { id: "buffs", label: "BUFF/DEBUFF", description: "状态效果、增�?减益" },
+  { id: "machines", label: "机器/设备", description: "机器、设备、工作台�? },
+  { id: "multiblocks", label: "多方块结�?, description: "需要多方块搭建的结�? },
+  { id: "energy", label: "能源/动力", description: "能源系统、动力系�? },
+  { id: "logistics", label: "物流/管道", description: "物流系统、管道传�? },
+  { id: "spells", label: "法术/咒语", description: "魔法系统、法术技�? },
+  { id: "rituals", label: "仪式/祭坛", description: "魔法仪式、祭坛结�? },
+  { id: "structures", label: "结构/建筑", description: "自然生成的结构、建�? },
+  { id: "dungeons", label: "地牢/副本", description: "地牢、副本、迷�? },
   { id: "naturalGen", label: "自然生成", description: "自然生成的方块、矿物等" },
   { id: "ores", label: "矿物/资源", description: "矿物、资源、原材料" },
-  { id: "crafting", label: "合成/配方", description: "合成配方、加工方式" },
-  { id: "redstone", label: "红石/电路", description: "红石系统、电路元件" },
-  { id: "quests", label: "任务/成就", description: "任务系统、成就系统" },
-  { id: "trading", label: "交易/经济", description: "交易系统、经济系统" },
-  { id: "villagers", label: "村民/交易", description: "村民职业、交易内容" },
-  { id: "skills", label: "技能/能力", description: "技能系统、能力系统" },
-  { id: "hotkeys", label: "热键/指令", description: "快捷键、指令" },
-  { id: "gameSettings", label: "游戏设定", description: "游戏机制、系统设定" },
-  { id: "mechanics", label: "机制/系统", description: "核心机制、游戏系统" },
+  { id: "crafting", label: "合成/配方", description: "合成配方、加工方�? },
+  { id: "redstone", label: "红石/电路", description: "红石系统、电路元�? },
+  { id: "quests", label: "任务/成就", description: "任务系统、成就系�? },
+  { id: "trading", label: "交易/经济", description: "交易系统、经济系�? },
+  { id: "villagers", label: "村民/交易", description: "村民职业、交易内�? },
+  { id: "skills", label: "技�?能力", description: "技能系统、能力系�? },
+  { id: "hotkeys", label: "热键/指令", description: "快捷键、指�? },
+  { id: "gameSettings", label: "游戏设定", description: "游戏机制、系统设�? },
+  { id: "mechanics", label: "机制/系统", description: "核心机制、游戏系�? },
 ];
 
 const mockResourceData: Record<string, any> = {
   "mod-1": {
     type: "mod",
-    title: "机械动力：工业革命",
+    title: "机械动力：工业革�?,
     author: "创世工匠",
-    authorType: "模组开发团队",
-    description: "一款专注于机械自动化与工业生产的科技模组。引入全新的动能传输系统、多种类型的机器设备，以及复杂的自动化生产线。玩家可以从最基础的手动加工开始，逐步建立起庞大的工业帝国。支持与其他科技模组的联动，提供丰富的API接口。",
-    authorNote: "感谢所有支持我们的玩家！这个模组是我们团队两年心血的结晶。我们希望带给玩家真正的工业革命体验，而不仅仅是简单的机器堆砌。如果你在游玩过程中遇到任何问题，或者有好的建议，欢迎在评论区留言！",
-    tags: ["科技", "自动化", "Fabric"],
+    authorType: "模组开发团�?,
+    description: "一款专注于机械自动化与工业生产的科技模组。引入全新的动能传输系统、多种类型的机器设备，以及复杂的自动化生产线。玩家可以从最基础的手动加工开始，逐步建立起庞大的工业帝国。支持与其他科技模组的联动，提供丰富的API接口�?,
+    authorNote: "感谢所有支持我们的玩家！这个模组是我们团队两年心血的结晶。我们希望带给玩家真正的工业革命体验，而不仅仅是简单的机器堆砌。如果你在游玩过程中遇到任何问题，或者有好的建议，欢迎在评论区留言�?,
+    tags: ["科技", "自动�?, "Fabric"],
     basicInfo: {
       "内容方向": "科技工业",
       "内容风格": "写实风、科幻风",
-      "独特系统": "自动化产线、能源网络、物流系统",
-      "加载器": "Fabric",
-      "叙事": "无叙事",
+      "独特系统": "自动化产线、能源网络、物流系�?,
+      "加载�?: "Fabric",
+      "叙事": "无叙�?,
       "模组权重": "核心主体",
-      "维护状态": "活跃维护",
+      "维护状�?: "活跃维护",
       "游戏版本": "1.20.x",
       "产出方式": "原创",
       "产出时间": "2023.06",
-      "运行环境": "客户端需装、服务端需装",
-      "许可证类型": "开源",
-      "性能负载": "高负载",
-      "内容规模": "大体量",
+      "运行环境": "客户端需装、服务端需�?,
+      "许可证类�?: "开�?,
+      "性能负载": "高负�?,
+      "内容规模": "大体�?,
       "体验体量": "大型 300分钟+",
-      "难易度": "标准",
-      "情感导向": "快乐/创造、成就/满足",
-      "数值平衡": "原版平衡",
+      "难易�?: "标准",
+      "情感导向": "快乐/创造、成�?满足",
+      "数值平�?: "原版平衡",
     },
     contentDetails: {
-      "物品/方块": ["动力源", "传送带", "机械臂", "齿轮箱", "动力轴", "应力计", "动力泵", "旋转力场"],
+      "物品/方块": ["动力�?, "传送带", "机械�?, "齿轮�?, "动力�?, "应力�?, "动力�?, "旋转力场"],
       "工具/装备": ["工程师护目镜", "扳手", "动力钻头"],
-      "机器/设备": ["动力辊压机", "搅拌机", "机械压榨机", "石磨", "鼓风机", "喷射器"],
-      "多方块结构": ["动力网络", "自动化产线", "面粉加工线", "矿石处理线"],
+      "机器/设备": ["动力辊压�?, "搅拌�?, "机械压榨�?, "石磨", "鼓风�?, "喷射�?],
+      "多方块结�?: ["动力网络", "自动化产�?, "面粉加工�?, "矿石处理�?],
       "能源/动力": ["旋转动能", "应力系统", "动力传输"],
       "物流/管道": ["传送带系统", "物品管道", "流体管道"],
       "BUFF/DEBUFF": ["过热", "过载", "应力过载"],
       "热键/指令": ["J - 打开机器配置界面", "K - 动能网络视图"],
-      "游戏设定": ["动能传输系统", "机器自动化", "工业生产链", "应力管理"],
+      "游戏设定": ["动能传输系统", "机器自动�?, "工业生产�?, "应力管理"],
       "机制/系统": ["旋转动力系统", "应力计算", "齿轮传动"],
     },
     downloads: 125000,
@@ -819,51 +819,51 @@ const mockResourceData: Record<string, any> = {
     favorites: 15600,
     likes: 8900,
     donationLeaders: [
-      { name: "工业迷", amount: "50k", avatar: "🏆" },
-      { name: "自动化爱好者", amount: "35k", avatar: "🌟" },
-      { name: "红石工程师", amount: "28k", avatar: "💎" },
+      { name: "工业�?, amount: "50k", avatar: "🏆" },
+      { name: "自动化爱好�?, amount: "35k", avatar: "🌟" },
+      { name: "红石工程�?, amount: "28k", avatar: "💎" },
     ],
     donationFeed: [
-      { user: "工业迷", date: "2024.11.15", amount: "2k" },
+      { user: "工业�?, date: "2024.11.15", amount: "2k" },
       { user: "新手玩家", date: "2024.11.14", amount: "0.5k" },
     ],
     comments: [
       { user: "科技玩家", date: "2024-11-15", content: "终于等到1.20版本了！" },
-      { user: "自动化达人", date: "2024-11-14", content: "动能系统设计得太棒了" },
+      { user: "自动化达�?, date: "2024-11-14", content: "动能系统设计得太棒了" },
     ],
   },
   "mod-2": {
     type: "mod",
     title: "暮色森林（搬运）",
     author: "Benimatic（原作者）",
-    authorType: "搬运者：暮色搬运组",
-    description: "探索神秘的暮色森林维度，挑战强大的Boss，发现隐藏的宝藏和古老的遗迹。这是一个经典的冒险模组，包含多个独特的生物群系、复杂的地下城和丰富的战利品系统。本资源已获得原作者授权，搬运至本平台供中文玩家使用。",
-    authorNote: "作为暮色森林的搬运者，我们承诺保持模组的完整性和原汁原味。所有更新都会第一时间同步，确保中文玩家能够获得最佳的游戏体验。如有任何问题，欢迎在评论区反馈！",
+    authorType: "搬运者：暮色搬运�?,
+    description: "探索神秘的暮色森林维度，挑战强大的Boss，发现隐藏的宝藏和古老的遗迹。这是一个经典的冒险模组，包含多个独特的生物群系、复杂的地下城和丰富的战利品系统。本资源已获得原作者授权，搬运至本平台供中文玩家使用�?,
+    authorNote: "作为暮色森林的搬运者，我们承诺保持模组的完整性和原汁原味。所有更新都会第一时间同步，确保中文玩家能够获得最佳的游戏体验。如有任何问题，欢迎在评论区反馈�?,
     tags: ["冒险", "维度", "Boss"],
     basicInfo: {
       "内容方向": "冒险",
-      "加载器": "Forge",
+      "加载�?: "Forge",
       "游戏版本": "1.20.x",
       "产出方式": "搬运",
       "产出时间": "2024.10",
-      "运行环境": "客户端需装、服务端需装",
-      "许可证类型": "开源",
-      "性能负载": "中负载",
-      "内容规模": "大体量",
+      "运行环境": "客户端需装、服务端需�?,
+      "许可证类�?: "开�?,
+      "性能负载": "中负�?,
+      "内容规模": "大体�?,
       "体验体量": "大型 300分钟+",
-      "难易度": "标准",
-      "情感导向": "好奇/探索、成就/满足",
-      "数值平衡": "原版平衡",
+      "难易�?: "标准",
+      "情感导向": "好奇/探索、成�?满足",
+      "数值平�?: "原版平衡",
     },
     contentDetails: {
       "群系/群落": ["暮色森林", "黑暗森林", "蘑菇森林", "火焰沼泽", "冰川"],
       "世界/维度": ["暮色维度"],
-      "结构/建筑": ["娜迦庭院", "巫妖塔", "迷宫", "九头蛇巢穴", "巨魔洞穴"],
-      "Boss/首领": ["娜迦", "巫妖", "九头蛇", "幻影骑士", "雪怪"],
-      "生物/实体": ["暮色鹿", "松鼠", "乌鸦", "迷你僵尸", "骷髅德鲁伊"],
-      "物品/方块": ["暮色橡木", "魔法地图", "暮色护甲", "玻璃剑"],
+      "结构/建筑": ["娜迦庭院", "巫妖�?, "迷宫", "九头蛇巢�?, "巨魔洞穴"],
+      "Boss/首领": ["娜迦", "巫妖", "九头�?, "幻影骑士", "雪�?],
+      "生物/实体": ["暮色�?, "松鼠", "乌鸦", "迷你僵尸", "骷髅德鲁�?],
+      "物品/方块": ["暮色橡木", "魔法地图", "暮色护甲", "玻璃�?],
       "附魔/魔咒": ["灼烧", "冰霜"],
-      "成就/进度": ["暮色探索者", "Boss猎手", "宝藏猎人"],
+      "成就/进度": ["暮色探索�?, "Boss猎手", "宝藏猎人"],
       "游戏设定": ["暮色传送门", "进度系统", "Boss挑战顺序"],
     },
     downloads: 200000,
@@ -871,43 +871,43 @@ const mockResourceData: Record<string, any> = {
     favorites: 25000,
     likes: 15000,
     donationLeaders: [
-      { name: "冒险王", amount: "80k", avatar: "🏆" },
-      { name: "暮色迷", amount: "60k", avatar: "🌟" },
-      { name: "探索者", amount: "45k", avatar: "💎" },
+      { name: "冒险�?, amount: "80k", avatar: "🏆" },
+      { name: "暮色�?, amount: "60k", avatar: "🌟" },
+      { name: "探索�?, amount: "45k", avatar: "💎" },
     ],
     donationFeed: [
       { user: "暮色粉丝", date: "2024.11.16", amount: "3k" },
-      { user: "新玩家", date: "2024.11.15", amount: "1k" },
+      { user: "新玩�?, date: "2024.11.15", amount: "1k" },
     ],
     comments: [
-      { user: "老玩家", date: "2024-11-16", content: "经典模组，必装！" },
-      { user: "冒险爱好者", date: "2024-11-15", content: "搬运辛苦了，更新很及时" },
+      { user: "老玩�?, date: "2024-11-16", content: "经典模组，必装！" },
+      { user: "冒险爱好�?, date: "2024-11-15", content: "搬运辛苦了，更新很及�? },
     ],
   },
   "map-1": {
     type: "map",
-    title: "失落王国：暗影诅咒",
-    author: "暗影建筑师",
-    authorType: "地图创作工作室",
-    description: "一款沉浸式冒险地图，讲述一个被诅咒笼罩的古老王国的故事。玩家将扮演最后一位王室后裔，穿越被黑暗侵蚀的城堡、地下迷宫和神秘森林，解开古老的谜题，击败强大的Boss，最终拯救这片土地。地图包含完整的剧情线、自定义音效和精心设计的机关陷阱。",
+    title: "失落王国：暗影诅�?,
+    author: "暗影建筑�?,
+    authorType: "地图创作工作�?,
+    description: "一款沉浸式冒险地图，讲述一个被诅咒笼罩的古老王国的故事。玩家将扮演最后一位王室后裔，穿越被黑暗侵蚀的城堡、地下迷宫和神秘森林，解开古老的谜题，击败强大的Boss，最终拯救这片土地。地图包含完整的剧情线、自定义音效和精心设计的机关陷阱�?,
     authorNote: "这张地图我们团队花了整整半年时间打磨，每一个细节都经过反复推敲。希望你们能沉浸在这个故事中，感受失落王国的悲壮与希望。如果喜欢的话，别忘了给我们点个赞！",
     tags: ["冒险", "剧情", "解谜"],
     basicInfo: {
-      "内容方向": "冒险剧情、解密探索",
-      "内容场景": "建筑群场景、地形场景",
+      "内容方向": "冒险剧情、解密探�?,
+      "内容场景": "建筑群场景、地形场�?,
       "内容风格": "奇幻风、中世纪",
-      "叙事": "有叙事",
+      "叙事": "有叙�?,
       "游戏版本": "1.20.x",
       "产出方式": "原创",
       "产出时间": "2024.05",
-      "运行环境": "不涉及",
-      "许可证类型": "闭源",
-      "性能负载": "中负载",
-      "内容规模": "大体量",
+      "运行环境": "不涉�?,
+      "许可证类�?: "闭源",
+      "性能负载": "中负�?,
+      "内容规模": "大体�?,
       "体验体量": "大型 300分钟+",
-      "难易度": "困难/挑战",
-      "情感导向": "神秘/悬疑、紧张/压迫、悲伤/感动",
-      "内容警示": "恐怖警告、黑暗主题",
+      "难易�?: "困难/挑战",
+      "情感导向": "神秘/悬疑、紧�?压迫、悲�?感动",
+      "内容警示": "恐怖警告、黑暗主�?,
     },
     contentDetails: {
       "物品/方块": ["古老的钥匙", "诅咒之石", "王国徽章", "暗影碎片"],
@@ -923,11 +923,11 @@ const mockResourceData: Record<string, any> = {
     favorites: 5600,
     likes: 3200,
     donationLeaders: [
-      { name: "冒险家", amount: "15k", avatar: "🏆" },
-      { name: "剧情党", amount: "10k", avatar: "🌟" },
+      { name: "冒险�?, amount: "15k", avatar: "🏆" },
+      { name: "剧情�?, amount: "10k", avatar: "🌟" },
     ],
     donationFeed: [
-      { user: "故事爱好者", date: "2024.10.20", amount: "1k" },
+      { user: "故事爱好�?, date: "2024.10.20", amount: "1k" },
     ],
     comments: [
       { user: "RPG玩家", date: "2024-10-22", content: "剧情太感人了，结局哭死" },
@@ -935,31 +935,31 @@ const mockResourceData: Record<string, any> = {
   },
   "datapack-1": {
     type: "datapack",
-    title: "原版增强：生存进化",
+    title: "原版增强：生存进�?,
     author: "数据大师",
-    authorType: "数据包开发者",
-    description: "一个轻量级但功能丰富的数据包，在不改变原版风格的前提下增强生存体验。新增多种合成配方、改进的刷怪机制、更合理的战利品表，以及一系列生活质量改进。完美兼容原版游戏，无需任何模组即可使用。",
-    authorNote: "我一直觉得原版生存还有很多可以优化的地方，所以做了这个数据包。希望它能让你的生存之旅更加顺畅有趣！有任何建议欢迎反馈。",
+    authorType: "数据包开发�?,
+    description: "一个轻量级但功能丰富的数据包，在不改变原版风格的前提下增强生存体验。新增多种合成配方、改进的刷怪机制、更合理的战利品表，以及一系列生活质量改进。完美兼容原版游戏，无需任何模组即可使用�?,
+    authorNote: "我一直觉得原版生存还有很多可以优化的地方，所以做了这个数据包。希望它能让你的生存之旅更加顺畅有趣！有任何建议欢迎反馈�?,
     tags: ["生存", "原版增强", "轻量"],
     basicInfo: {
-      "内容方向": "功能增强、规则修改",
-      "内容风格": "不涉及",
-      "叙事": "无叙事",
+      "内容方向": "功能增强、规则修�?,
+      "内容风格": "不涉�?,
+      "叙事": "无叙�?,
       "游戏版本": "1.20.x",
       "产出方式": "原创",
       "产出时间": "2024.02",
-      "运行环境": "服务端需装",
-      "许可证类型": "开源",
-      "性能负载": "低负载",
-      "内容规模": "轻体量",
-      "体验体量": "不涉及",
-      "难易度": "休闲/简单",
-      "情感导向": "快乐/创造",
-      "数值平衡": "温和数值",
+      "运行环境": "服务端需�?,
+      "许可证类�?: "开�?,
+      "性能负载": "低负�?,
+      "内容规模": "轻体�?,
+      "体验体量": "不涉�?,
+      "难易�?: "休闲/简�?,
+      "情感导向": "快乐/创�?,
+      "数值平�?: "温和数�?,
     },
     contentDetails: {
-      "合成/配方": ["新增合成配方", "熔炉配方优化", "切石机配方扩展"],
-      "游戏设定": ["刷怪机制改进", "战利品表优化", "生活质量改进"],
+      "合成/配方": ["新增合成配方", "熔炉配方优化", "切石机配方扩�?],
+      "游戏设定": ["刷怪机制改�?, "战利品表优化", "生活质量改进"],
       "机制/系统": ["生存增强", "平衡调整"],
     },
     downloads: 89000,
@@ -969,45 +969,45 @@ const mockResourceData: Record<string, any> = {
     donationLeaders: [],
     donationFeed: [],
     comments: [
-      { user: "原版党", date: "2024-11-10", content: "终于有不用装模组的增强包了" },
+      { user: "原版�?, date: "2024-11-10", content: "终于有不用装模组的增强包�? },
     ],
   },
   "modpack-1": {
     type: "modpack",
-    title: "科技纪元：太空探索",
+    title: "科技纪元：太空探�?,
     author: "整合包工作室",
-    authorType: "整合包制作团队",
-    description: "一款以太空探索为主题的科技向整合包。从地球起步，建立工业基础，发展航天技术，最终征服星辰大海。包含超过200个精心挑选和配置的模组，涵盖科技、魔法、探索等多个领域。提供完整的任务线和成就系统引导玩家。",
-    authorNote: "这个整合包是我们对太空梦想的致敬。我们花了很多时间调整模组之间的平衡，确保玩家能获得流畅的游玩体验。祝你们探索愉快！",
+    authorType: "整合包制作团�?,
+    description: "一款以太空探索为主题的科技向整合包。从地球起步，建立工业基础，发展航天技术，最终征服星辰大海。包含超�?00个精心挑选和配置的模组，涵盖科技、魔法、探索等多个领域。提供完整的任务线和成就系统引导玩家�?,
+    authorNote: "这个整合包是我们对太空梦想的致敬。我们花了很多时间调整模组之间的平衡，确保玩家能获得流畅的游玩体验。祝你们探索愉快�?,
     tags: ["科技", "太空", "探索"],
     basicInfo: {
-      "内容方向": "科技工业、冒险探索",
-      "内容风格": "科幻风",
-      "叙事": "有叙事",
+      "内容方向": "科技工业、冒险探�?,
+      "内容风格": "科幻�?,
+      "叙事": "有叙�?,
       "游戏版本": "1.19.x",
       "产出方式": "原创",
       "产出时间": "2023.11",
-      "许可证类型": "闭源",
-      "性能负载": "高负载",
-      "内容规模": "大体量",
+      "许可证类�?: "闭源",
+      "性能负载": "高负�?,
+      "内容规模": "大体�?,
       "体验体量": "大型 300分钟+",
-      "难易度": "标准",
-      "情感导向": "好奇/探索、成就/满足、震撼/敬畏",
-      "数值平衡": "原版平衡",
+      "难易�?: "标准",
+      "情感导向": "好奇/探索、成�?满足、震�?敬畏",
+      "数值平�?: "原版平衡",
     },
     contentDetails: {
-      "物品/方块": ["火箭", "空间站组件", "宇航服", "太阳能板", "氧气瓶", "太空舱"],
-      "工具/装备": ["宇航服套装", "太空工具", "激光武器"],
+      "物品/方块": ["火箭", "空间站组�?, "宇航�?, "太阳能板", "氧气�?, "太空�?],
+      "工具/装备": ["宇航服套�?, "太空工具", "激光武�?],
       "群系/群落": ["月球荒原", "火星沙漠", "小行星带"],
-      "世界/维度": ["月球", "火星", "金星", "空间站", "小行星带"],
+      "世界/维度": ["月球", "火星", "金星", "空间�?, "小行星带"],
       "生物/实体": ["外星生物", "太空怪物"],
-      "机器/设备": ["火箭发射台", "燃料精炼厂", "氧气生成器"],
-      "多方块结构": ["火箭", "空间站", "卫星"],
-      "能源/动力": ["电力系统", "太阳能", "核能"],
-      "BUFF/DEBUFF": ["缺氧", "低重力", "辐射"],
-      "自然生成": ["月球陨石坑", "火星峡谷", "外星遗迹"],
-      "任务/成就": ["太空探索任务线", "科技发展成就"],
-      "热键/指令": ["G - 打开星图", "H - 宇航服状态"],
+      "机器/设备": ["火箭发射�?, "燃料精炼�?, "氧气生成�?],
+      "多方块结�?: ["火箭", "空间�?, "卫星"],
+      "能源/动力": ["电力系统", "太阳�?, "核能"],
+      "BUFF/DEBUFF": ["缺氧", "低重�?, "辐射"],
+      "自然生成": ["月球陨石�?, "火星峡谷", "外星遗迹"],
+      "任务/成就": ["太空探索任务�?, "科技发展成就"],
+      "热键/指令": ["G - 打开星图", "H - 宇航服状�?],
       "游戏设定": ["氧气系统", "重力系统", "航天科技"],
     },
     downloads: 230000,
@@ -1015,30 +1015,30 @@ const mockResourceData: Record<string, any> = {
     favorites: 32000,
     likes: 15600,
     donationLeaders: [
-      { name: "太空迷", amount: "80k", avatar: "🏆" },
+      { name: "太空�?, amount: "80k", avatar: "🏆" },
     ],
     donationFeed: [],
     comments: [],
   },
   "server-1": {
     type: "server",
-    title: "纯净生存服",
+    title: "纯净生存�?,
     author: "纯净团队",
-    authorType: "服务器运营团队",
-    description: "原版纯净生存体验，无模组修改，仅基础服务端插件。提供原版生存、原版极限、原版创造三种游戏模式，让玩家体验最纯粹的Minecraft乐趣。",
-    authorNote: "我们坚持原版体验，拒绝任何可能破坏游戏平衡的模组，让每一位玩家都能享受最纯粹的Minecraft！",
-    tags: ["纯净服", "生存", "原版"],
+    authorType: "服务器运营团�?,
+    description: "原版纯净生存体验，无模组修改，仅基础服务端插件。提供原版生存、原版极限、原版创造三种游戏模式，让玩家体验最纯粹的Minecraft乐趣�?,
+    authorNote: "我们坚持原版体验，拒绝任何可能破坏游戏平衡的模组，让每一位玩家都能享受最纯粹的Minecraft�?,
+    tags: ["纯净�?, "生存", "原版"],
     basicInfo: {
-      "服务器类型": "纯净服",
-      "联机特性": "JAVA桌面和移动端互通",
+      "服务器类�?: "纯净�?,
+      "联机特�?: "JAVA桌面和移动端互�?,
       "内容方向": "原版生存",
       "产出方式": "原创",
       "产出时间": "2021.03",
-      "性能负载": "低负载",
-      "内容规模": "普通",
+      "性能负载": "低负�?,
+      "内容规模": "普�?,
       "体验体量": "大型 300分钟+",
-      "难易度": "标准",
-      "情感导向": "放松/治愈、快乐/创造、怀旧/回忆",
+      "难易�?: "标准",
+      "情感导向": "放松/治愈、快�?创造、怀�?回忆",
     },
     downloads: 0,
     views: 320000,
@@ -1052,25 +1052,25 @@ const mockResourceData: Record<string, any> = {
   "server-2": {
     type: "server",
     title: "方块王国 RPG",
-    author: "王国运营组",
-    authorType: "服务器运营团队",
-    description: "一个专注于RPG体验的整合服。拥有独特的职业系统、经济系统、公会战和丰富的副本内容。玩家可以选择战士、法师、弓箭手等多种职业，通过完成任务和打怪升级，参与每周的公会战争，争夺领地和资源。",
+    author: "王国运营�?,
+    authorType: "服务器运营团�?,
+    description: "一个专注于RPG体验的整合服。拥有独特的职业系统、经济系统、公会战和丰富的副本内容。玩家可以选择战士、法师、弓箭手等多种职业，通过完成任务和打怪升级，参与每周的公会战争，争夺领地和资源�?,
     authorNote: "我们致力于打造一个公平、有趣、长久的RPG生存社区。服务器已稳定运营两年，欢迎新玩家加入我们的大家庭！",
-    tags: ["整合服", "RPG", "职业"],
+    tags: ["整合�?, "RPG", "职业"],
     basicInfo: {
-      "服务器类型": "整合服",
-      "联机特性": "仅JAVA桌面端",
-      "内容方向": "角色扮演类、冒险类、竞技类",
-      "视觉基调": "奇幻风",
+      "服务器类�?: "整合�?,
+      "联机特�?: "仅JAVA桌面�?,
+      "内容方向": "角色扮演类、冒险类、竞技�?,
+      "视觉基调": "奇幻�?,
       "产出方式": "原创",
       "产出时间": "2022.08",
-      "性能负载": "中负载",
-      "内容规模": "大体量",
+      "性能负载": "中负�?,
+      "内容规模": "大体�?,
       "体验体量": "大型 300分钟+",
-      "难易度": "标准",
-      "情感导向": "快乐/创造、共情/代入、成就/满足",
-      "内容警示": "不涉及",
-      "数值平衡": "强化数值",
+      "难易�?: "标准",
+      "情感导向": "快乐/创造、共�?代入、成�?满足",
+      "内容警示": "不涉�?,
+      "数值平�?: "强化数�?,
     },
     downloads: 0,
     views: 450000,
@@ -1084,22 +1084,22 @@ const mockResourceData: Record<string, any> = {
   "resourcepack-1": {
     type: "resourcepack",
     title: "像素幻想 32x",
-    author: "像素艺术家",
-    authorType: "材质创作者",
-    description: "一款融合像素艺术与奇幻风格的材质包。在保持原版像素感的同时，为每个方块和物品注入更多细节和色彩。特别适合喜欢奇幻风格的玩家，与光影模组搭配效果更佳。",
-    authorNote: "这是我第一个公开发布的材质包，希望你们喜欢！如果有什么建议或者发现bug，请告诉我，我会持续更新改进的。",
+    author: "像素艺术�?,
+    authorType: "材质创作�?,
+    description: "一款融合像素艺术与奇幻风格的材质包。在保持原版像素感的同时，为每个方块和物品注入更多细节和色彩。特别适合喜欢奇幻风格的玩家，与光影模组搭配效果更佳�?,
+    authorNote: "这是我第一个公开发布的材质包，希望你们喜欢！如果有什么建议或者发现bug，请告诉我，我会持续更新改进的�?,
     tags: ["奇幻", "像素", "32x"],
     basicInfo: {
       "内容风格": "奇幻风、像素风",
       "游戏版本": "1.20.x",
       "产出方式": "原创",
       "产出时间": "2024.03",
-      "许可证类型": "闭源",
-      "性能负载": "低负载",
-      "内容规模": "普通",
-      "体验体量": "不涉及",
-      "情感导向": "快乐/创造、震撼/敬畏",
-      "内容警示": "不涉及",
+      "许可证类�?: "闭源",
+      "性能负载": "低负�?,
+      "内容规模": "普�?,
+      "体验体量": "不涉�?,
+      "情感导向": "快乐/创造、震�?敬畏",
+      "内容警示": "不涉�?,
     },
     downloads: 34000,
     views: 180000,
@@ -1112,29 +1112,29 @@ const mockResourceData: Record<string, any> = {
   "shader-1": {
     type: "shader",
     title: "柔和光影 Pro",
-    author: "光影工作室",
-    authorType: "光影开发者",
-    description: "一款追求真实感与性能平衡的光影包。采用优化的光照算法，实现柔和的阴影、逼真的水面反射和动态云彩。支持多种显卡配置，低配电脑也能流畅运行。",
-    authorNote: "我们相信好的光影不应该只属于高端电脑。这款光影经过反复优化，希望让更多玩家享受到美丽的光影效果。",
+    author: "光影工作�?,
+    authorType: "光影开发�?,
+    description: "一款追求真实感与性能平衡的光影包。采用优化的光照算法，实现柔和的阴影、逼真的水面反射和动态云彩。支持多种显卡配置，低配电脑也能流畅运行�?,
+    authorNote: "我们相信好的光影不应该只属于高端电脑。这款光影经过反复优化，希望让更多玩家享受到美丽的光影效果�?,
     tags: ["真实", "柔和", "性能优化"],
     basicInfo: {
-      "内容风格": "写实风",
+      "内容风格": "写实�?,
       "游戏版本": "1.16.x - 1.21.x",
       "产出方式": "原创",
       "产出时间": "2023.09",
-      "许可证类型": "开源",
-      "性能负载": "中负载",
-      "内容规模": "普通",
-      "体验体量": "不涉及",
-      "情感导向": "震撼/敬畏、放松/治愈",
-      "内容警示": "不涉及",
+      "许可证类�?: "开�?,
+      "性能负载": "中负�?,
+      "内容规模": "普�?,
+      "体验体量": "不涉�?,
+      "情感导向": "震撼/敬畏、放�?治愈",
+      "内容警示": "不涉�?,
     },
     downloads: 560000,
     views: 3200000,
     favorites: 78000,
     likes: 32000,
     donationLeaders: [
-      { name: "光影收藏家", amount: "25k", avatar: "🏆" },
+      { name: "光影收藏�?, amount: "25k", avatar: "🏆" },
     ],
     donationFeed: [],
     comments: [],
@@ -1143,21 +1143,21 @@ const mockResourceData: Record<string, any> = {
     type: "building",
     title: "中世纪城镇建筑包",
     author: "建筑大师",
-    authorType: "建筑创作者",
-    description: "一套完整的中世纪风格建筑 schematic 文件包。包含房屋、教堂、城堡、市场等20余种建筑，每座建筑都经过精心设计，可直接导入世界使用或作为建筑参考。",
-    authorNote: "这些建筑是我两年来积累的作品，现在分享给大家。你可以自由使用它们，但请不要直接转卖哦。",
-    tags: ["中世纪", "城镇", "建筑"],
+    authorType: "建筑创作�?,
+    description: "一套完整的中世纪风格建�?schematic 文件包。包含房屋、教堂、城堡、市场等20余种建筑，每座建筑都经过精心设计，可直接导入世界使用或作为建筑参考�?,
+    authorNote: "这些建筑是我两年来积累的作品，现在分享给大家。你可以自由使用它们，但请不要直接转卖哦�?,
+    tags: ["中世�?, "城镇", "建筑"],
     basicInfo: {
-      "内容风格": "中世纪",
+      "内容风格": "中世�?,
       "游戏版本": "1.18.x - 1.21.x",
       "产出方式": "原创",
       "产出时间": "2024.01",
-      "许可证类型": "开源",
-      "性能负载": "低负载",
-      "内容规模": "普通",
-      "体验体量": "不涉及",
-      "情感导向": "快乐/创造、怀旧/回忆",
-      "内容警示": "不涉及",
+      "许可证类�?: "开�?,
+      "性能负载": "低负�?,
+      "内容规模": "普�?,
+      "体验体量": "不涉�?,
+      "情感导向": "快乐/创造、怀�?回忆",
+      "内容警示": "不涉�?,
     },
     downloads: 78000,
     views: 450000,
@@ -1170,22 +1170,22 @@ const mockResourceData: Record<string, any> = {
   "audio-1": {
     type: "audio",
     title: "沉浸式环境音效包",
-    author: "音效设计师",
-    authorType: "音频创作者",
-    description: "一套高质量的环境音效资源包。替换和新增了游戏中的环境音效，包括风声、雨声、鸟鸣、洞穴回声等，让游戏世界更加生动沉浸。支持动态音效，会根据玩家所处环境自动切换。",
+    author: "音效设计�?,
+    authorType: "音频创作�?,
+    description: "一套高质量的环境音效资源包。替换和新增了游戏中的环境音效，包括风声、雨声、鸟鸣、洞穴回声等，让游戏世界更加生动沉浸。支持动态音效，会根据玩家所处环境自动切换�?,
     authorNote: "声音是沉浸感的重要组成部分。希望这个音效包能让你们的世界更加生动！",
-    tags: ["环境音效", "沉浸", "高质量"],
+    tags: ["环境音效", "沉浸", "高质�?],
     basicInfo: {
-      "内容风格": "写实风",
-      "游戏版本": "全版本",
+      "内容风格": "写实�?,
+      "游戏版本": "全版�?,
       "产出方式": "原创",
       "产出时间": "2024.04",
-      "许可证类型": "闭源",
-      "性能负载": "低负载",
-      "内容规模": "轻体量",
-      "体验体量": "不涉及",
-      "情感导向": "放松/治愈、共情/代入",
-      "内容警示": "不涉及",
+      "许可证类�?: "闭源",
+      "性能负载": "低负�?,
+      "内容规模": "轻体�?,
+      "体验体量": "不涉�?,
+      "情感导向": "放松/治愈、共�?代入",
+      "内容警示": "不涉�?,
     },
     downloads: 23000,
     views: 120000,
@@ -1204,16 +1204,16 @@ const getResourceData = (type: string, id: string) => {
   return {
     type,
     title: `示例${getTypeLabel(type)}资源`,
-    author: "示例作者",
-    authorType: "创作者",
-    description: "这是一个示例资源的描述信息。",
+    author: "示例作�?,
+    authorType: "创作�?,
+    description: "这是一个示例资源的描述信息�?,
     authorNote: "感谢大家的支持！",
     tags: ["示例标签"],
     basicInfo: {
       "游戏版本": "1.20.x",
       "产出方式": "原创",
       "产出时间": "2024.01",
-      "许可证类型": "开源",
+      "许可证类�?: "开�?,
     },
     downloads: 100,
     views: 500,
@@ -1227,8 +1227,8 @@ const getResourceData = (type: string, id: string) => {
 
 function getTypeLabel(type: string): string {
   const map: Record<string, string> = {
-    mod: "模组", map: "地图", datapack: "数据包", modpack: "整合包",
-    server: "服务器", resourcepack: "材质", shader: "光影",
+    mod: "模组", map: "地图", datapack: "数据�?, modpack: "整合�?,
+    server: "服务�?, resourcepack: "材质", shader: "光影",
     building: "建筑", audio: "音频",
   };
   return map[type] || type;
@@ -1256,12 +1256,12 @@ const ResourceDetail = () => {
   
   const elementTypes = [
     { id: "mod", label: "模组", icon: "🔧" },
-    { id: "map", label: "地图", icon: "🗺️" },
-    { id: "datapack", label: "数据包", icon: "📦" },
+    { id: "map", label: "地图", icon: "🗺�? },
+    { id: "datapack", label: "数据�?, icon: "📦" },
     { id: "resourcepack", label: "材质", icon: "🎨" },
     { id: "building", label: "建筑", icon: "🏠" },
     { id: "audio", label: "音频", icon: "🎵" },
-    { id: "shader", label: "光影", icon: "✨" },
+    { id: "shader", label: "光影", icon: "�? },
   ];
   
   const [elements, setElements] = useState<Array<{
@@ -1272,12 +1272,12 @@ const ResourceDetail = () => {
     version?: string;
     author?: string;
   }>>([
-    { id: "1", type: "mod", name: "机械动力", description: "机械自动化模组", version: "0.5.1", author: "Create Team" },
-    { id: "2", type: "mod", name: "JEI物品管理器", description: "物品和配方查看", version: "15.2.0", author: "mezz" },
-    { id: "3", type: "mod", name: "小地图", description: "游戏内小地图显示", version: "1.20.1", author: "TechBrew" },
-    { id: "4", type: "resourcepack", name: "Faithful材质包", description: "高清原版风格材质", version: "32x", author: "Faithful Team" },
+    { id: "1", type: "mod", name: "机械动力", description: "机械自动化模�?, version: "0.5.1", author: "Create Team" },
+    { id: "2", type: "mod", name: "JEI物品管理�?, description: "物品和配方查�?, version: "15.2.0", author: "mezz" },
+    { id: "3", type: "mod", name: "小地�?, description: "游戏内小地图显示", version: "1.20.1", author: "TechBrew" },
+    { id: "4", type: "resourcepack", name: "Faithful材质�?, description: "高清原版风格材质", version: "32x", author: "Faithful Team" },
     { id: "5", type: "shader", name: "BSL光影", description: "高质量光影包", version: "8.2", author: "capttatsu" },
-    { id: "6", type: "datapack", name: "更多合成", description: "添加新合成配方", version: "1.0", author: "DataPack Creator" },
+    { id: "6", type: "datapack", name: "更多合成", description: "添加新合成配�?, version: "1.0", author: "DataPack Creator" },
   ]);
   const [showElementModal, setShowElementModal] = useState(false);
   const [newElement, setNewElement] = useState({ type: "mod", name: "", description: "", version: "", author: "" });
@@ -1294,7 +1294,7 @@ const ResourceDetail = () => {
     {
       id: "1",
       url: "/placeholder-gallery-1.png",
-      caption: "自动化农场全景",
+      caption: "自动化农场全�?,
       uploader: "玩家A",
       uploadDate: "2024-01-15",
       status: "approved"
@@ -1302,7 +1302,7 @@ const ResourceDetail = () => {
     {
       id: "2",
       url: "/placeholder-gallery-2.png",
-      caption: "机械臂工作状态",
+      caption: "机械臂工作状�?,
       uploader: "玩家B",
       uploadDate: "2024-01-16",
       status: "approved"
@@ -1343,69 +1343,50 @@ const ResourceDetail = () => {
   }>>([
     {
       id: "1",
-      title: "方块王国服务器规则",
-      author: "王国运营组",
+      title: "方块王国服务器规�?,
+      author: "王国运营�?,
       publishDate: "2024-01-15",
       views: 8560,
       likes: 234,
-      content: `# 方块王国服务器规则
-
+      content: `# 方块王国服务器规�?
 ## 基本规则
 - 禁止使用任何作弊客户端或外挂
-- 禁止恶意破坏他人建筑和财产
-- 禁止辱骂、骚扰其他玩家
-- 禁止利用游戏漏洞获取不当利益
+- 禁止恶意破坏他人建筑和财�?- 禁止辱骂、骚扰其他玩�?- 禁止利用游戏漏洞获取不当利益
 - 禁止在非指定区域进行PVP
 
 ## 建筑规则
 - 主城周围500格内禁止随意建筑
-- 大型建筑需提前向管理团队申请
-- 建筑风格需与周边环境协调
-
+- 大型建筑需提前向管理团队申�?- 建筑风格需与周边环境协�?
 ## 经济规则
 - 禁止恶意操纵市场价格
-- 禁止使用漏洞刷取货币或物品
-- 交易需在指定交易区进行
+- 禁止使用漏洞刷取货币或物�?- 交易需在指定交易区进行
 
-## 服务器文化
-我们致力于打造一个友好、公平、有趣的RPG生存社区。在这里，你可以：
-- 选择自己喜欢的职业发展
-- 参与公会战争，争夺领地
-- 挑战各种副本和Boss
-- 结交志同道合的朋友
-
+## 服务器文�?我们致力于打造一个友好、公平、有趣的RPG生存社区。在这里，你可以�?- 选择自己喜欢的职业发�?- 参与公会战争，争夺领�?- 挑战各种副本和Boss
+- 结交志同道合的朋�?
 让我们一起创造美好的游戏回忆！`,
       status: "approved"
     },
     {
       id: "2",
-      title: "纯净生存服玩家守则",
+      title: "纯净生存服玩家守�?,
       author: "纯净团队",
       publishDate: "2024-02-20",
       views: 5230,
       likes: 189,
-      content: `# 纯净生存服玩家守则
-
+      content: `# 纯净生存服玩家守�?
 ## 核心理念
-我们坚持原版体验，拒绝任何可能破坏游戏平衡的模组。
-
+我们坚持原版体验，拒绝任何可能破坏游戏平衡的模组�?
 ## 行为规范
 - 尊重每一位玩家，保持友好交流
 - 禁止恶意PK，PVP需双方同意
 - 禁止偷窃他人物品
-- 禁止恶意破坏地形和建筑
-
+- 禁止恶意破坏地形和建�?
 ## 建筑指南
-- 请在距离出生点1000格外建立基地
+- 请在距离出生�?000格外建立基地
 - 大型公共建筑需经过投票决定
-- 保护自然环境，避免过度开采
-
+- 保护自然环境，避免过度开�?
 ## 社区文化
-我们是一个热爱原版Minecraft的社区，在这里你可以：
-- 体验最纯粹的生存乐趣
-- 与朋友一起探索、建造
-- 参与社区活动，赢取奖励
-- 分享你的建筑作品
+我们是一个热爱原版Minecraft的社区，在这里你可以�?- 体验最纯粹的生存乐�?- 与朋友一起探索、建�?- 参与社区活动，赢取奖�?- 分享你的建筑作品
 
 欢迎加入我们的大家庭！`,
       status: "approved"
@@ -1442,72 +1423,58 @@ const ResourceDetail = () => {
       likes: 342,
       content: `# 机械动力模组入门指南
 
-## 简介
-机械动力是一个专注于自动化和机械工程的模组，让玩家可以建造复杂的自动化系统。
-
-## 快速开始
-
+## 简�?机械动力是一个专注于自动化和机械工程的模组，让玩家可以建造复杂的自动化系统�?
+## 快速开�?
 ### 1. 资源收集
-首先需要收集基础资源：
-- 铁矿
+首先需要收集基础资源�?- 铁矿
 - 铜矿
 - 锌矿
 
 ### 2. 制作基础机器
-制作以下基础设备：
-- 机械动力源
-- 传送带
-- 机械臂
-
-### 3. 自动化系统
-学习如何搭建自动化生产线...
+制作以下基础设备�?- 机械动力�?- 传送带
+- 机械�?
+### 3. 自动化系�?学习如何搭建自动化生产线...
 
 ![自动化示例](/guide-image-1.png)
 
-## 进阶技巧
-
-### 多线程处理
-通过合理布局可以实现多线程并行处理...
+## 进阶技�?
+### 多线程处�?通过合理布局可以实现多线程并行处�?..
 
 ### 效率优化
-一些提高效率的小技巧...`,
+一些提高效率的小技�?..`,
       status: "approved"
     },
     {
       id: "2",
-      title: "高级自动化系统设计",
+      title: "高级自动化系统设�?,
       author: "技术大佬B",
       publishDate: "2024-01-18",
       views: 8956,
       likes: 256,
-      content: `# 高级自动化系统设计
-
+      content: `# 高级自动化系统设�?
 ## 概述
-本文将介绍如何设计高效的自动化系统...
+本文将介绍如何设计高效的自动化系�?..
 
 ## 核心概念
-- 模块化设计
-- 资源流向优化
-- 故障检测机制
-
+- 模块化设�?- 资源流向优化
+- 故障检测机�?
 ## 实战案例
-详细的设计案例...`,
+详细的设计案�?..`,
       status: "approved"
     },
     {
       id: "3",
-      title: "新手必看：常见问题解答",
+      title: "新手必看：常见问题解�?,
       author: "热心玩家C",
       publishDate: "2024-01-20",
       views: 5623,
       likes: 189,
-      content: `# 新手必看：常见问题解答
-
+      content: `# 新手必看：常见问题解�?
 ## Q: 如何开始？
 A: 首先收集基础资源...
 
 ## Q: 遇到崩溃怎么办？
-A: 检查模组版本兼容性...`,
+A: 检查模组版本兼容�?..`,
       status: "pending"
     }
   ]);
@@ -1587,8 +1554,8 @@ A: 检查模组版本兼容性...`,
           id: "d1",
           name: "虚无世界附属-武器扩展",
           type: "依赖模组",
-          description: "基于虚无世界制作的武器扩展模组",
-          author: "社区开发者",
+          description: "基于虚无世界制作的武器扩展模�?,
+          author: "社区开发�?,
           downloads: 234000,
         },
       ],
@@ -1615,7 +1582,7 @@ A: 检查模组版本兼容性...`,
           id: "i2",
           name: "天境",
           type: "联动模组",
-          description: "联动添加跨维度传送功能",
+          description: "联动添加跨维度传送功�?,
           author: "Gilded Games",
           downloads: 45000000,
         },
@@ -1632,7 +1599,7 @@ A: 检查模组版本兼容性...`,
           id: "p2",
           name: "GeckoLib",
           type: "前置模组",
-          description: "3D动画库",
+          description: "3D动画�?,
           author: "Gecko",
           downloads: 334800000,
         },
@@ -1698,7 +1665,7 @@ A: 检查模组版本兼容性...`,
   const resource = getResourceData(type || "mod", id || "1");
 
   const filteredBasicInfo = Object.entries(resource.basicInfo || {}).filter(
-    ([_, value]) => value && value !== "不涉及"
+    ([_, value]) => value && value !== "不涉�?
   );
 
   const hasContentDetails = ["mod", "modpack", "datapack", "server"].includes(resource.type);
@@ -1841,21 +1808,21 @@ A: 检查模组版本兼容性...`,
             </div>
 
             <div>
-              <label className="text-sm font-medium text-foreground mb-2 block">资源简介</label>
+              <label className="text-sm font-medium text-foreground mb-2 block">资源简�?/label>
               <Textarea
                 value={editedResource.description || ""}
                 onChange={(e) => setEditedResource({ ...editedResource, description: e.target.value })}
-                placeholder="输入资源简介..."
+                placeholder="输入资源简�?.."
                 className="text-sm min-h-[100px]"
               />
             </div>
 
             <div>
-              <label className="text-sm font-medium text-foreground mb-2 block">制作方寄语</label>
+              <label className="text-sm font-medium text-foreground mb-2 block">制作方寄�?/label>
               <Textarea
                 value={editedResource.authorNote || ""}
                 onChange={(e) => setEditedResource({ ...editedResource, authorNote: e.target.value })}
-                placeholder="输入制作方寄语..."
+                placeholder="输入制作方寄�?.."
                 className="text-sm min-h-[80px]"
               />
             </div>
@@ -1864,7 +1831,7 @@ A: 检查模组版本兼容性...`,
               <div key={tag.id}>
                 <label className="text-sm font-medium text-foreground mb-2 block">
                   {tag.label}
-                  {tag.multiSelect && <span className="text-xs text-muted-foreground ml-1">(可多选)</span>}
+                  {tag.multiSelect && <span className="text-xs text-muted-foreground ml-1">(可多�?</span>}
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {tag.options && tag.options.map((option) => (
@@ -1902,7 +1869,7 @@ A: 检查模组版本兼容性...`,
               <div key={tag.id}>
                 <label className="text-sm font-medium text-foreground mb-2 block">
                   {tag.label}
-                  {tag.multiSelect && <span className="text-xs text-muted-foreground ml-1">(可多选)</span>}
+                  {tag.multiSelect && <span className="text-xs text-muted-foreground ml-1">(可多�?</span>}
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {tag.options && tag.options.map((option) => (
@@ -1993,7 +1960,7 @@ A: 检查模组版本兼容性...`,
                 ...(hasContentDetails ? [{ id: "content", label: "内容详情" }] : []),
                 ...(hasGallery ? [{ id: "gallery", label: "画廊" }] : []),
                 { id: "download", label: "下载" },
-                ...(resource.type === "server" ? [{ id: "serverRules", label: "服务器规则" }] : []),
+                ...(resource.type === "server" ? [{ id: "serverRules", label: "服务器规�? }] : []),
                 ...(!isAuxiliaryResource ? [{ id: "guide", label: "攻略" }] : []),
                 { id: "license", label: "协议" },
                 { id: "changelog", label: "日志" },
@@ -2028,12 +1995,12 @@ A: 检查模组版本兼容性...`,
                 </div>
 
                 <section className="mb-6">
-                  <h3 className="text-sm font-semibold text-primary mb-2">资源简介</h3>
+                  <h3 className="text-sm font-semibold text-primary mb-2">资源简�?/h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{resource.description}</p>
                 </section>
 
                 <section className="mb-6">
-                  <h3 className="text-sm font-semibold text-primary mb-2">制作方寄语</h3>
+                  <h3 className="text-sm font-semibold text-primary mb-2">制作方寄�?/h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{resource.authorNote}</p>
                 </section>
 
@@ -2043,7 +2010,7 @@ A: 检查模组版本兼容性...`,
                     <div className="space-y-1.5">
                       {filteredBasicInfo.map(([key, value]) => (
                         <div key={key} className="text-sm">
-                          <span className="text-muted-foreground">{key}：</span>
+                          <span className="text-muted-foreground">{key}�?/span>
                           <span className="text-foreground">{value as string}</span>
                         </div>
                       ))}
@@ -2099,7 +2066,7 @@ A: 检查模组版本兼容性...`,
                           <div className="col-span-3">名称</div>
                           <div className="col-span-3">描述</div>
                           <div className="col-span-1">版本</div>
-                          <div className="col-span-2">作者</div>
+                          <div className="col-span-2">作�?/div>
                           <div className="col-span-1">操作</div>
                         </div>
                         <div className="divide-y divide-border max-h-[500px] overflow-y-auto">
@@ -2184,12 +2151,12 @@ A: 检查模组版本兼容性...`,
                                   <Input
                                     value={newElement.version}
                                     onChange={(e) => setNewElement({ ...newElement, version: e.target.value })}
-                                    placeholder="版本号..."
+                                    placeholder="版本�?.."
                                     className="text-sm"
                                   />
                                 </div>
                                 <div className="flex-1">
-                                  <label className="text-xs text-muted-foreground mb-1 block">作者</label>
+                                  <label className="text-xs text-muted-foreground mb-1 block">作�?/label>
                                   <Input
                                     value={newElement.author}
                                     onChange={(e) => setNewElement({ ...newElement, author: e.target.value })}
@@ -2341,7 +2308,7 @@ A: 检查模组版本兼容性...`,
                                 <Eye className="w-8 h-8 text-muted-foreground" />
                               </div>
                               <h3 className="text-sm font-medium text-foreground mb-1">选择词条查看详情</h3>
-                              <p className="text-xs text-muted-foreground">从左侧分类导航中选择一个词条</p>
+                              <p className="text-xs text-muted-foreground">从左侧分类导航中选择一个词�?/p>
                             </div>
                           </div>
                         )}
@@ -2393,8 +2360,7 @@ A: 检查模组版本兼容性...`,
                                       }
                                     }}
                                   >
-                                    使用此分类
-                                  </Button>
+                                    使用此分�?                                  </Button>
                                 </div>
                               )}
                               
@@ -2418,7 +2384,7 @@ A: 检查模组版本兼容性...`,
                                     <Input
                                       value={newHotWord}
                                       onChange={(e) => setNewHotWord(e.target.value)}
-                                      placeholder="输入词条名称后按 Enter 或点击添加..."
+                                      placeholder="输入词条名称后按 Enter 或点击添�?.."
                                       className="text-sm flex-1"
                                       onKeyDown={(e) => {
                                         if (e.key === "Enter") handleAddHotWord();
@@ -2439,7 +2405,7 @@ A: 检查模组版本兼容性...`,
                                   <Input
                                     value={newCategoryName}
                                     onChange={(e) => setNewCategoryName(e.target.value)}
-                                    placeholder="输入新热词名称..."
+                                    placeholder="输入新热词名�?.."
                                     className="text-sm"
                                     onKeyDown={(e) => {
                                       if (e.key === "Enter") handleAddNewCategory();
@@ -2520,11 +2486,11 @@ A: 检查模组版本兼容性...`,
                         <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 mb-4">
                           <div className="text-xs font-semibold text-blue-600 mb-2">上传规则</div>
                           <ul className="text-[10px] text-muted-foreground space-y-1">
-                            <li>• 图片需与该资源相关，展示资源的使用效果或特色内容</li>
-                            <li>• 图片内容需健康向上，不得包含违规信息</li>
-                            <li>• 图片需为原创或已获得授权，不得侵犯他人版权</li>
-                            <li>• 上传的图片需经制作方审核后才会显示在画廊中</li>
-                            <li>• 请确保图片清晰，分辨率不低于 800x600</li>
+                            <li>�?图片需与该资源相关，展示资源的使用效果或特色内�?/li>
+                            <li>�?图片内容需健康向上，不得包含违规信�?/li>
+                            <li>�?图片需为原创或已获得授权，不得侵犯他人版权</li>
+                            <li>�?上传的图片需经制作方审核后才会显示在画廊�?/li>
+                            <li>�?请确保图片清晰，分辨率不低于 800x600</li>
                           </ul>
                         </div>
 
@@ -2599,7 +2565,7 @@ A: 检查模组版本兼容性...`,
                             onChange={(e) => setVersionFilter(e.target.value)}
                             className="h-8 px-3 text-xs border border-input rounded-md bg-background flex-1"
                           >
-                            <option value="all">所有游戏版本</option>
+                            <option value="all">所有游戏版�?/option>
                             <option value="1.20.1">1.20.1</option>
                             <option value="1.19.2">1.19.2</option>
                             <option value="1.18.2">1.18.2</option>
@@ -2637,8 +2603,7 @@ A: 检查模组版本兼容性...`,
                                       <span className="text-sm font-medium text-foreground">{v.version}</span>
                                       {v.isLatest && (
                                         <Badge className="text-[10px] h-4 px-1.5 bg-green-500/10 text-green-600 border-green-500/20">
-                                          最新
-                                        </Badge>
+                                          最�?                                        </Badge>
                                       )}
                                     </div>
                                     <Button size="sm" className="h-6 px-2 text-xs">
@@ -2659,8 +2624,7 @@ A: 检查模组版本兼容性...`,
 
                         {resourceVersions.filter(v => versionFilter === "all" || v.gameVersion === versionFilter).filter(v => loaderFilter === "all" || v.loader === loaderFilter).length === 0 && (
                           <div className="text-center py-12 text-muted-foreground text-sm">
-                            没有找到符合条件的版本
-                          </div>
+                            没有找到符合条件的版�?                          </div>
                         )}
                       </div>
 
@@ -2697,8 +2661,7 @@ A: 检查模组版本兼容性...`,
                                 if (!selectedVer) {
                                   return (
                                     <div className="text-center py-8 text-muted-foreground text-xs">
-                                      该版本暂无联动模组信息
-                                    </div>
+                                      该版本暂无联动模组信�?                                    </div>
                                   );
                                 }
 
@@ -2802,8 +2765,7 @@ A: 检查模组版本兼容性...`,
 
                                     {selectedVer.prerequisites.length === 0 && selectedVer.dependencies.length === 0 && selectedVer.integrations.length === 0 && (
                                       <div className="text-center py-8 text-muted-foreground text-xs">
-                                        该版本暂无联动模组
-                                      </div>
+                                        该版本暂无联动模�?                                      </div>
                                     )}
                                   </>
                                 );
@@ -2811,8 +2773,7 @@ A: 检查模组版本兼容性...`,
                             </div>
                           ) : (
                             <div className="flex items-center justify-center h-full text-muted-foreground text-xs">
-                              请在左侧选择一个版本查看联动模组
-                            </div>
+                              请在左侧选择一个版本查看联动模�?                            </div>
                           )}
                         </div>
                       </div>
@@ -2826,7 +2787,7 @@ A: 检查模组版本兼容性...`,
                           onChange={(e) => setVersionFilter(e.target.value)}
                           className="h-8 px-3 text-xs border border-input rounded-md bg-background"
                         >
-                          <option value="all">所有游戏版本</option>
+                          <option value="all">所有游戏版�?/option>
                           <option value="1.20.1">1.20.1</option>
                           <option value="1.19.2">1.19.2</option>
                           <option value="1.18.2">1.18.2</option>
@@ -2843,8 +2804,7 @@ A: 检查模组版本兼容性...`,
                                   <span className="text-sm font-medium text-foreground">{v.version}</span>
                                   {v.isLatest && (
                                     <Badge className="text-[10px] h-4 px-1.5 bg-green-500/10 text-green-600 border-green-500/20">
-                                      最新
-                                    </Badge>
+                                      最�?                                    </Badge>
                                   )}
                                 </div>
                                 <Button size="sm" className="h-6 px-2 text-xs">
@@ -2866,8 +2826,7 @@ A: 检查模组版本兼容性...`,
 
                       {resourceVersions.filter(v => versionFilter === "all" || v.gameVersion === versionFilter).length === 0 && (
                         <div className="text-center py-12 text-muted-foreground text-sm">
-                          没有找到符合条件的版本
-                        </div>
+                          没有找到符合条件的版�?                        </div>
                       )}
                     </div>
                   )}
@@ -2911,7 +2870,7 @@ A: 检查模组版本兼容性...`,
                       {(type === "mod" ? downloadUploadTab === "version" : true) ? (
                         <div className="space-y-3">
                           <div>
-                            <label className="text-xs text-muted-foreground mb-1 block">版本号</label>
+                            <label className="text-xs text-muted-foreground mb-1 block">版本�?/label>
                             <Input
                               value={newRelatedMod.name}
                               onChange={(e) => setNewRelatedMod({ ...newRelatedMod, name: e.target.value })}
@@ -2931,7 +2890,7 @@ A: 检查模组版本兼容性...`,
                             </div>
                             {type === "mod" && (
                               <div>
-                                <label className="text-xs text-muted-foreground mb-1 block">加载器</label>
+                                <label className="text-xs text-muted-foreground mb-1 block">加载�?/label>
                                 <select
                                   value={newRelatedMod.type}
                                   onChange={(e) => setNewRelatedMod({ ...newRelatedMod, type: e.target.value })}
@@ -3004,11 +2963,11 @@ A: 检查模组版本兼容性...`,
                           </div>
                           <div className="grid grid-cols-2 gap-3">
                             <div>
-                              <label className="text-xs text-muted-foreground mb-1 block">作者</label>
+                              <label className="text-xs text-muted-foreground mb-1 block">作�?/label>
                               <Input
                                 value={newRelatedMod.author}
                                 onChange={(e) => setNewRelatedMod({ ...newRelatedMod, author: e.target.value })}
-                                placeholder="输入作者"
+                                placeholder="输入作�?
                                 className="text-sm"
                               />
                             </div>
@@ -3119,83 +3078,46 @@ A: 检查模组版本兼容性...`,
                         <div className="bg-secondary/30 border border-border rounded-lg p-4">
                           <div className="text-xs text-muted-foreground leading-relaxed whitespace-pre-line">
                             {selectedLicense.type === "original-normal" && (
-                              `【免责声明】
-
-本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联。
-
-【基本声明】
-
-本资源内容严格遵守微软官方《Minecraft 最终用户许可协议》(EULA) 和《Minecraft 商业使用指南》的相关规定。
-
-根据Minecraft官方政策，本资源属于游戏内容资源，必须免费提供给所有用户。所有内容均为原创制作，不包含任何侵犯微软或Mojang Studios知识产权的元素。
-
-本资源内容免费无偿供所有用户使用。用户在遵守相关使用条款的前提下，可自由下载、使用和分享该资源内容，无需支付任何费用。
-
-【平台声明】
-
-本平台要求平台内的制作原创内容的制作方如果使用本平台发布自己的原创作品，便不能再其它网站发布这些作品，本平台对搬运内容不做要求。
-
-【作者声明】
-
-本人作为本资源的原创作者，承诺所发布的内容均为原创制作，不涉及任何侵权行为。本人保留对本资源的著作权，并授权用户在遵守本协议的前提下使用本资源。
-
-本人同样遵守自己身为该平台的进行原创活动的制作方的各项基本要求。
-
+                              `【免责声明�?
+本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联�?
+【基本声明�?
+本资源内容严格遵守微软官方《Minecraft 最终用户许可协议�?EULA) 和《Minecraft 商业使用指南》的相关规定�?
+根据Minecraft官方政策，本资源属于游戏内容资源，必须免费提供给所有用户。所有内容均为原创制作，不包含任何侵犯微软或Mojang Studios知识产权的元素�?
+本资源内容免费无偿供所有用户使用。用户在遵守相关使用条款的前提下，可自由下载、使用和分享该资源内容，无需支付任何费用�?
+【平台声明�?
+本平台要求平台内的制作原创内容的制作方如果使用本平台发布自己的原创作品，便不能再其它网站发布这些作品，本平台对搬运内容不做要求�?
+【作者声明�?
+本人作为本资源的原创作者，承诺所发布的内容均为原创制作，不涉及任何侵权行为。本人保留对本资源的著作权，并授权用户在遵守本协议的前提下使用本资源�?
+本人同样遵守自己身为该平台的进行原创活动的制作方的各项基本要求�?
 用户在使用本资源时，应遵守以下约定：
-• 允许个人非商业用途使用
-• 允许在游戏中展示和使用
-• 允许制作视频、直播等Minecraft相关内容并通过平台广告、赞助、捐赠等方式获得收益
-• 允许接受用户自愿捐赠
-• 用户对制作方及作品的订阅及打赏行为均为自主无偿赠予行为，平台及作者不会要求用户必须订阅或打赏后才能使用这些内容
-• 禁止直接出售本资源或通过本资源直接盈利
-• 禁止未经授权的二次分发
-• 禁止将本资源用于推广与Minecraft无关的产品、服务或品牌
+�?允许个人非商业用途使�?�?允许在游戏中展示和使�?�?允许制作视频、直播等Minecraft相关内容并通过平台广告、赞助、捐赠等方式获得收益
+�?允许接受用户自愿捐赠
+�?用户对制作方及作品的订阅及打赏行为均为自主无偿赠予行为，平台及作者不会要求用户必须订阅或打赏后才能使用这些内�?�?禁止直接出售本资源或通过本资源直接盈�?�?禁止未经授权的二次分�?�?禁止将本资源用于推广与Minecraft无关的产品、服务或品牌
 
-【知识产权声明】
-
+【知识产权声明�?
 本资源中所有原创内容的知识产权归作者所有。Minecraft游戏的名称、品牌、标识等知识产权归Mojang Studios和Microsoft所有。本协议不授予用户任何Minecraft游戏本身的权利。`
                             )}
                             {selectedLicense.type === "repost-normal" && (
-                              `【免责声明】
-
-本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联。
-
-【基本声明】
-
-本资源内容严格遵守微软官方《Minecraft 最终用户许可协议》(EULA) 和《Minecraft 商业使用指南》的相关规定。
-
-根据Minecraft官方政策，本资源属于游戏内容资源，必须免费提供给所有用户。所有内容均为原创制作，不包含任何侵犯微软或Mojang Studios知识产权的元素。
-
-本资源内容免费无偿供所有用户使用。用户在遵守相关使用条款的前提下，可自由下载、使用和分享该资源内容，无需支付任何费用。
-
-【作者声明】
-
-本人作为本资源的原创作者，承诺所发布的内容均为原创制作，不涉及任何侵权行为。本人保留对本资源的著作权，并授权用户在遵守本协议的前提下使用本资源。
-
+                              `【免责声明�?
+本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联�?
+【基本声明�?
+本资源内容严格遵守微软官方《Minecraft 最终用户许可协议�?EULA) 和《Minecraft 商业使用指南》的相关规定�?
+根据Minecraft官方政策，本资源属于游戏内容资源，必须免费提供给所有用户。所有内容均为原创制作，不包含任何侵犯微软或Mojang Studios知识产权的元素�?
+本资源内容免费无偿供所有用户使用。用户在遵守相关使用条款的前提下，可自由下载、使用和分享该资源内容，无需支付任何费用�?
+【作者声明�?
+本人作为本资源的原创作者，承诺所发布的内容均为原创制作，不涉及任何侵权行为。本人保留对本资源的著作权，并授权用户在遵守本协议的前提下使用本资源�?
 用户在使用本资源时，应遵守以下约定：
-• 允许个人非商业用途使用
-• 允许在游戏中展示和使用
-• 允许制作视频、直播等Minecraft相关内容并通过平台广告、赞助、捐赠等方式获得收益
-• 允许接受用户自愿捐赠
-• 用户对制作方及作品的订阅及打赏行为均为自主无偿赠予行为，平台及作者不会要求用户必须订阅或打赏后才能使用这些内容
-• 禁止直接出售本资源或通过本资源直接盈利
-• 禁止未经授权的二次分发
-• 禁止将本资源用于推广与Minecraft无关的产品、服务或品牌
+�?允许个人非商业用途使�?�?允许在游戏中展示和使�?�?允许制作视频、直播等Minecraft相关内容并通过平台广告、赞助、捐赠等方式获得收益
+�?允许接受用户自愿捐赠
+�?用户对制作方及作品的订阅及打赏行为均为自主无偿赠予行为，平台及作者不会要求用户必须订阅或打赏后才能使用这些内�?�?禁止直接出售本资源或通过本资源直接盈�?�?禁止未经授权的二次分�?�?禁止将本资源用于推广与Minecraft无关的产品、服务或品牌
 
-【搬运声明】
+【搬运声明�?
+本资源已获得原制作方的明确授权，允许搬运至本平台并交由搬运方进行管理�?
+搬运方承诺遵守原制作方的所有使用要求，并确保资源的完整性和合规性。搬运方应及时同步原资源的更新，保持资源内容的最新状态�?
+搬运方与原作者之间的约定�?�?搬运方需在资源页面明确标注原作者信�?�?搬运方需及时同步原作者的更新内容
+�?搬运方不得擅自修改资源内�?�?如原作者要求下架，搬运方应立即配合
 
-本资源已获得原制作方的明确授权，允许搬运至本平台并交由搬运方进行管理。
-
-搬运方承诺遵守原制作方的所有使用要求，并确保资源的完整性和合规性。搬运方应及时同步原资源的更新，保持资源内容的最新状态。
-
-搬运方与原作者之间的约定：
-• 搬运方需在资源页面明确标注原作者信息
-• 搬运方需及时同步原作者的更新内容
-• 搬运方不得擅自修改资源内容
-• 如原作者要求下架，搬运方应立即配合
-
-【知识产权声明】
-
+【知识产权声明�?
 本资源中所有原创内容的知识产权归原作者所有。Minecraft游戏的名称、品牌、标识等知识产权归Mojang Studios和Microsoft所有。本协议不授予用户任何Minecraft游戏本身的权利。`
                             )}
                           </div>
@@ -3218,7 +3140,7 @@ A: 检查模组版本兼容性...`,
                         <div className="flex items-start justify-between mb-4">
                           <div>
                             <h2 className="text-lg font-bold text-foreground mb-2">提交协议</h2>
-                            <p className="text-xs text-muted-foreground">选择协议模板并进行编辑</p>
+                            <p className="text-xs text-muted-foreground">选择协议模板并进行编�?/p>
                           </div>
                           <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-lg hover:bg-secondary" onClick={() => setShowLicenseSubmitModal(false)}>
                             ×
@@ -3237,40 +3159,23 @@ A: 检查模组版本兼容性...`,
                                 }`}
                                 onClick={() => {
                                   setSelectedLicenseTemplate("original-normal");
-                                  setNewLicenseContent(`【免责声明】
-
-本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联。
-
-【基本声明】
-
-本资源内容严格遵守微软官方《Minecraft 最终用户许可协议》(EULA) 和《Minecraft 商业使用指南》的相关规定。
-
-根据Minecraft官方政策，本资源属于游戏内容资源，必须免费提供给所有用户。所有内容均为原创制作，不包含任何侵犯微软或Mojang Studios知识产权的元素。
-
-本资源内容免费无偿供所有用户使用。用户在遵守相关使用条款的前提下，可自由下载、使用和分享该资源内容，无需支付任何费用。
-
-【平台声明】
-
-本平台要求平台内的制作原创内容的制作方如果使用本平台发布自己的原创作品，便不能再其它网站发布这些作品，本平台对搬运内容不做要求。
-
-【作者声明】
-
-本人作为本资源的原创作者，承诺所发布的内容均为原创制作，不涉及任何侵权行为。本人保留对本资源的著作权，并授权用户在遵守本协议的前提下使用本资源。
-
-本人同样遵守自己身为该平台的进行原创活动的制作方的各项基本要求。
-
+                                  setNewLicenseContent(`【免责声明�?
+本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联�?
+【基本声明�?
+本资源内容严格遵守微软官方《Minecraft 最终用户许可协议�?EULA) 和《Minecraft 商业使用指南》的相关规定�?
+根据Minecraft官方政策，本资源属于游戏内容资源，必须免费提供给所有用户。所有内容均为原创制作，不包含任何侵犯微软或Mojang Studios知识产权的元素�?
+本资源内容免费无偿供所有用户使用。用户在遵守相关使用条款的前提下，可自由下载、使用和分享该资源内容，无需支付任何费用�?
+【平台声明�?
+本平台要求平台内的制作原创内容的制作方如果使用本平台发布自己的原创作品，便不能再其它网站发布这些作品，本平台对搬运内容不做要求�?
+【作者声明�?
+本人作为本资源的原创作者，承诺所发布的内容均为原创制作，不涉及任何侵权行为。本人保留对本资源的著作权，并授权用户在遵守本协议的前提下使用本资源�?
+本人同样遵守自己身为该平台的进行原创活动的制作方的各项基本要求�?
 用户在使用本资源时，应遵守以下约定：
-• 允许个人非商业用途使用
-• 允许在游戏中展示和使用
-• 允许制作视频、直播等Minecraft相关内容并通过平台广告、赞助、捐赠等方式获得收益
-• 允许接受用户自愿捐赠
-• 用户对制作方及作品的订阅及打赏行为均为自主无偿赠予行为，平台及作者不会要求用户必须订阅或打赏后才能使用这些内容
-• 禁止直接出售本资源或通过本资源直接盈利
-• 禁止未经授权的二次分发
-• 禁止将本资源用于推广与Minecraft无关的产品、服务或品牌
+�?允许个人非商业用途使�?�?允许在游戏中展示和使�?�?允许制作视频、直播等Minecraft相关内容并通过平台广告、赞助、捐赠等方式获得收益
+�?允许接受用户自愿捐赠
+�?用户对制作方及作品的订阅及打赏行为均为自主无偿赠予行为，平台及作者不会要求用户必须订阅或打赏后才能使用这些内�?�?禁止直接出售本资源或通过本资源直接盈�?�?禁止未经授权的二次分�?�?禁止将本资源用于推广与Minecraft无关的产品、服务或品牌
 
-【知识产权声明】
-
+【知识产权声明�?
 本资源中所有原创内容的知识产权归作者所有。Minecraft游戏的名称、品牌、标识等知识产权归Mojang Studios和Microsoft所有。本协议不授予用户任何Minecraft游戏本身的权利。`);
                                 }}
                               >
@@ -3278,7 +3183,7 @@ A: 检查模组版本兼容性...`,
                                   <Badge className="bg-blue-500/10 text-blue-600 border-blue-500/20 text-[10px]">原创协议</Badge>
                                   <span className="text-[10px] text-muted-foreground">常规资源</span>
                                 </div>
-                                <div className="text-[10px] text-muted-foreground">适用于非形象类资源</div>
+                                <div className="text-[10px] text-muted-foreground">适用于非形象类资�?/div>
                               </div>
 
                               <div 
@@ -3287,46 +3192,26 @@ A: 检查模组版本兼容性...`,
                                 }`}
                                 onClick={() => {
                                   setSelectedLicenseTemplate("repost-normal");
-                                  setNewLicenseContent(`【免责声明】
-
-本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联。
-
-【基本声明】
-
-本资源内容严格遵守微软官方《Minecraft 最终用户许可协议》(EULA) 和《Minecraft 商业使用指南》的相关规定。
-
-根据Minecraft官方政策，本资源属于游戏内容资源，必须免费提供给所有用户。所有内容均为原创制作，不包含任何侵犯微软或Mojang Studios知识产权的元素。
-
-本资源内容免费无偿供所有用户使用。用户在遵守相关使用条款的前提下，可自由下载、使用和分享该资源内容，无需支付任何费用。
-
-【作者声明】
-
-本人作为本资源的原创作者，承诺所发布的内容均为原创制作，不涉及任何侵权行为。本人保留对本资源的著作权，并授权用户在遵守本协议的前提下使用本资源。
-
+                                  setNewLicenseContent(`【免责声明�?
+本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联�?
+【基本声明�?
+本资源内容严格遵守微软官方《Minecraft 最终用户许可协议�?EULA) 和《Minecraft 商业使用指南》的相关规定�?
+根据Minecraft官方政策，本资源属于游戏内容资源，必须免费提供给所有用户。所有内容均为原创制作，不包含任何侵犯微软或Mojang Studios知识产权的元素�?
+本资源内容免费无偿供所有用户使用。用户在遵守相关使用条款的前提下，可自由下载、使用和分享该资源内容，无需支付任何费用�?
+【作者声明�?
+本人作为本资源的原创作者，承诺所发布的内容均为原创制作，不涉及任何侵权行为。本人保留对本资源的著作权，并授权用户在遵守本协议的前提下使用本资源�?
 用户在使用本资源时，应遵守以下约定：
-• 允许个人非商业用途使用
-• 允许在游戏中展示和使用
-• 允许制作视频、直播等Minecraft相关内容并通过平台广告、赞助、捐赠等方式获得收益
-• 允许接受用户自愿捐赠
-• 用户对制作方及作品的订阅及打赏行为均为自主无偿赠予行为，平台及作者不会要求用户必须订阅或打赏后才能使用这些内容
-• 禁止直接出售本资源或通过本资源直接盈利
-• 禁止未经授权的二次分发
-• 禁止将本资源用于推广与Minecraft无关的产品、服务或品牌
+�?允许个人非商业用途使�?�?允许在游戏中展示和使�?�?允许制作视频、直播等Minecraft相关内容并通过平台广告、赞助、捐赠等方式获得收益
+�?允许接受用户自愿捐赠
+�?用户对制作方及作品的订阅及打赏行为均为自主无偿赠予行为，平台及作者不会要求用户必须订阅或打赏后才能使用这些内�?�?禁止直接出售本资源或通过本资源直接盈�?�?禁止未经授权的二次分�?�?禁止将本资源用于推广与Minecraft无关的产品、服务或品牌
 
-【搬运声明】
+【搬运声明�?
+本资源已获得原制作方的明确授权，允许搬运至本平台并交由搬运方进行管理�?
+搬运方承诺遵守原制作方的所有使用要求，并确保资源的完整性和合规性。搬运方应及时同步原资源的更新，保持资源内容的最新状态�?
+搬运方与原作者之间的约定�?�?搬运方需在资源页面明确标注原作者信�?�?搬运方需及时同步原作者的更新内容
+�?搬运方不得擅自修改资源内�?�?如原作者要求下架，搬运方应立即配合
 
-本资源已获得原制作方的明确授权，允许搬运至本平台并交由搬运方进行管理。
-
-搬运方承诺遵守原制作方的所有使用要求，并确保资源的完整性和合规性。搬运方应及时同步原资源的更新，保持资源内容的最新状态。
-
-搬运方与原作者之间的约定：
-• 搬运方需在资源页面明确标注原作者信息
-• 搬运方需及时同步原作者的更新内容
-• 搬运方不得擅自修改资源内容
-• 如原作者要求下架，搬运方应立即配合
-
-【知识产权声明】
-
+【知识产权声明�?
 本资源中所有原创内容的知识产权归原作者所有。Minecraft游戏的名称、品牌、标识等知识产权归Mojang Studios和Microsoft所有。本协议不授予用户任何Minecraft游戏本身的权利。`);
                                 }}
                               >
@@ -3334,14 +3219,14 @@ A: 检查模组版本兼容性...`,
                                   <Badge className="bg-orange-500/10 text-orange-600 border-orange-500/20 text-[10px]">搬运协议</Badge>
                                   <span className="text-[10px] text-muted-foreground">常规资源</span>
                                 </div>
-                                <div className="text-[10px] text-muted-foreground">适用于非形象类资源</div>
+                                <div className="text-[10px] text-muted-foreground">适用于非形象类资�?/div>
                               </div>
                             </div>
                           </div>
 
                           {selectedLicenseTemplate && (
                             <div>
-                              <label className="text-xs text-muted-foreground mb-2 block">协议内容（可编辑）</label>
+                              <label className="text-xs text-muted-foreground mb-2 block">协议内容（可编辑�?/label>
                               <textarea
                                 value={newLicenseContent}
                                 onChange={(e) => setNewLicenseContent(e.target.value)}
@@ -3445,7 +3330,7 @@ A: 检查模组版本兼容性...`,
                 <TabsContent value="serverRules" className="mt-0">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <h2 className="text-xl font-bold text-foreground">服务器规则</h2>
+                      <h2 className="text-xl font-bold text-foreground">服务器规�?/h2>
                       <Button 
                         size="sm" 
                         variant="outline"
@@ -3504,8 +3389,7 @@ A: 检查模组版本兼容性...`,
 
                       {serverRules.filter(r => r.status === "approved").length === 0 && (
                         <div className="text-center py-12 text-muted-foreground text-sm">
-                          暂无服务器规则文章
-                        </div>
+                          暂无服务器规则文�?                        </div>
                       )}
                     </div>
 
@@ -3513,7 +3397,7 @@ A: 检查模组版本兼容性...`,
                       <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
                         <div className="bg-card border border-border rounded-lg w-full max-w-3xl p-4 max-h-[90vh] overflow-y-auto">
                           <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-sm font-semibold text-foreground">提交服务器规则</h3>
+                            <h3 className="text-sm font-semibold text-foreground">提交服务器规�?/h3>
                             <Button size="sm" variant="ghost" className="h-6 w-6 p-0" onClick={() => setShowServerRuleModal(false)}>
                               ×
                             </Button>
@@ -3522,10 +3406,10 @@ A: 检查模组版本兼容性...`,
                           <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 mb-4">
                             <div className="text-xs font-semibold text-blue-600 mb-2">提交须知</div>
                             <ul className="text-[10px] text-muted-foreground space-y-1">
-                              <li>• 规则内容需与该服务器相关，如服务器规则、服务器文化、玩法介绍等</li>
-                              <li>• 内容需原创或已获授权，不得抄袭他人作品</li>
-                              <li>• 提交的规则需经服务器管理方审核后才会显示</li>
-                              <li>• 支持Markdown格式，可使用 # 标题、- 列表、![图片](链接) 等语法</li>
+                              <li>�?规则内容需与该服务器相关，如服务器规则、服务器文化、玩法介绍等</li>
+                              <li>�?内容需原创或已获授权，不得抄袭他人作品</li>
+                              <li>�?提交的规则需经服务器管理方审核后才会显示</li>
+                              <li>�?支持Markdown格式，可使用 # 标题�? 列表�?[图片](链接) 等语�?/li>
                             </ul>
                           </div>
 
@@ -3541,20 +3425,16 @@ A: 检查模组版本兼容性...`,
                             </div>
                             
                             <div>
-                              <label className="text-xs text-muted-foreground mb-1 block">规则内容（支持Markdown）</label>
+                              <label className="text-xs text-muted-foreground mb-1 block">规则内容（支持Markdown�?/label>
                               <Textarea
                                 value={newServerRuleContent}
                                 onChange={(e) => setNewServerRuleContent(e.target.value)}
-                                placeholder={`示例格式：
-# 服务器规则
-
+                                placeholder={`示例格式�?# 服务器规�?
 ## 基本规则
-- 禁止使用作弊客户端
-- 禁止恶意破坏他人建筑
+- 禁止使用作弊客户�?- 禁止恶意破坏他人建筑
 - 禁止辱骂其他玩家
 
-## 服务器文化
-我们致力于打造一个友好、公平的游戏环境...`}
+## 服务器文�?我们致力于打造一个友好、公平的游戏环境...`}
                                 className="text-sm min-h-[300px] font-mono"
                               />
                             </div>
@@ -3743,10 +3623,10 @@ A: 检查模组版本兼容性...`,
                         <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 mb-4">
                           <div className="text-xs font-semibold text-blue-600 mb-2">提交须知</div>
                           <ul className="text-[10px] text-muted-foreground space-y-1">
-                            <li>• 攻略内容需与该资源相关，帮助其他玩家更好地使用该资源</li>
-                            <li>• 内容需原创或已获授权，不得抄袭他人作品</li>
-                            <li>• 提交的攻略需经制作方审核后才会显示</li>
-                            <li>• 支持Markdown格式，可使用 # 标题、- 列表、![图片](链接) 等语法</li>
+                            <li>�?攻略内容需与该资源相关，帮助其他玩家更好地使用该资�?/li>
+                            <li>�?内容需原创或已获授权，不得抄袭他人作品</li>
+                            <li>�?提交的攻略需经制作方审核后才会显�?/li>
+                            <li>�?支持Markdown格式，可使用 # 标题�? 列表�?[图片](链接) 等语�?/li>
                           </ul>
                         </div>
 
@@ -3762,19 +3642,18 @@ A: 检查模组版本兼容性...`,
                           </div>
                           
                           <div>
-                            <label className="text-xs text-muted-foreground mb-1 block">攻略内容（支持Markdown）</label>
+                            <label className="text-xs text-muted-foreground mb-1 block">攻略内容（支持Markdown�?/label>
                             <Textarea
                               value={newGuideContent}
                               onChange={(e) => setNewGuideContent(e.target.value)}
-                              placeholder={`示例格式：
-# 标题
+                              placeholder={`示例格式�?# 标题
 
 ## 二级标题
 
 正文内容...
 
-- 列表项1
-- 列表项2
+- 列表�?
+- 列表�?
 
 ![图片描述](图片链接)`}
                               className="text-sm min-h-[300px] font-mono"
@@ -3900,7 +3779,7 @@ A: 检查模组版本兼容性...`,
                 </div>
                 <Separator className="my-3" />
                 <div className="text-xs text-muted-foreground">
-                  <span className="font-medium text-foreground">制作方</span>
+                  <span className="font-medium text-foreground">制作�?/span>
                   <div className="flex items-center gap-2 mt-2">
                     <Avatar className="w-6 h-6">
                       <AvatarFallback className="text-[10px]">{resource.author?.[0]}</AvatarFallback>
@@ -3915,7 +3794,7 @@ A: 检查模组版本兼容性...`,
 
               {resource.donationLeaders?.length > 0 && (
                 <div className="bg-card border border-border rounded-lg p-4">
-                  <h4 className="text-xs font-semibold text-primary mb-3">☆ 打赏总榜</h4>
+                  <h4 className="text-xs font-semibold text-primary mb-3">�?打赏总榜</h4>
                   <div className="flex justify-center gap-4">
                     {resource.donationLeaders.map((d: any, i: number) => (
                       <div key={i} className="text-center">
@@ -3932,11 +3811,11 @@ A: 检查模组版本兼容性...`,
 
               {resource.donationFeed?.length > 0 && (
                 <div className="bg-card border border-border rounded-lg p-4">
-                  <h4 className="text-xs font-semibold text-primary mb-3">💬 打赏动态</h4>
+                  <h4 className="text-xs font-semibold text-primary mb-3">💬 打赏动�?/h4>
                   <div className="space-y-2">
                     {resource.donationFeed.map((d: any, i: number) => (
                       <div key={i} className="text-[11px] text-muted-foreground">
-                        <span className="text-primary">● </span>
+                        <span className="text-primary">�?</span>
                         {d.user}于{d.date}打赏了资源{d.amount}
                       </div>
                     ))}
@@ -3953,7 +3832,7 @@ A: 检查模组版本兼容性...`,
           <div>
             <Tabs value={commentTab} onValueChange={setCommentTab}>
               <TabsList className="h-auto p-0 bg-transparent">
-                <TabsTrigger value="public" className="text-xs px-3 py-1.5 data-[state=active]:text-primary">公共交流区</TabsTrigger>
+                <TabsTrigger value="public" className="text-xs px-3 py-1.5 data-[state=active]:text-primary">公共交流�?/TabsTrigger>
                 <TabsTrigger value="feedback" className="text-xs px-3 py-1.5 data-[state=active]:text-primary">制作方反馈区</TabsTrigger>
                 <TabsTrigger value="donation" className="text-xs px-3 py-1.5 data-[state=active]:text-primary">订阅及打赏交流区</TabsTrigger>
               </TabsList>
@@ -3998,3 +3877,4 @@ A: 检查模组版本兼容性...`,
 };
 
 export default ResourceDetail;
+

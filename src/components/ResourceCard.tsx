@@ -10,6 +10,7 @@ interface ResourceCardProps {
   likes: number;
   resourceType?: string;
   resourceId?: string;
+  onSelect?: () => void;
 }
 
 const generalTypes = ["mod", "map", "datapack", "modpack", "server", "resourcepack", "shader", "building", "audio"];
@@ -24,10 +25,15 @@ const ResourceCard = ({
   likes,
   resourceType,
   resourceId = "1",
+  onSelect,
 }: ResourceCardProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
+    if (onSelect) {
+      onSelect();
+      return;
+    }
     if (!resourceType) return;
     if (resourceType === "project") {
       navigate({ to: "/project/$id", params: { id: resourceId } });
@@ -70,3 +76,4 @@ const ResourceCard = ({
 };
 
 export default ResourceCard;
+

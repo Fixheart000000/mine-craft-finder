@@ -1,8 +1,5 @@
-import { RouterProvider } from "@tanstack/react-router";
-import { createRouter } from "./router";
+import Index from "./pages/Index";
 
-const router = createRouter();
-
-const App = () => <RouterProvider router={router} />;
+const App = () => <Index />;
 
 export default App;
