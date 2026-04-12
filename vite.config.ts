@@ -1,22 +1,23 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { componentTagger } from "lovable-tagger";
-import { TanStackRouterVite } from "@tanstack/router-vite-plugin";
+// vite.config.ts
+import babel from '@rolldown/plugin-babel';
+import tailwindcss from '@tailwindcss/vite';
+import { devtools } from '@tanstack/devtools-vite';
+import { tanstackStart } from '@tanstack/react-start/plugin/vite';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
+import { nitro } from 'nitro/vite';
+import { defineConfig } from 'vite';
 
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-  },
+const config = defineConfig({
   plugins: [
-    TanStackRouterVite(),
+    devtools({ removeDevtoolsOnBuild: true }),
+    nitro(),
+    tailwindcss(),
+    tanstackStart(),
     react(),
-    mode === "development" && componentTagger(),
-  ].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-}));
+    babel({
+        presets: [reactCompilerPreset()],
+    }),
+  ],
+});
+
+export default config;

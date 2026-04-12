@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useParams, useRouter } from "@tanstack/react-router";
 import { ArrowLeft, Download, Heart, Send, User, Eye, BookmarkPlus, Plus, X, ChevronDown, ChevronRight, Edit2, Image, Link2, Trash2, Save, XCircle, History, Upload, Star, StarOff, Edit, Calendar, Users } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-import { Input } from "@/components/ui/input";
-import { tagSystemMap } from "@/data/tags";
-import { contentCommonMeta, auxiliaryCommonMeta, modpackServerCommonMeta } from "@/data/tags/commonMeta";
+import { Badge } from "#/components/ui/badge";
+import { Button } from "#/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "#/components/ui/tabs";
+import { Textarea } from "#/components/ui/textarea";
+import { Avatar, AvatarFallback } from "#/components/ui/avatar";
+import { Separator } from "#/components/ui/separator";
+import { Input } from "#/components/ui/input";
+import { tagSystemMap } from "#/data/tags";
+import { contentCommonMeta, auxiliaryCommonMeta, modpackServerCommonMeta } from "#/data/tags/commonMeta";
 
 interface WikiEntry {
   id: string;
@@ -1940,7 +1940,7 @@ A: 检查模组版本兼容性...`,
           <div className="sticky bottom-0 bg-card border-t border-border p-4 flex gap-2 justify-end">
             <Button size="sm" variant="outline" onClick={() => setShowEditModal(false)}>取消</Button>
             <Button size="sm" onClick={() => {
-              setResource(editedResource);
+              setEditedResource(editedResource);
               setShowEditModal(false);
             }}>保存</Button>
           </div>
@@ -2949,7 +2949,7 @@ A: 检查模组版本兼容性...`,
                             <Button size="sm" variant="outline" onClick={() => setShowDownloadUploadModal(false)}>取消</Button>
                             <Button size="sm" onClick={() => {
                               if (newRelatedMod.name && newRelatedMod.author) {
-                                handleAddVersion(newRelatedMod.name, newRelatedMod.author, type === "mod" ? newRelatedMod.type : undefined);
+                                handleAddVersion(newRelatedMod.name, newRelatedMod.author, type === "mod" ? (newRelatedMod.type || "") : "");
                                 setNewRelatedMod({ name: "", type: "前置模组", description: "", author: "" });
                                 setShowDownloadUploadModal(false);
                               }

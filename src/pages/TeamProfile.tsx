@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useRouter } from "@tanstack/react-router";
 import { ArrowLeft, Users, Calendar, MapPin, Link2, Eye, Heart, BookmarkPlus, Upload, MessageSquare, FolderKanban, UserPlus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import ResourceCard from "@/components/ResourceCard";
-import ModIcon from "@/components/icons/ModIcon";
-import ModpackIcon from "@/components/icons/ModpackIcon";
-import MapIcon from "@/components/icons/MapIcon";
+import { Button } from "#/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "#/components/ui/tabs";
+import { Avatar, AvatarFallback } from "#/components/ui/avatar";
+import { Badge } from "#/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "#/components/ui/card";
+import ResourceCard from "#/components/ResourceCard";
+import ModIcon from "#/components/icons/ModIcon";
+import ModpackIcon from "#/components/icons/ModpackIcon";
+import MapIcon from "#/components/icons/MapIcon";
 
 const mockTeamData = {
   id: "1",

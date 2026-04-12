@@ -1,6 +1,6 @@
 import { Link, LinkProps } from "@tanstack/react-router";
 import { forwardRef } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "#/lib/utils";
 
 interface NavLinkCompatProps extends Omit<LinkProps, "className"> {
   className?: string;
@@ -14,7 +14,7 @@ const NavLink = forwardRef<HTMLAnchorElement, NavLinkCompatProps>(
       <Link
         ref={ref}
         to={to}
-        className={({ isActive, isTransitioning }) =>
+        className={({ isActive, isTransitioning }: { isActive: boolean; isTransitioning: boolean }) =>
           cn(className, isActive && activeClassName, isTransitioning && pendingClassName)
         }
         {...props}

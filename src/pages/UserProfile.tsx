@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useRouter, useParams } from "@tanstack/react-router";
 import { ArrowLeft, User, Calendar, MapPin, Link2, Eye, Heart, BookmarkPlus, Upload, MessageSquare, FolderKanban, Users, Crown, Handshake, Rss, Check, X, CreditCard, Clock, Zap, Diamond, Star, AlertCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "#/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "#/components/ui/tabs";
+import { Avatar, AvatarFallback } from "#/components/ui/avatar";
+import { Badge } from "#/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "#/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -13,17 +13,17 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import ResourceCard from "@/components/ResourceCard";
-import ModIcon from "@/components/icons/ModIcon";
-import MapIcon from "@/components/icons/MapIcon";
-import DataPackIcon from "@/components/icons/DataPackIcon";
-import ResourcePackIcon from "@/components/icons/ResourcePackIcon";
-import ShaderIcon from "@/components/icons/ShaderIcon";
-import BuildingIcon from "@/components/icons/BuildingIcon";
+} from "#/components/ui/dialog";
+import { RadioGroup, RadioGroupItem } from "#/components/ui/radio-group";
+import { Label } from "#/components/ui/label";
+import { Separator } from "#/components/ui/separator";
+import ResourceCard from "#/components/ResourceCard";
+import ModIcon from "#/components/icons/ModIcon";
+import MapIcon from "#/components/icons/MapIcon";
+import DataPackIcon from "#/components/icons/DataPackIcon";
+import ResourcePackIcon from "#/components/icons/ResourcePackIcon";
+import ShaderIcon from "#/components/icons/ShaderIcon";
+import BuildingIcon from "#/components/icons/BuildingIcon";
 
 const userTemplates: Record<string, any> = {
   "1": {

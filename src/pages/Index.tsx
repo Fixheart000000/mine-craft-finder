@@ -1,31 +1,31 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import SearchBar from "@/components/SearchBar";
-import ResourceCard from "@/components/ResourceCard";
-import SocialSearchResult from "@/components/SocialSearchResult";
-import FilterPanel, { ResourceTypeId } from "@/components/FilterPanel";
-import ModIcon from "@/components/icons/ModIcon";
-import BuildingIcon from "@/components/icons/BuildingIcon";
-import AudioIcon from "@/components/icons/AudioIcon";
-import ToolIcon from "@/components/icons/ToolIcon";
-import DocIcon from "@/components/icons/DocIcon";
-import SkinIcon from "@/components/icons/SkinIcon";
-import MapIcon from "@/components/icons/MapIcon";
-import DataPackIcon from "@/components/icons/DataPackIcon";
-import ModpackIcon from "@/components/icons/ModpackIcon";
-import ServerIcon from "@/components/icons/ServerIcon";
-import ResourcePackIcon from "@/components/icons/ResourcePackIcon";
-import ShaderIcon from "@/components/icons/ShaderIcon";
+import SearchBar from "#/components/SearchBar";
+import ResourceCard from "#/components/ResourceCard";
+import SocialSearchResult from "#/components/SocialSearchResult";
+import FilterPanel, { ResourceTypeId } from "#/components/FilterPanel";
+import ModIcon from "#/components/icons/ModIcon";
+import BuildingIcon from "#/components/icons/BuildingIcon";
+import AudioIcon from "#/components/icons/AudioIcon";
+import ToolIcon from "#/components/icons/ToolIcon";
+import DocIcon from "#/components/icons/DocIcon";
+import SkinIcon from "#/components/icons/SkinIcon";
+import MapIcon from "#/components/icons/MapIcon";
+import DataPackIcon from "#/components/icons/DataPackIcon";
+import ModpackIcon from "#/components/icons/ModpackIcon";
+import ServerIcon from "#/components/icons/ServerIcon";
+import ResourcePackIcon from "#/components/icons/ResourcePackIcon";
+import ShaderIcon from "#/components/icons/ShaderIcon";
 import { QrCode, Languages, Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "#/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Separator } from "@/components/ui/separator";
+} from "#/components/ui/dialog";
+import { Separator } from "#/components/ui/separator";
 
 // Mock data for resources
 const mockResources: Record<string, Array<{ icon: React.ReactNode; title: string; author: string; description: string; downloads: number; likes: number; resourceType: string; resourceId: string }>> = {

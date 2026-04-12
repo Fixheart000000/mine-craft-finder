@@ -1,28 +1,28 @@
 import { useState } from "react";
 import { useRouter, useParams } from "@tanstack/react-router";
 import { ArrowLeft, Download, Heart, Send, User, Eye, BookmarkPlus, Upload, Edit, Calendar, FileText, Clock, X, Save, Plus, ChevronDown, ChevronRight, Image, Edit2, XCircle, History, Trash2, Link2, Star, StarOff, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "#/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "#/components/ui/tabs";
+import { Textarea } from "#/components/ui/textarea";
+import { Avatar, AvatarFallback } from "#/components/ui/avatar";
+import { Separator } from "#/components/ui/separator";
+import { Badge } from "#/components/ui/badge";
+import { Input } from "#/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "#/components/ui/card";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "#/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { tagSystemMap, contentCommonMeta, auxiliaryCommonMeta, modpackServerCommonMeta, ecoDocCommonMeta, imageCommonMeta, mapCommonMeta } from "@/data/tags";
-import type { MainTag } from "@/data/tags";
+} from "#/components/ui/dropdown-menu";
+import { tagSystemMap, contentCommonMeta, auxiliaryCommonMeta, modpackServerCommonMeta, ecoDocCommonMeta, imageCommonMeta, mapCommonMeta } from "#/data/tags";
+import type { MainTag } from "#/data/tags";
 
 interface WikiEntryImage {
   url: string;
@@ -53,7 +53,7 @@ interface WikiEntry {
   images: WikiEntryImage[];
   description: string;
   recipes: WikiEntryRecipe[];
-  attributes: { name: string; value: string; unit: string }[];
+  attributes: { name: string; value: string; unit?: string }[];
   usage: string;
   relatedEntries: string[];
   author: string;
@@ -1674,7 +1674,7 @@ const ProjectDetail = () => {
                         {filteredBasicInfo.map(([key, value]) => (
                           <div key={key} className="border border-border rounded-lg p-3">
                             <div className="text-xs text-muted-foreground mb-1">{key}</div>
-                            <div className="text-sm font-medium text-foreground">{value}</div>
+                            <div className="text-sm font-medium text-foreground">{String(value)}</div>
                           </div>
                         ))}
                       </div>

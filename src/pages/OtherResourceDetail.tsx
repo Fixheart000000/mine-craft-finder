@@ -1,21 +1,21 @@
 import { useState } from "react";
 import { useParams, useRouter } from "@tanstack/react-router";
 import { ArrowLeft, Download, Heart, Send, User, Eye, BookmarkPlus, Upload, Edit, Calendar, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "#/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "#/components/ui/tabs";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { tagSystemMap } from "@/data/tags";
-import { auxiliaryCommonMeta, ecoDocCommonMeta, imageCommonMeta } from "@/data/tags/commonMeta";
+} from "#/components/ui/dropdown-menu";
+import { Textarea } from "#/components/ui/textarea";
+import { Avatar, AvatarFallback } from "#/components/ui/avatar";
+import { Separator } from "#/components/ui/separator";
+import { Input } from "#/components/ui/input";
+import { Badge } from "#/components/ui/badge";
+import { tagSystemMap } from "#/data/tags";
+import { auxiliaryCommonMeta, ecoDocCommonMeta, imageCommonMeta } from "#/data/tags/commonMeta";
 
 interface ChangeLog {
   id: string;

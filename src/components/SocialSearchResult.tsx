@@ -1,5 +1,5 @@
 import { User, Users, FolderKanban } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "#/components/ui/avatar";
 import { useNavigate } from "@tanstack/react-router";
 
 interface SocialResultProps {

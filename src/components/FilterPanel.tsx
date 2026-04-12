@@ -1,27 +1,27 @@
 import { useState } from "react";
-import { MainTag } from "@/data/tags/types";
-import { tagSystemMap, contentCommonMeta, auxiliaryCommonMeta, modpackServerCommonMeta } from "@/data/tags";
+import { MainTag } from "#/data/tags/types";
+import { tagSystemMap, contentCommonMeta, auxiliaryCommonMeta, modpackServerCommonMeta } from "#/data/tags";
 import { ChevronDown, ChevronUp, X, Filter } from "lucide-react";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import ModIcon from "@/components/icons/ModIcon";
-import MapIcon from "@/components/icons/MapIcon";
-import DataPackIcon from "@/components/icons/DataPackIcon";
-import ModpackIcon from "@/components/icons/ModpackIcon";
-import ResourcePackIcon from "@/components/icons/ResourcePackIcon";
-import ShaderIcon from "@/components/icons/ShaderIcon";
-import BuildingIcon from "@/components/icons/BuildingIcon";
-import AudioIcon from "@/components/icons/AudioIcon";
-import ServerIcon from "@/components/icons/ServerIcon";
-import ToolIcon from "@/components/icons/ToolIcon";
-import DocIcon from "@/components/icons/DocIcon";
-import UserIcon from "@/components/icons/UserIcon";
-import SkinIcon from "@/components/icons/SkinIcon";
-import { cn } from "@/lib/utils";
+} from "#/components/ui/dialog";
+import ModIcon from "#/components/icons/ModIcon";
+import MapIcon from "#/components/icons/MapIcon";
+import DataPackIcon from "#/components/icons/DataPackIcon";
+import ModpackIcon from "#/components/icons/ModpackIcon";
+import ResourcePackIcon from "#/components/icons/ResourcePackIcon";
+import ShaderIcon from "#/components/icons/ShaderIcon";
+import BuildingIcon from "#/components/icons/BuildingIcon";
+import AudioIcon from "#/components/icons/AudioIcon";
+import ServerIcon from "#/components/icons/ServerIcon";
+import ToolIcon from "#/components/icons/ToolIcon";
+import DocIcon from "#/components/icons/DocIcon";
+import UserIcon from "#/components/icons/UserIcon";
+import SkinIcon from "#/components/icons/SkinIcon";
+import { cn } from "#/lib/utils";
 
 export type ResourceTypeId = 
   | "mod" | "map" | "datapack" | "modpack" | "server"
