@@ -1,28 +1,28 @@
 import { useState } from "react";
 import { useRouter, useParams } from "@tanstack/react-router";
 import { ArrowLeft, Download, Heart, Send, User, Eye, BookmarkPlus, Upload, Edit, Calendar, FileText, Clock, X, Save, Plus, ChevronDown, ChevronRight, Image, Edit2, XCircle, History, Trash2, Link2, Star, StarOff, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "#/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "#/components/ui/tabs";
+import { Textarea } from "#/components/ui/textarea";
+import { Avatar, AvatarFallback } from "#/components/ui/avatar";
+import { Separator } from "#/components/ui/separator";
+import { Badge } from "#/components/ui/badge";
+import { Input } from "#/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "#/components/ui/card";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "#/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { tagSystemMap, contentCommonMeta, auxiliaryCommonMeta, modpackServerCommonMeta, ecoDocCommonMeta, imageCommonMeta, mapCommonMeta } from "@/data/tags";
-import type { MainTag } from "@/data/tags";
+} from "#/components/ui/dropdown-menu";
+import { tagSystemMap, contentCommonMeta, auxiliaryCommonMeta, modpackServerCommonMeta, ecoDocCommonMeta, imageCommonMeta, mapCommonMeta } from "#/data/tags";
+import type { MainTag } from "#/data/tags";
 
 interface WikiEntryImage {
   url: string;
@@ -65,17 +65,17 @@ interface WikiEntry {
 const mockWikiEntries: Record<string, WikiEntry> = {};
 
 const allHotWordCategories = [
-  { id: "items-blocks", label: "物品/方块", description: "游戏中的物品和方块", items: [] },
-  { id: "biomes", label: "群系/群落", description: "世界生成的生物群系", items: [] },
-  { id: "dimensions", label: "世界/维度", description: "不同的世界维度", items: [] },
-  { id: "mobs", label: "生物/实体", description: "生物和实体", items: [] },
-  { id: "enchantments", label: "附魔/魔咒", description: "附魔和魔咒", items: [] },
-  { id: "buffs", label: "BUFF/DEBUFF", description: "状态效果", items: [] },
-  { id: "multiblock", label: "多方块结构", description: "多方块结构机器", items: [] },
-  { id: "natural", label: "自然生成", description: "自然生成的内容", items: [] },
+  { id: "items-blocks", label: "物品/方块", description: "游戏中的物品和方�?, items: [] },
+  { id: "biomes", label: "群系/群落", description: "世界生成的生物群�?, items: [] },
+  { id: "dimensions", label: "世界/维度", description: "不同的世界维�?, items: [] },
+  { id: "mobs", label: "生物/实体", description: "生物和实�?, items: [] },
+  { id: "enchantments", label: "附魔/魔咒", description: "附魔和魔�?, items: [] },
+  { id: "buffs", label: "BUFF/DEBUFF", description: "状态效�?, items: [] },
+  { id: "multiblock", label: "多方块结�?, description: "多方块结构机�?, items: [] },
+  { id: "natural", label: "自然生成", description: "自然生成的内�?, items: [] },
   { id: "hotkeys", label: "热键", description: "快捷键和按键绑定", items: [] },
-  { id: "settings", label: "游戏设定", description: "游戏配置和规则", items: [] },
-  { id: "skills", label: "技能/能力", description: "技能和能力系统", items: [] },
+  { id: "settings", label: "游戏设定", description: "游戏配置和规�?, items: [] },
+  { id: "skills", label: "技�?能力", description: "技能和能力系统", items: [] },
 ];
 
 const WikiEntryPanel = ({ 
@@ -365,7 +365,7 @@ const WikiEntryPanel = ({
             </div>
 
             <div>
-              <label className="text-xs text-muted-foreground mb-2 block">属性数据</label>
+              <label className="text-xs text-muted-foreground mb-2 block">属性数�?/label>
               <div className="space-y-2">
                 {editData.attributes.map((attr, index) => (
                   <div key={index} className="flex items-center gap-2">
@@ -377,7 +377,7 @@ const WikiEntryPanel = ({
                         setEditData(prev => ({ ...prev, attributes: newAttrs }));
                       }}
                       className="text-sm flex-1"
-                      placeholder="属性名称"
+                      placeholder="属性名�?
                     />
                     <Input
                       value={attr.value}
@@ -387,7 +387,7 @@ const WikiEntryPanel = ({
                         setEditData(prev => ({ ...prev, attributes: newAttrs }));
                       }}
                       className="text-sm flex-1"
-                      placeholder="属性值"
+                      placeholder="属性�?
                     />
                     <Button size="sm" variant="ghost" onClick={() => handleRemoveAttribute(index)}>
                       <Trash2 className="w-4 h-4 text-destructive" />
@@ -399,13 +399,13 @@ const WikiEntryPanel = ({
                     value={newAttrName}
                     onChange={(e) => setNewAttrName(e.target.value)}
                     className="text-sm flex-1"
-                    placeholder="新属性名称"
+                    placeholder="新属性名�?
                   />
                   <Input
                     value={newAttrValue}
                     onChange={(e) => setNewAttrValue(e.target.value)}
                     className="text-sm flex-1"
-                    placeholder="属性值"
+                    placeholder="属性�?
                   />
                   <Button size="sm" variant="outline" onClick={handleAddAttribute}>
                     <Plus className="w-4 h-4" />
@@ -415,7 +415,7 @@ const WikiEntryPanel = ({
             </div>
 
             <div>
-              <label className="text-xs text-muted-foreground mb-1 block">相关词条（用逗号分隔）</label>
+              <label className="text-xs text-muted-foreground mb-1 block">相关词条（用逗号分隔�?/label>
               <Input
                 value={editData.relatedEntries.join(", ")}
                 onChange={(e) => setEditData(prev => ({ 
@@ -423,7 +423,7 @@ const WikiEntryPanel = ({
                   relatedEntries: e.target.value.split(",").map(s => s.trim()).filter(Boolean)
                 }))}
                 className="text-sm"
-                placeholder="传送带, 机械臂, 动力轴"
+                placeholder="传送带, 机械�? 动力�?
               />
             </div>
 
@@ -484,7 +484,7 @@ const WikiEntryPanel = ({
             )}
 
             <div>
-              <h3 className="text-sm font-semibold text-primary mb-2">简介</h3>
+              <h3 className="text-sm font-semibold text-primary mb-2">简�?/h3>
               <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-wrap">{entry.description}</p>
             </div>
 
@@ -494,7 +494,7 @@ const WikiEntryPanel = ({
                 <div className="bg-secondary/30 rounded-lg p-3">
                   {entry.recipes.map((recipe, rIndex) => (
                     <div key={rIndex} className="space-y-2">
-                      <div className="text-xs text-muted-foreground mb-1">{recipe.type === "crafting" ? "工作台合成" : recipe.type}</div>
+                      <div className="text-xs text-muted-foreground mb-1">{recipe.type === "crafting" ? "工作台合�? : recipe.type}</div>
                       <div className="grid grid-cols-3 gap-1 w-fit">
                         {recipe.pattern?.flat().map((item, pIndex) => (
                           <div 
@@ -516,7 +516,7 @@ const WikiEntryPanel = ({
 
             {entry.attributes.length > 0 && (
               <div>
-                <h3 className="text-sm font-semibold text-primary mb-2">属性数据</h3>
+                <h3 className="text-sm font-semibold text-primary mb-2">属性数�?/h3>
                 <div className="bg-secondary/30 rounded-lg overflow-hidden">
                   <table className="w-full text-sm">
                     <tbody>
@@ -558,7 +558,7 @@ const WikiEntryPanel = ({
             )}
 
             <div className="text-xs text-muted-foreground pt-2 border-t border-border">
-              最后编辑: {entry.author} · {entry.updatedAt.toLocaleDateString()}
+              最后编�? {entry.author} · {entry.updatedAt.toLocaleDateString()}
             </div>
           </>
         )}
@@ -571,12 +571,12 @@ const mockProjectData: Record<string, any> = {
   "mod-1": {
     id: "mod-1",
     type: "mod",
-    projectStatus: "筹备中",
-    title: "星辰魔法：元素觉醒",
-    author: "魔法工作室",
-    authorType: "模组开发团队",
+    projectStatus: "筹备�?,
+    title: "星辰魔法：元素觉�?,
+    author: "魔法工作�?,
+    authorType: "模组开发团�?,
     productionForm: "团队",
-    description: "一款正在开发中的大型魔法模组，将引入全新的元素魔法系统、魔法生物和神秘维度。目前处于早期开发阶段。",
+    description: "一款正在开发中的大型魔法模组，将引入全新的元素魔法系统、魔法生物和神秘维度。目前处于早期开发阶段�?,
     authorNote: "我们正在努力打造一个独特的魔法体验，敬请期待！",
     tags: ["魔法", "元素", "维度"],
     basicInfo: {
@@ -592,75 +592,75 @@ const mockProjectData: Record<string, any> = {
     views: 12580,
     favorites: 234,
     likes: 234,
-    objectives: "打造一个包含元素魔法系统、魔法生物和神秘维度的完整魔法模组，为玩家提供沉浸式的魔法体验。",
+    objectives: "打造一个包含元素魔法系统、魔法生物和神秘维度的完整魔法模组，为玩家提供沉浸式的魔法体验�?,
     personnel: {
-      preparationStatus: "筹备中",
-      count: "5-10人",
-      cooperationType: "仅分成",
-      description: "需要Java开发者、美术设计师和策划人员。分成比例根据贡献度分配。"
+      preparationStatus: "筹备�?,
+      count: "5-10�?,
+      cooperationType: "仅分�?,
+      description: "需要Java开发者、美术设计师和策划人员。分成比例根据贡献度分配�?
     },
     funding: {
       preparationStatus: "无需筹备",
-      amount: "5000-10000元",
+      amount: "5000-10000�?,
       cooperationType: "无偿",
-      description: "目前为无偿开发，如有赞助将用于服务器和美术资源。"
+      description: "目前为无偿开发，如有赞助将用于服务器和美术资源�?
     },
     implementation: {
       timeline: "预计6-12个月完成",
-      description: "第一阶段完成核心魔法系统，第二阶段添加魔法生物，第三阶段开发神秘维度。"
+      description: "第一阶段完成核心魔法系统，第二阶段添加魔法生物，第三阶段开发神秘维度�?
     }
   },
   "mod-2": {
     id: "mod-2",
     type: "mod",
-    projectStatus: "筹备中",
+    projectStatus: "筹备�?,
     title: "工业革命2.0",
     author: "科技团队",
-    authorType: "模组开发团队",
+    authorType: "模组开发团�?,
     productionForm: "团队",
-    description: "机械动力模组的续作，全新的电力系统、更复杂的自动化生产线和多人协作机制。正在招募开发者。",
+    description: "机械动力模组的续作，全新的电力系统、更复杂的自动化生产线和多人协作机制。正在招募开发者�?,
     authorNote: "欢迎有经验的开发者加入我们！",
-    tags: ["科技", "自动化", "电力"],
+    tags: ["科技", "自动�?, "电力"],
     basicInfo: {
       "内容方向": "科技",
       "产出方式": "原创",
       "产出时间": "2024.02",
       "制作形式": "团队",
     },
-    status: "招募中",
+    status: "招募�?,
     progress: 15,
     createdAt: new Date("2024-02-01"),
     updatedAt: new Date("2024-03-18"),
     views: 23450,
     favorites: 567,
     likes: 567,
-    objectives: "开发机械动力的续作，引入电力系统、高级自动化和多人协作功能。",
+    objectives: "开发机械动力的续作，引入电力系统、高级自动化和多人协作功能�?,
     personnel: {
-      preparationStatus: "筹备中",
-      count: "10-15人",
+      preparationStatus: "筹备�?,
+      count: "10-15�?,
       cooperationType: "全部",
-      description: "急需Java开发者（熟悉Mixin和渲染）、3D建模师和UI设计师。提供报酬和分成。"
+      description: "急需Java开发者（熟悉Mixin和渲染）�?D建模师和UI设计师。提供报酬和分成�?
     },
     funding: {
       preparationStatus: "筹备完成",
-      amount: "20000-50000元",
+      amount: "20000-50000�?,
       cooperationType: "全部",
-      description: "有投资方支持，可提供开发报酬和项目分成。"
+      description: "有投资方支持，可提供开发报酬和项目分成�?
     },
     implementation: {
       timeline: "预计12-18个月完成",
-      description: "分三个阶段：核心系统重构、新功能开发、优化与测试。"
+      description: "分三个阶段：核心系统重构、新功能开发、优化与测试�?
     }
   },
   "map-1": {
     id: "map-1",
     type: "map",
-    projectStatus: "筹备中",
+    projectStatus: "筹备�?,
     title: "失落文明：亚特兰蒂斯",
-    author: "探险家团队",
+    author: "探险家团�?,
     authorType: "地图制作团队",
     productionForm: "团队",
-    description: "一张大型冒险地图，探索失落的亚特兰蒂斯文明，包含水下城市、古代遗迹和深海Boss。",
+    description: "一张大型冒险地图，探索失落的亚特兰蒂斯文明，包含水下城市、古代遗迹和深海Boss�?,
     authorNote: "水下建筑的制作很有挑战性，但我们相信会带来独特的体验！",
     tags: ["冒险", "水下", "探索"],
     basicInfo: {
@@ -676,33 +676,33 @@ const mockProjectData: Record<string, any> = {
     views: 8900,
     favorites: 123,
     likes: 123,
-    objectives: "打造一个沉浸式的水下冒险地图，让玩家探索神秘的亚特兰蒂斯文明。",
+    objectives: "打造一个沉浸式的水下冒险地图，让玩家探索神秘的亚特兰蒂斯文明�?,
     personnel: {
-      preparationStatus: "筹备中",
-      count: "3-5人",
-      cooperationType: "仅分成",
-      description: "需要建筑设计师和命令方块专家。"
+      preparationStatus: "筹备�?,
+      count: "3-5�?,
+      cooperationType: "仅分�?,
+      description: "需要建筑设计师和命令方块专家�?
     },
     funding: {
       preparationStatus: "无需筹备",
-      amount: "1000-3000元",
+      amount: "1000-3000�?,
       cooperationType: "无偿",
-      description: "目前为无偿开发。"
+      description: "目前为无偿开发�?
     },
     implementation: {
       timeline: "预计4-6个月完成",
-      description: "已完成主城区域，正在进行Boss战设计。"
+      description: "已完成主城区域，正在进行Boss战设计�?
     }
   },
   "datapack-1": {
     id: "datapack-1",
     type: "datapack",
-    projectStatus: "筹备中",
-    title: "硬核生存：极限挑战",
+    projectStatus: "筹备�?,
+    title: "硬核生存：极限挑�?,
     author: "硬核玩家",
-    authorType: "独立开发者",
+    authorType: "独立开发�?,
     productionForm: "个人",
-    description: "一个极具挑战性的数据包，添加温度系统、口渴值、疲劳度等真实生存要素。",
+    description: "一个极具挑战性的数据包，添加温度系统、口渴值、疲劳度等真实生存要素�?,
     authorNote: "喜欢硬核生存的玩家一定会喜欢这个数据包！",
     tags: ["生存", "硬核", "挑战"],
     basicInfo: {
@@ -718,79 +718,79 @@ const mockProjectData: Record<string, any> = {
     views: 5600,
     favorites: 89,
     likes: 89,
-    objectives: "为追求真实生存体验的玩家打造一个硬核生存数据包。",
+    objectives: "为追求真实生存体验的玩家打造一个硬核生存数据包�?,
     personnel: {
       preparationStatus: "无需筹备",
-      count: "1人",
+      count: "1�?,
       cooperationType: "无偿",
-      description: "独立开发"
+      description: "独立开�?
     },
     funding: {
       preparationStatus: "无需筹备",
-      amount: "0元",
+      amount: "0�?,
       cooperationType: "无偿",
       description: "个人兴趣项目"
     },
     implementation: {
       timeline: "预计2-3个月完成",
-      description: "温度系统和口渴值已完成，正在开发疲劳度系统。"
+      description: "温度系统和口渴值已完成，正在开发疲劳度系统�?
     }
   },
   "modpack-1": {
     id: "modpack-1",
     type: "modpack",
-    projectStatus: "筹备中",
+    projectStatus: "筹备�?,
     title: "星辰骑士计划",
-    author: "RPG工作室",
-    authorType: "整合包制作团队",
+    author: "RPG工作�?,
+    authorType: "整合包制作团�?,
     productionForm: "团队",
-    description: "大型RPG整合包项目，包含原创剧情、自定义Boss、独特职业系统和完整的任务线。正在招募团队成员。",
-    authorNote: "这是一个雄心勃勃的项目，欢迎志同道合的伙伴加入！",
+    description: "大型RPG整合包项目，包含原创剧情、自定义Boss、独特职业系统和完整的任务线。正在招募团队成员�?,
+    authorNote: "这是一个雄心勃勃的项目，欢迎志同道合的伙伴加入�?,
     tags: ["RPG", "剧情", "职业"],
     basicInfo: {
-      "内容方向": "角色扮演类",
+      "内容方向": "角色扮演�?,
       "产出方式": "原创",
       "产出时间": "2023.12",
       "制作形式": "团队",
     },
-    status: "招募中",
+    status: "招募�?,
     progress: 25,
     createdAt: new Date("2023-12-01"),
     updatedAt: new Date("2024-03-20"),
     views: 45600,
     favorites: 890,
     likes: 890,
-    objectives: "打造一个完整的RPG整合包，包含原创剧情、职业系统和任务线。",
+    objectives: "打造一个完整的RPG整合包，包含原创剧情、职业系统和任务线�?,
     personnel: {
-      preparationStatus: "筹备中",
-      count: "15-20人",
+      preparationStatus: "筹备�?,
+      count: "15-20�?,
       cooperationType: "全部",
-      description: "需要剧情策划、任务设计师、美术师和测试人员。"
+      description: "需要剧情策划、任务设计师、美术师和测试人员�?
     },
     funding: {
       preparationStatus: "筹备完成",
-      amount: "30000-50000元",
+      amount: "30000-50000�?,
       cooperationType: "全部",
-      description: "有投资方支持，可提供报酬和分成。"
+      description: "有投资方支持，可提供报酬和分成�?
     },
     implementation: {
       timeline: "预计18-24个月完成",
-      description: "第一阶段完成核心框架，第二阶段开发剧情和任务，第三阶段优化和测试。"
+      description: "第一阶段完成核心框架，第二阶段开发剧情和任务，第三阶段优化和测试�?
     }
   },
   "server-1": {
     id: "server-1",
     type: "server",
-    projectStatus: "筹备中",
-    title: "末日生存服务器",
+    projectStatus: "筹备�?,
+    title: "末日生存服务�?,
     author: "末日团队",
-    authorType: "服务器运营团队",
+    authorType: "服务器运营团�?,
     productionForm: "团队",
-    description: "一个以末日生存为主题的服务器项目，包含丧尸系统、资源匮乏、基地建设等玩法。",
-    authorNote: "末日生存爱好者的天堂！",
+    description: "一个以末日生存为主题的服务器项目，包含丧尸系统、资源匮乏、基地建设等玩法�?,
+    authorNote: "末日生存爱好者的天堂�?,
     tags: ["生存", "末日", "PVE"],
     basicInfo: {
-      "服务器类型": "整合服",
+      "服务器类�?: "整合�?,
       "内容方向": "生存",
       "产出方式": "原创",
       "产出时间": "2024.01",
@@ -803,34 +803,34 @@ const mockProjectData: Record<string, any> = {
     views: 18900,
     favorites: 456,
     likes: 456,
-    objectives: "打造一个沉浸式的末日生存服务器体验。",
+    objectives: "打造一个沉浸式的末日生存服务器体验�?,
     personnel: {
-      preparationStatus: "筹备中",
-      count: "5-8人",
-      cooperationType: "仅分成",
-      description: "需要插件开发者、建筑设计师和运营人员。"
+      preparationStatus: "筹备�?,
+      count: "5-8�?,
+      cooperationType: "仅分�?,
+      description: "需要插件开发者、建筑设计师和运营人员�?
     },
     funding: {
       preparationStatus: "无需筹备",
-      amount: "5000-10000元",
+      amount: "5000-10000�?,
       cooperationType: "无偿",
-      description: "目前为无偿开发，服务器上线后通过捐赠维持运营。"
+      description: "目前为无偿开发，服务器上线后通过捐赠维持运营�?
     },
     implementation: {
       timeline: "预计4-6个月完成",
-      description: "已完成核心插件开发，正在进行地图制作和测试。"
+      description: "已完成核心插件开发，正在进行地图制作和测试�?
     }
   },
   "resourcepack-1": {
     id: "resourcepack-1",
     type: "resourcepack",
-    projectStatus: "筹备中",
-    title: "水彩风格材质包",
-    author: "艺术工作室",
-    authorType: "材质创作者",
+    projectStatus: "筹备�?,
+    title: "水彩风格材质�?,
+    author: "艺术工作�?,
+    authorType: "材质创作�?,
     productionForm: "团队",
-    description: "一款独特的水彩风格材质包，为Minecraft带来柔和、艺术感的视觉体验。",
-    authorNote: "让Minecraft变成一幅水彩画！",
+    description: "一款独特的水彩风格材质包，为Minecraft带来柔和、艺术感的视觉体验�?,
+    authorNote: "让Minecraft变成一幅水彩画�?,
     tags: ["水彩", "艺术", "柔和"],
     basicInfo: {
       "视觉基调": "特殊风格",
@@ -845,35 +845,35 @@ const mockProjectData: Record<string, any> = {
     views: 7800,
     favorites: 178,
     likes: 178,
-    objectives: "打造一个独特的水彩风格材质包，为玩家带来艺术感的视觉体验。",
+    objectives: "打造一个独特的水彩风格材质包，为玩家带来艺术感的视觉体验�?,
     personnel: {
-      preparationStatus: "筹备中",
-      count: "2-3人",
-      cooperationType: "仅分成",
-      description: "需要像素美术师。"
+      preparationStatus: "筹备�?,
+      count: "2-3�?,
+      cooperationType: "仅分�?,
+      description: "需要像素美术师�?
     },
     funding: {
       preparationStatus: "无需筹备",
-      amount: "500-1000元",
+      amount: "500-1000�?,
       cooperationType: "无偿",
-      description: "目前为无偿开发。"
+      description: "目前为无偿开发�?
     },
     implementation: {
       timeline: "预计3-4个月完成",
-      description: "已完成基础方块材质，正在进行物品和生物材质制作。"
+      description: "已完成基础方块材质，正在进行物品和生物材质制作�?
     }
   },
   "shader-1": {
     id: "shader-1",
     type: "shader",
-    title: "卡通渲染光影",
-    author: "光影爱好者",
-    authorType: "独立开发者",
+    title: "卡通渲染光�?,
+    author: "光影爱好�?,
+    authorType: "独立开发�?,
     productionForm: "个人",
-    projectStatus: "筹备中",
-    description: "专为卡通风格设计的非真实感渲染光影，让游戏呈现出独特的卡通画面效果。",
+    projectStatus: "筹备�?,
+    description: "专为卡通风格设计的非真实感渲染光影，让游戏呈现出独特的卡通画面效果�?,
     authorNote: "让Minecraft变成卡通世界！",
-    tags: ["卡通", "NPR", "风格化"],
+    tags: ["卡�?, "NPR", "风格�?],
     basicInfo: {
       "视觉基调": "基础风格",
       "产出方式": "原创",
@@ -887,33 +887,33 @@ const mockProjectData: Record<string, any> = {
     views: 9200,
     favorites: 234,
     likes: 234,
-    objectives: "开发一款卡通风格的NPR光影，为Minecraft带来独特的视觉体验。",
+    objectives: "开发一款卡通风格的NPR光影，为Minecraft带来独特的视觉体验�?,
     personnel: {
       preparationStatus: "无需筹备",
-      count: "1人",
+      count: "1�?,
       cooperationType: "无偿",
-      description: "独立开发"
+      description: "独立开�?
     },
     funding: {
       preparationStatus: "无需筹备",
-      amount: "0元",
+      amount: "0�?,
       cooperationType: "无偿",
       description: "个人兴趣项目"
     },
     implementation: {
       timeline: "预计4-5个月完成",
-      description: "已完成基础卡通着色，正在进行阴影和光照优化。"
+      description: "已完成基础卡通着色，正在进行阴影和光照优化�?
     }
   },
   "building-1": {
     id: "building-1",
     type: "building",
-    projectStatus: "筹备中",
-    title: "赛博朋克城市建筑包",
-    author: "未来建筑师",
+    projectStatus: "筹备�?,
+    title: "赛博朋克城市建筑�?,
+    author: "未来建筑�?,
     authorType: "建筑设计团队",
     productionForm: "团队",
-    description: "一套赛博朋克风格的建筑包，包含霓虹灯建筑、未来科技设施和城市基础设施。",
+    description: "一套赛博朋克风格的建筑包，包含霓虹灯建筑、未来科技设施和城市基础设施�?,
     authorNote: "欢迎来到赛博朋克的世界！",
     tags: ["赛博朋克", "未来", "城市"],
     basicInfo: {
@@ -929,35 +929,35 @@ const mockProjectData: Record<string, any> = {
     views: 11200,
     favorites: 345,
     likes: 345,
-    objectives: "打造一套完整的赛博朋克风格建筑包，为玩家提供未来城市建设素材。",
+    objectives: "打造一套完整的赛博朋克风格建筑包，为玩家提供未来城市建设素材�?,
     personnel: {
-      preparationStatus: "筹备中",
-      count: "3-4人",
-      cooperationType: "仅分成",
-      description: "需要建筑设计师和红石工程师（霓虹灯效果）。"
+      preparationStatus: "筹备�?,
+      count: "3-4�?,
+      cooperationType: "仅分�?,
+      description: "需要建筑设计师和红石工程师（霓虹灯效果）�?
     },
     funding: {
       preparationStatus: "无需筹备",
-      amount: "1000-2000元",
+      amount: "1000-2000�?,
       cooperationType: "无偿",
-      description: "目前为无偿开发。"
+      description: "目前为无偿开发�?
     },
     implementation: {
       timeline: "预计5-6个月完成",
-      description: "已完成基础建筑框架，正在进行细节装饰和霓虹灯效果。"
+      description: "已完成基础建筑框架，正在进行细节装饰和霓虹灯效果�?
     }
   },
   "audio-1": {
     id: "audio-1",
     type: "audio",
-    projectStatus: "筹备中",
+    projectStatus: "筹备�?,
     title: "动态战斗音效包",
     author: "音效团队",
-    authorType: "音效设计师",
+    authorType: "音效设计�?,
     productionForm: "团队",
-    description: "一套根据战斗情况动态变化的音效包，让战斗体验更加沉浸。",
+    description: "一套根据战斗情况动态变化的音效包，让战斗体验更加沉浸�?,
     authorNote: "让每一场战斗都充满激情！",
-    tags: ["战斗", "动态", "沉浸"],
+    tags: ["战斗", "动�?, "沉浸"],
     basicInfo: {
       "内容风格": "史诗/震撼",
       "产出方式": "原创",
@@ -971,35 +971,35 @@ const mockProjectData: Record<string, any> = {
     views: 4500,
     favorites: 67,
     likes: 67,
-    objectives: "开发一套动态战斗音效系统，根据战斗强度和类型自动切换音效。",
+    objectives: "开发一套动态战斗音效系统，根据战斗强度和类型自动切换音效�?,
     personnel: {
-      preparationStatus: "筹备中",
-      count: "2-3人",
-      cooperationType: "仅分成",
-      description: "需要音效设计师和音频程序员。"
+      preparationStatus: "筹备�?,
+      count: "2-3�?,
+      cooperationType: "仅分�?,
+      description: "需要音效设计师和音频程序员�?
     },
     funding: {
       preparationStatus: "无需筹备",
-      amount: "500-1000元",
+      amount: "500-1000�?,
       cooperationType: "无偿",
-      description: "目前为无偿开发。"
+      description: "目前为无偿开发�?
     },
     implementation: {
       timeline: "预计3-4个月完成",
-      description: "正在设计音效触发系统和录制基础音效。"
+      description: "正在设计音效触发系统和录制基础音效�?
     }
   },
   "ecoTool-1": {
     id: "ecoTool-1",
     type: "ecoTool",
-    projectStatus: "筹备中",
+    projectStatus: "筹备�?,
     title: "资源打包工具Pro",
-    author: "工具开发者",
-    authorType: "独立开发者",
+    author: "工具开发�?,
+    authorType: "独立开发�?,
     productionForm: "个人",
-    description: "一款可视化资源打包工具，支持一键打包、自动压缩和版本管理。",
+    description: "一款可视化资源打包工具，支持一键打包、自动压缩和版本管理�?,
     authorNote: "让资源打包变得简单！",
-    tags: ["工具", "打包", "自动化"],
+    tags: ["工具", "打包", "自动�?],
     basicInfo: {
       "运行平台": "Windows",
       "产出方式": "原创",
@@ -1013,38 +1013,38 @@ const mockProjectData: Record<string, any> = {
     views: 6700,
     favorites: 123,
     likes: 123,
-    objectives: "开发一款易用的资源打包工具，帮助创作者快速发布资源。",
+    objectives: "开发一款易用的资源打包工具，帮助创作者快速发布资源�?,
     personnel: {
       preparationStatus: "无需筹备",
-      count: "1人",
+      count: "1�?,
       cooperationType: "无偿",
-      description: "独立开发"
+      description: "独立开�?
     },
     funding: {
       preparationStatus: "无需筹备",
-      amount: "0元",
+      amount: "0�?,
       cooperationType: "无偿",
       description: "个人兴趣项目"
     },
     implementation: {
       timeline: "预计2-3个月完成",
-      description: "核心功能已完成，正在进行UI优化和测试。"
+      description: "核心功能已完成，正在进行UI优化和测试�?
     }
   },
   "doc-1": {
     id: "doc-1",
     type: "doc",
-    projectStatus: "筹备中",
-    title: "Fabric模组开发进阶教程",
+    projectStatus: "筹备�?,
+    title: "Fabric模组开发进阶教�?,
     author: "教程团队",
     authorType: "教程编写团队",
     productionForm: "团队",
-    description: "Fabric模组开发进阶教程，涵盖网络通信、Mixin、渲染等高级主题。",
+    description: "Fabric模组开发进阶教程，涵盖网络通信、Mixin、渲染等高级主题�?,
     authorNote: "帮助你成为高级模组开发者！",
     tags: ["教程", "Fabric", "进阶"],
     basicInfo: {
-      "涉及领域": "模组开发",
-      "适用对象": "有基础的开发者",
+      "涉及领域": "模组开�?,
+      "适用对象": "有基础的开发�?,
       "产出方式": "原创",
       "产出时间": "2024.01",
       "制作形式": "团队",
@@ -1056,34 +1056,34 @@ const mockProjectData: Record<string, any> = {
     views: 8900,
     favorites: 89,
     likes: 89,
-    objectives: "编写一套完整的Fabric模组开发进阶教程，帮助开发者掌握高级技术。",
+    objectives: "编写一套完整的Fabric模组开发进阶教程，帮助开发者掌握高级技术�?,
     personnel: {
-      preparationStatus: "筹备中",
-      count: "2-3人",
+      preparationStatus: "筹备�?,
+      count: "2-3�?,
       cooperationType: "无偿",
-      description: "需要资深模组开发者参与编写。"
+      description: "需要资深模组开发者参与编写�?
     },
     funding: {
       preparationStatus: "无需筹备",
-      amount: "0元",
+      amount: "0�?,
       cooperationType: "无偿",
-      description: "开源项目"
+      description: "开源项�?
     },
     implementation: {
       timeline: "预计6-8个月完成",
-      description: "已完成网络通信章节，正在编写Mixin章节。"
+      description: "已完成网络通信章节，正在编写Mixin章节�?
     }
   },
   "image-1": {
     id: "image-1",
     type: "image",
-    projectStatus: "筹备中",
+    projectStatus: "筹备�?,
     title: "动漫角色皮肤系列",
-    author: "动漫爱好者",
-    authorType: "皮肤设计师",
+    author: "动漫爱好�?,
+    authorType: "皮肤设计�?,
     productionForm: "个人",
-    description: "一套热门动漫角色的皮肤系列，包含多款经典动漫角色造型。",
-    authorNote: "用你喜欢的动漫角色畅游Minecraft！",
+    description: "一套热门动漫角色的皮肤系列，包含多款经典动漫角色造型�?,
+    authorNote: "用你喜欢的动漫角色畅游Minecraft�?,
     tags: ["动漫", "角色", "皮肤"],
     basicInfo: {
       "获取方式": "免费",
@@ -1098,33 +1098,33 @@ const mockProjectData: Record<string, any> = {
     views: 12300,
     favorites: 456,
     likes: 456,
-    objectives: "制作一套高质量的动漫角色皮肤系列，涵盖热门动漫角色。",
+    objectives: "制作一套高质量的动漫角色皮肤系列，涵盖热门动漫角色�?,
     personnel: {
       preparationStatus: "无需筹备",
-      count: "1人",
+      count: "1�?,
       cooperationType: "无偿",
       description: "独立创作"
     },
     funding: {
       preparationStatus: "无需筹备",
-      amount: "0元",
+      amount: "0�?,
       cooperationType: "无偿",
       description: "个人兴趣项目"
     },
     implementation: {
       timeline: "预计2-3个月完成",
-      description: "已完成10款皮肤，计划总共制作30款。"
+      description: "已完�?0款皮肤，计划总共制作30款�?
     }
   },
   "mod-3": {
     id: "mod-3",
     type: "mod",
-    projectStatus: "制作中",
+    projectStatus: "制作�?,
     title: "神秘生物学：深渊探索",
-    author: "深渊工作室",
-    authorType: "模组开发团队",
+    author: "深渊工作�?,
+    authorType: "模组开发团�?,
     productionForm: "团队",
-    description: "一个添加深海生物群系、神秘海洋生物和深渊维度的模组。项目已完成筹备，正在积极开发中。",
+    description: "一个添加深海生物群系、神秘海洋生物和深渊维度的模组。项目已完成筹备，正在积极开发中�?,
     authorNote: "探索未知的深渊世界，发现神秘的海洋生物！",
     tags: ["海洋", "生物", "维度"],
     basicInfo: {
@@ -1140,22 +1140,22 @@ const mockProjectData: Record<string, any> = {
     views: 28900,
     favorites: 678,
     likes: 678,
-    objectives: "打造一个完整的深海探索体验，包含新生物群系、独特海洋生物和神秘的深渊维度。",
+    objectives: "打造一个完整的深海探索体验，包含新生物群系、独特海洋生物和神秘的深渊维度�?,
     personnel: {
       preparationStatus: "筹备完成",
-      count: "8人",
+      count: "8�?,
       cooperationType: "全部",
-      description: "团队已组建完成，包括Java开发者、美术设计师和策划人员。"
+      description: "团队已组建完成，包括Java开发者、美术设计师和策划人员�?
     },
     funding: {
       preparationStatus: "筹备完成",
-      amount: "15000-25000元",
+      amount: "15000-25000�?,
       cooperationType: "全部",
-      description: "投资方已确认，资金充足。"
+      description: "投资方已确认，资金充足�?
     },
     implementation: {
       timeline: "预计8-10个月完成",
-      description: "深海群系已完成60%，生物AI开发中，深渊维度设计阶段。"
+      description: "深海群系已完�?0%，生物AI开发中，深渊维度设计阶段�?
     }
   },
 };
@@ -1163,7 +1163,7 @@ const mockProjectData: Record<string, any> = {
 const mockProject: any = {
   id: "project-new",
   type: "mod",
-  projectStatus: "筹备中",
+  projectStatus: "筹备�?,
   title: "",
   author: "",
   authorType: "",
@@ -1184,13 +1184,13 @@ const mockProject: any = {
   comments: [],
   objectives: "",
   personnel: {
-    preparationStatus: "筹备中",
+    preparationStatus: "筹备�?,
     count: "",
     cooperationType: "",
     description: ""
   },
   funding: {
-    preparationStatus: "筹备中",
+    preparationStatus: "筹备�?,
     amount: "",
     cooperationType: "",
     description: ""
@@ -1284,9 +1284,9 @@ const ProjectDetail = () => {
     {
       id: "1",
       userId: "user-1",
-      userName: "星空开发者",
+      userName: "星空开发�?,
       userAvatar: "",
-      userType: "Java开发者",
+      userType: "Java开发�?,
       requestType: "人员合作",
       message: "我有3年Forge模组开发经验，擅长Mixin和渲染系统，希望能加入这个项目！",
       status: "pending" as const,
@@ -1297,9 +1297,9 @@ const ProjectDetail = () => {
       userId: "user-2",
       userName: "像素画师",
       userAvatar: "",
-      userType: "美术设计师",
+      userType: "美术设计�?,
       requestType: "人员合作",
-      message: "可以负责UI设计和材质绘制，有丰富的像素艺术经验。",
+      message: "可以负责UI设计和材质绘制，有丰富的像素艺术经验�?,
       status: "pending" as const,
       createdAt: new Date("2024-03-17"),
     },
@@ -1308,9 +1308,9 @@ const ProjectDetail = () => {
       userId: "user-3",
       userName: "投资方A",
       userAvatar: "",
-      userType: "投资人",
+      userType: "投资�?,
       requestType: "资金合作",
-      message: "对这个项目很感兴趣，愿意提供资金支持，详情可以详谈。",
+      message: "对这个项目很感兴趣，愿意提供资金支持，详情可以详谈�?,
       status: "pending" as const,
       createdAt: new Date("2024-03-16"),
     },
@@ -1321,7 +1321,7 @@ const ProjectDetail = () => {
       userAvatar: "",
       userType: "游戏策划",
       requestType: "人员合作",
-      message: "可以协助设计魔法系统和任务线，有RPG游戏策划经验。",
+      message: "可以协助设计魔法系统和任务线，有RPG游戏策划经验�?,
       status: "accepted" as const,
       createdAt: new Date("2024-03-15"),
     },
@@ -1330,9 +1330,9 @@ const ProjectDetail = () => {
       userId: "user-5",
       userName: "测试玩家",
       userAvatar: "",
-      userType: "测试员",
+      userType: "测试�?,
       requestType: "人员合作",
-      message: "可以帮忙测试和反馈bug，每周有20小时空闲时间。",
+      message: "可以帮忙测试和反馈bug，每周有20小时空闲时间�?,
       status: "rejected" as const,
       createdAt: new Date("2024-03-14"),
     },
@@ -1537,7 +1537,7 @@ const ProjectDetail = () => {
       ];
 
   const filteredBasicInfo = Object.entries(project.basicInfo || {}).filter(
-    ([_, value]) => value && value !== "不涉及"
+    ([_, value]) => value && value !== "不涉�?
   );
 
   const renderCommentSection = () => (
@@ -1545,21 +1545,25 @@ const ProjectDetail = () => {
       <Separator className="my-6" />
       <Tabs value={commentTab} onValueChange={setCommentTab}>
         <TabsList className="h-auto p-0 bg-transparent">
-          <TabsTrigger value="public" className="text-xs px-3 py-1.5 data-[state=active]:text-primary">公共交流区</TabsTrigger>
+          <TabsTrigger value="public" className="text-xs px-3 py-1.5 data-[state=active]:text-primary">公共交流�?/TabsTrigger>
           <TabsTrigger value="feedback" className="text-xs px-3 py-1.5 data-[state=active]:text-primary">制作方反馈区</TabsTrigger>
           <TabsTrigger value="donation" className="text-xs px-3 py-1.5 data-[state=active]:text-primary">订阅及打赏交流区</TabsTrigger>
         </TabsList>
 
         <TabsContent value="public" className="mt-3 space-y-3">
-          {project.comments.map((c: any, i: number) => (
-            <div key={i} className="border border-border rounded-lg p-3">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-sm font-medium text-primary">{c.user}</span>
-                <span className="text-xs text-muted-foreground">{c.date}</span>
+          {project.comments && project.comments.length > 0 ? (
+            project.comments.map((c: any, i: number) => (
+              <div key={i} className="border border-border rounded-lg p-3">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-sm font-medium text-primary">{c.user}</span>
+                  <span className="text-xs text-muted-foreground">{c.date}</span>
+                </div>
+                <p className="text-sm text-muted-foreground">{c.content}</p>
               </div>
-              <p className="text-sm text-muted-foreground">{c.content}</p>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-sm text-muted-foreground text-center py-4">暂无评论</p>
+          )}
         </TabsContent>
         <TabsContent value="feedback" className="mt-3">
           <p className="text-sm text-muted-foreground text-center py-4">暂无反馈</p>
@@ -1596,11 +1600,11 @@ const ProjectDetail = () => {
               <div className="flex items-center gap-2">
                 <h1 className="text-sm font-semibold text-foreground truncate">{project.title}</h1>
                 <Badge variant="outline" className={`text-[10px] px-2 py-0.5 ${
-                  project.projectStatus === "筹备中" 
+                  project.projectStatus === "筹备�? 
                     ? "border-blue-500/30 text-blue-600" 
                     : "border-green-500/30 text-green-600"
                 }`}>
-                  {project.projectStatus || "筹备中"}
+                  {project.projectStatus || "筹备�?}
                 </Badge>
               </div>
               <p className="text-xs text-muted-foreground truncate">{project.description}</p>
@@ -1642,8 +1646,8 @@ const ProjectDetail = () => {
                 <div className="space-y-6">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <h2 className="text-xl font-bold text-foreground mb-3">简介</h2>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{project.description || "暂无简介"}</p>
+                      <h2 className="text-xl font-bold text-foreground mb-3">简�?/h2>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{project.description || "暂无简�?}</p>
                     </div>
                     <Button 
                       size="sm" 
@@ -1661,7 +1665,7 @@ const ProjectDetail = () => {
                   <Separator />
 
                   <div>
-                    <h3 className="text-sm font-semibold text-foreground mb-3">制作方寄语</h3>
+                    <h3 className="text-sm font-semibold text-foreground mb-3">制作方寄�?/h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{project.authorNote || "暂无寄语"}</p>
                   </div>
 
@@ -1720,7 +1724,7 @@ const ProjectDetail = () => {
                     </CardHeader>
                     <CardContent>
                       <p className="text-sm text-muted-foreground">
-                        {project.objectives || "暂无项目目标说明。项目目标用于描述该项目创建后目的是产出一个具体怎样的内容。"}
+                        {project.objectives || "暂无项目目标说明。项目目标用于描述该项目创建后目的是产出一个具体怎样的内容�?}
                       </p>
                     </CardContent>
                   </Card>
@@ -1734,9 +1738,9 @@ const ProjectDetail = () => {
                     <CardContent>
                       <div className="space-y-3">
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-muted-foreground">筹备状态</span>
+                          <span className="text-muted-foreground">筹备状�?/span>
                           <Badge variant={project.personnel?.preparationStatus === "筹备完成" ? "default" : project.personnel?.preparationStatus === "无需筹备" ? "secondary" : "outline"} className="text-xs">
-                            {project.personnel?.preparationStatus || "筹备中"}
+                            {project.personnel?.preparationStatus || "筹备�?}
                           </Badge>
                         </div>
                         <div className="flex items-center justify-between text-sm">
@@ -1748,7 +1752,7 @@ const ProjectDetail = () => {
                           <span className="font-medium text-foreground">{project.personnel?.cooperationType || "待定"}</span>
                         </div>
                         <p className="text-xs text-muted-foreground pt-2 border-t border-border">
-                          {project.personnel?.description || "暂无人员事宜说明。人员事宜用于说明完成该项目需要多少人参与以及合作方式。"}
+                          {project.personnel?.description || "暂无人员事宜说明。人员事宜用于说明完成该项目需要多少人参与以及合作方式�?}
                         </p>
                       </div>
                     </CardContent>
@@ -1763,13 +1767,13 @@ const ProjectDetail = () => {
                     <CardContent>
                       <div className="space-y-3">
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-muted-foreground">筹备状态</span>
+                          <span className="text-muted-foreground">筹备状�?/span>
                           <Badge variant={project.funding?.preparationStatus === "筹备完成" ? "default" : project.funding?.preparationStatus === "无需筹备" ? "secondary" : "outline"} className="text-xs">
-                            {project.funding?.preparationStatus || "筹备中"}
+                            {project.funding?.preparationStatus || "筹备�?}
                           </Badge>
                         </div>
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-muted-foreground">预计资金需求</span>
+                          <span className="text-muted-foreground">预计资金需�?/span>
                           <span className="font-medium text-foreground">{project.funding?.amount || "待定"}</span>
                         </div>
                         <div className="flex items-center justify-between text-sm">
@@ -1777,7 +1781,7 @@ const ProjectDetail = () => {
                           <span className="font-medium text-foreground">{project.funding?.cooperationType || "待定"}</span>
                         </div>
                         <p className="text-xs text-muted-foreground pt-2 border-t border-border">
-                          {project.funding?.description || "暂无资金事宜说明。资金事宜用于说明完成该项目需要多少资金以及合作方式。"}
+                          {project.funding?.description || "暂无资金事宜说明。资金事宜用于说明完成该项目需要多少资金以及合作方式�?}
                         </p>
                       </div>
                     </CardContent>
@@ -1796,7 +1800,7 @@ const ProjectDetail = () => {
                           <span className="font-medium text-foreground">{project.timeline?.deadline || "待定"}</span>
                         </div>
                         <p className="text-xs text-muted-foreground pt-2 border-t border-border">
-                          {project.timeline?.description || "暂无实施计划说明。实施计划用于说明大概多少时间完成以及如何完成。"}
+                          {project.timeline?.description || "暂无实施计划说明。实施计划用于说明大概多少时间完成以及如何完成�?}
                         </p>
                       </div>
                     </CardContent>
@@ -1821,8 +1825,7 @@ const ProjectDetail = () => {
                     {cooperationRequests.filter(r => r.status === "pending").length > 0 && (
                       <>
                         <div className="text-sm font-semibold text-muted-foreground flex items-center gap-2">
-                          待处理申请
-                          <Badge variant="outline" className="text-xs">
+                          待处理申�?                          <Badge variant="outline" className="text-xs">
                             {cooperationRequests.filter(r => r.status === "pending").length}
                           </Badge>
                         </div>
@@ -1872,8 +1875,7 @@ const ProjectDetail = () => {
                     {cooperationRequests.filter(r => r.status === "accepted").length > 0 && (
                       <>
                         <div className="text-sm font-semibold text-muted-foreground mt-4 flex items-center gap-2">
-                          已接受
-                          <Badge variant="default" className="text-xs bg-green-600">
+                          已接�?                          <Badge variant="default" className="text-xs bg-green-600">
                             {cooperationRequests.filter(r => r.status === "accepted").length}
                           </Badge>
                         </div>
@@ -1896,8 +1898,7 @@ const ProjectDetail = () => {
                                       {request.requestType}
                                     </Badge>
                                     <Badge variant="outline" className="text-[10px] px-1.5 py-0 text-green-600 border-green-200">
-                                      已接受
-                                    </Badge>
+                                      已接�?                                    </Badge>
                                   </div>
                                   <p className="text-xs text-muted-foreground line-clamp-2">
                                     {request.message}
@@ -1913,8 +1914,7 @@ const ProjectDetail = () => {
                     {cooperationRequests.filter(r => r.status === "rejected").length > 0 && (
                       <>
                         <div className="text-sm font-semibold text-muted-foreground mt-4 flex items-center gap-2">
-                          已拒绝
-                          <Badge variant="secondary" className="text-xs">
+                          已拒�?                          <Badge variant="secondary" className="text-xs">
                             {cooperationRequests.filter(r => r.status === "rejected").length}
                           </Badge>
                         </div>
@@ -1934,8 +1934,7 @@ const ProjectDetail = () => {
                                       {request.userType}
                                     </Badge>
                                     <Badge variant="outline" className="text-[10px] px-1.5 py-0 text-red-600 border-red-200">
-                                      已拒绝
-                                    </Badge>
+                                      已拒�?                                    </Badge>
                                   </div>
                                   <p className="text-xs text-muted-foreground line-clamp-2">
                                     {request.message}
@@ -2096,7 +2095,7 @@ const ProjectDetail = () => {
                                   <Eye className="w-8 h-8 text-muted-foreground" />
                                 </div>
                                 <h3 className="text-sm font-medium text-foreground mb-1">选择词条查看详情</h3>
-                                <p className="text-xs text-muted-foreground">从左侧分类导航中选择一个词条</p>
+                                <p className="text-xs text-muted-foreground">从左侧分类导航中选择一个词�?/p>
                               </div>
                             </div>
                           )}
@@ -2140,7 +2139,7 @@ const ProjectDetail = () => {
                           <div className="text-center py-8 text-muted-foreground">
                             <Image className="w-12 h-12 mx-auto mb-3 opacity-50" />
                             <p className="text-sm">暂无图片</p>
-                            <p className="text-xs mt-1">点击右上角按钮上传图片</p>
+                            <p className="text-xs mt-1">点击右上角按钮上传图�?/p>
                           </div>
                         </div>
                       )}
@@ -2174,7 +2173,7 @@ const ProjectDetail = () => {
                                 onChange={(e) => setVersionFilter(e.target.value)}
                                 className="h-8 px-3 text-xs border border-input rounded-md bg-background flex-1"
                               >
-                                <option value="all">所有游戏版本</option>
+                                <option value="all">所有游戏版�?/option>
                                 <option value="1.20.1">1.20.1</option>
                                 <option value="1.19.2">1.19.2</option>
                                 <option value="1.18.2">1.18.2</option>
@@ -2213,8 +2212,7 @@ const ProjectDetail = () => {
                                             <span className="text-sm font-medium text-foreground">{v.version}</span>
                                             {v.isLatest && (
                                               <Badge className="text-[10px] h-4 px-1.5 bg-green-500/10 text-green-600 border-green-500/20">
-                                                最新
-                                              </Badge>
+                                                最�?                                              </Badge>
                                             )}
                                           </div>
                                           <Button size="sm" className="h-6 px-2 text-xs">
@@ -2319,8 +2317,7 @@ const ProjectDetail = () => {
 
                                       {selectedVer.prerequisites.length === 0 && selectedVer.dependencies.length === 0 && selectedVer.integrations.length === 0 && (
                                         <div className="text-center py-8 text-muted-foreground text-xs">
-                                          该版本暂无联动模组
-                                        </div>
+                                          该版本暂无联动模�?                                        </div>
                                       )}
                                     </>
                                   );
@@ -2328,8 +2325,7 @@ const ProjectDetail = () => {
                               </div>
                             ) : (
                               <div className="flex items-center justify-center h-full text-muted-foreground text-xs border border-border rounded-lg">
-                                请在左侧选择一个版本查看联动模组
-                              </div>
+                                请在左侧选择一个版本查看联动模�?                              </div>
                             )}
                           </div>
                         </div>
@@ -2342,7 +2338,7 @@ const ProjectDetail = () => {
                               onChange={(e) => setVersionFilter(e.target.value)}
                               className="h-8 px-3 text-xs border border-input rounded-md bg-background"
                             >
-                              <option value="all">所有游戏版本</option>
+                              <option value="all">所有游戏版�?/option>
                               <option value="1.20.1">1.20.1</option>
                               <option value="1.19.2">1.19.2</option>
                               <option value="1.18.2">1.18.2</option>
@@ -2360,8 +2356,7 @@ const ProjectDetail = () => {
                                         <span className="text-sm font-medium text-foreground">{v.version}</span>
                                         {v.isLatest && (
                                           <Badge className="text-[10px] h-4 px-1.5 bg-green-500/10 text-green-600 border-green-500/20">
-                                            最新
-                                          </Badge>
+                                            最�?                                          </Badge>
                                         )}
                                       </div>
                                       <Button size="sm" className="h-6 px-2 text-xs">
@@ -2402,8 +2397,7 @@ const ProjectDetail = () => {
                           <Upload className="w-16 h-16 mx-auto mb-4 text-muted-foreground opacity-50" />
                           <h3 className="text-lg font-semibold text-foreground mb-2">暂无可用版本</h3>
                           <p className="text-sm text-muted-foreground mb-4">
-                            该项目还在开发中，尚未发布任何版本
-                          </p>
+                            该项目还在开发中，尚未发布任何版�?                          </p>
                         </div>
                       </div>
                     </div>
@@ -2444,7 +2438,7 @@ const ProjectDetail = () => {
                           <div className="text-center py-8 text-muted-foreground">
                             <Image className="w-12 h-12 mx-auto mb-3 opacity-50" />
                             <p className="text-sm">暂无图片</p>
-                            <p className="text-xs mt-1">点击右上角按钮上传图片</p>
+                            <p className="text-xs mt-1">点击右上角按钮上传图�?/p>
                           </div>
                         </div>
                       )}
@@ -2495,8 +2489,7 @@ const ProjectDetail = () => {
                         <Upload className="w-16 h-16 mx-auto mb-4 text-muted-foreground opacity-50" />
                         <h3 className="text-lg font-semibold text-foreground mb-2">暂未设置获取方式</h3>
                         <p className="text-sm text-muted-foreground mb-4">
-                          该项目还在开发中，尚未设置获取方式
-                        </p>
+                          该项目还在开发中，尚未设置获取方�?                        </p>
                         <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-4 inline-block">
                           <p className="text-xs text-orange-600">
                             请点击右上角「管理」按钮设置获取方式并上传文件
@@ -2509,20 +2502,20 @@ const ProjectDetail = () => {
                       <h4 className="text-sm font-semibold text-foreground mb-2">获取方式说明</h4>
                       <div className="space-y-2 text-xs text-muted-foreground">
                         <div className="flex items-start gap-2">
-                          <span className="text-primary">•</span>
+                          <span className="text-primary">�?/span>
                           <span><strong>免费</strong> - 所有用户可免费获取使用</span>
                         </div>
                         <div className="flex items-start gap-2">
-                          <span className="text-primary">•</span>
-                          <span><strong>定制</strong> - 首位买家独享，永久不再出售</span>
+                          <span className="text-primary">�?/span>
+                          <span><strong>定制</strong> - 首位买家独享，永久不再出�?/span>
                         </div>
                         <div className="flex items-start gap-2">
-                          <span className="text-primary">•</span>
+                          <span className="text-primary">�?/span>
                           <span><strong>买断</strong> - 一次性付费，永久使用</span>
                         </div>
                         <div className="flex items-start gap-2">
-                          <span className="text-primary">•</span>
-                          <span><strong>订阅</strong> - 订阅制作方后可使用</span>
+                          <span className="text-primary">�?/span>
+                          <span><strong>订阅</strong> - 订阅制作方后可使�?/span>
                         </div>
                       </div>
                     </div>
@@ -2691,21 +2684,19 @@ const ProjectDetail = () => {
                       <Upload className="w-16 h-16 mx-auto mb-4 text-muted-foreground opacity-50" />
                       <h3 className="text-lg font-semibold text-foreground mb-2">暂无可用版本</h3>
                       <p className="text-sm text-muted-foreground mb-4">
-                        该项目还在开发中，尚未发布任何版本
-                      </p>
+                        该项目还在开发中，尚未发布任何版�?                      </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4 inline-block">
                         <p className="text-xs text-blue-600">
-                          项目完成开发并上传首个版本后，将自动进入审核流程
-                        </p>
+                          项目完成开发并上传首个版本后，将自动进入审核流�?                        </p>
                       </div>
                     </div>
                   </div>
 
                   <div className="bg-secondary/20 rounded-lg p-4">
-                    <h4 className="text-sm font-semibold text-foreground mb-2">项目状态</h4>
+                    <h4 className="text-sm font-semibold text-foreground mb-2">项目状�?/h4>
                     <div className="space-y-2">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="text-muted-foreground">开发进度</span>
+                        <span className="text-muted-foreground">开发进�?/span>
                         <span className="font-medium text-foreground">{project.progress}%</span>
                       </div>
                       <div className="w-full bg-secondary rounded-full h-2">
@@ -2719,7 +2710,7 @@ const ProjectDetail = () => {
                           开发中
                         </Badge>
                         <span className="text-xs text-muted-foreground">
-                          创建于 {project.createdAt.toLocaleDateString('zh-CN')}
+                          创建�?{project.createdAt.toLocaleDateString('zh-CN')}
                         </span>
                       </div>
                     </div>
@@ -2862,8 +2853,7 @@ const ProjectDetail = () => {
                         <p className="text-xs mb-4">项目需要提交协议后才能发布</p>
                         <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-4 inline-block">
                           <p className="text-xs text-orange-600">
-                            请点击右上角「提交协议」按钮，选择合适的协议模板并提交
-                          </p>
+                            请点击右上角「提交协议」按钮，选择合适的协议模板并提�?                          </p>
                         </div>
                       </div>
                     </div>
@@ -2887,60 +2877,33 @@ const ProjectDetail = () => {
                         <div className="bg-secondary/30 border border-border rounded-lg p-4">
                           <div className="text-xs text-muted-foreground leading-relaxed whitespace-pre-line">
                             {selectedLicense.type === "original-normal" && (
-                              `【免责声明】
-
-本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联。
-
-【基本声明】
-
-本资源内容严格遵守微软官方《Minecraft 最终用户许可协议》(EULA) 和《Minecraft 商业使用指南》的相关规定。
-
-根据Minecraft官方政策，本资源属于游戏内容资源，必须免费提供给所有用户。所有内容均为原创制作，不包含任何侵犯微软或Mojang Studios知识产权的元素。
-
-本资源内容免费无偿供所有用户使用。用户在遵守相关使用条款的前提下，可自由下载、使用和分享该资源内容，无需支付任何费用。
-
-【平台声明】
-
-本平台要求平台内的制作原创内容的制作方如果使用本平台发布自己的原创作品，便不能再其它网站发布这些作品，本平台对搬运内容不做要求。
-
-【作者声明】
-
-本人作为本资源的原创作者，承诺所发布的内容均为原创制作，不涉及任何侵权行为。本人保留对本资源的著作权，并授权用户在遵守本协议的前提下使用本资源。
-
-本人同样遵守自己身为该平台的进行原创活动的制作方的各项基本要求。
-
+                              `【免责声明�?
+本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联�?
+【基本声明�?
+本资源内容严格遵守微软官方《Minecraft 最终用户许可协议�?EULA) 和《Minecraft 商业使用指南》的相关规定�?
+根据Minecraft官方政策，本资源属于游戏内容资源，必须免费提供给所有用户。所有内容均为原创制作，不包含任何侵犯微软或Mojang Studios知识产权的元素�?
+本资源内容免费无偿供所有用户使用。用户在遵守相关使用条款的前提下，可自由下载、使用和分享该资源内容，无需支付任何费用�?
+【平台声明�?
+本平台要求平台内的制作原创内容的制作方如果使用本平台发布自己的原创作品，便不能再其它网站发布这些作品，本平台对搬运内容不做要求�?
+【作者声明�?
+本人作为本资源的原创作者，承诺所发布的内容均为原创制作，不涉及任何侵权行为。本人保留对本资源的著作权，并授权用户在遵守本协议的前提下使用本资源�?
+本人同样遵守自己身为该平台的进行原创活动的制作方的各项基本要求�?
 用户在使用本资源时，应遵守以下约定：
-• 允许个人非商业用途使用
-• 允许在游戏中展示和使用
-• 允许制作视频、直播等Minecraft相关内容并通过平台广告、赞助、捐赠等方式获得收益
-• 允许接受用户自愿捐赠
-• 用户对制作方及作品的订阅及打赏行为均为自主无偿赠予行为，平台及作者不会要求用户必须订阅或打赏后才能使用这些内容
-• 禁止直接出售本资源或通过本资源直接盈利
-• 禁止未经授权的二次分发
-• 禁止将本资源用于推广与Minecraft无关的产品、服务或品牌`
+�?允许个人非商业用途使�?�?允许在游戏中展示和使�?�?允许制作视频、直播等Minecraft相关内容并通过平台广告、赞助、捐赠等方式获得收益
+�?允许接受用户自愿捐赠
+�?用户对制作方及作品的订阅及打赏行为均为自主无偿赠予行为，平台及作者不会要求用户必须订阅或打赏后才能使用这些内�?�?禁止直接出售本资源或通过本资源直接盈�?�?禁止未经授权的二次分�?�?禁止将本资源用于推广与Minecraft无关的产品、服务或品牌`
                             )}
                             {selectedLicense.type === "repost-normal" && (
-                              `【免责声明】
-
-本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联。
-
-【基本声明】
-
-本资源内容严格遵守微软官方《Minecraft 最终用户许可协议》(EULA) 和《Minecraft 商业使用指南》的相关规定。
-
-根据Minecraft官方政策，本资源属于游戏内容资源，必须免费提供给所有用户。本资源已获得原作者授权，搬运至本平台供中文玩家使用。
-
-【搬运声明】
-
-本资源已获得原制作方的明确授权，允许搬运至本平台并交由搬运方进行管理。
-
-搬运方承诺遵守原制作方的所有使用要求，并确保资源的完整性和合规性。搬运方应及时同步原资源的更新，保持资源内容的最新状态。
-
-搬运方与原作者之间的约定：
-• 搬运方需在资源页面明确标注原作者信息
-• 搬运方需及时同步原作者的更新内容
-• 搬运方不得擅自修改资源内容
-• 如原作者要求下架，搬运方应立即配合`
+                              `【免责声明�?
+本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联�?
+【基本声明�?
+本资源内容严格遵守微软官方《Minecraft 最终用户许可协议�?EULA) 和《Minecraft 商业使用指南》的相关规定�?
+根据Minecraft官方政策，本资源属于游戏内容资源，必须免费提供给所有用户。本资源已获得原作者授权，搬运至本平台供中文玩家使用�?
+【搬运声明�?
+本资源已获得原制作方的明确授权，允许搬运至本平台并交由搬运方进行管理�?
+搬运方承诺遵守原制作方的所有使用要求，并确保资源的完整性和合规性。搬运方应及时同步原资源的更新，保持资源内容的最新状态�?
+搬运方与原作者之间的约定�?�?搬运方需在资源页面明确标注原作者信�?�?搬运方需及时同步原作者的更新内容
+�?搬运方不得擅自修改资源内�?�?如原作者要求下架，搬运方应立即配合`
                             )}
                           </div>
                         </div>
@@ -2962,7 +2925,7 @@ const ProjectDetail = () => {
                         <div className="flex items-start justify-between mb-4">
                           <div>
                             <h2 className="text-lg font-bold text-foreground mb-2">提交协议</h2>
-                            <p className="text-xs text-muted-foreground">选择协议模板并进行编辑</p>
+                            <p className="text-xs text-muted-foreground">选择协议模板并进行编�?/p>
                           </div>
                           <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-lg hover:bg-secondary" onClick={() => setShowLicenseSubmitModal(false)}>
                             ×
@@ -2981,20 +2944,17 @@ const ProjectDetail = () => {
                                 }`}
                                 onClick={() => {
                                   setSelectedLicenseTemplate("original-normal");
-                                  setNewLicenseContent(`【免责声明】
-
-本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联。
-
-【基本声明】
-
-本资源内容严格遵守微软官方《Minecraft 最终用户许可协议》(EULA) 和《Minecraft 商业使用指南》的相关规定。`);
+                                  setNewLicenseContent(`【免责声明�?
+本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联�?
+【基本声明�?
+本资源内容严格遵守微软官方《Minecraft 最终用户许可协议�?EULA) 和《Minecraft 商业使用指南》的相关规定。`);
                                 }}
                               >
                                 <div className="flex items-center gap-2 mb-1">
                                   <Badge className="bg-blue-500/10 text-blue-600 border-blue-500/20 text-[10px]">原创协议</Badge>
                                   <span className="text-[10px] text-muted-foreground">常规资源</span>
                                 </div>
-                                <div className="text-[10px] text-muted-foreground">适用于非形象类资源</div>
+                                <div className="text-[10px] text-muted-foreground">适用于非形象类资�?/div>
                               </div>
                               <div
                                 className={`border rounded-lg p-3 cursor-pointer transition-all ${
@@ -3004,27 +2964,24 @@ const ProjectDetail = () => {
                                 }`}
                                 onClick={() => {
                                   setSelectedLicenseTemplate("repost-normal");
-                                  setNewLicenseContent(`【免责声明】
-
-本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联。
-
-【基本声明】
-
-本资源内容严格遵守微软官方《Minecraft 最终用户许可协议》(EULA) 和《Minecraft 商业使用指南》的相关规定。`);
+                                  setNewLicenseContent(`【免责声明�?
+本资源为非官方Minecraft产品，未经Mojang或Microsoft批准或关联�?
+【基本声明�?
+本资源内容严格遵守微软官方《Minecraft 最终用户许可协议�?EULA) 和《Minecraft 商业使用指南》的相关规定。`);
                                 }}
                               >
                                 <div className="flex items-center gap-2 mb-1">
                                   <Badge className="bg-orange-500/10 text-orange-600 border-orange-500/20 text-[10px]">搬运协议</Badge>
                                   <span className="text-[10px] text-muted-foreground">常规资源</span>
                                 </div>
-                                <div className="text-[10px] text-muted-foreground">适用于非形象类资源</div>
+                                <div className="text-[10px] text-muted-foreground">适用于非形象类资�?/div>
                               </div>
                             </div>
                           </div>
 
                           {selectedLicenseTemplate && (
                             <div>
-                              <label className="text-xs text-muted-foreground mb-2 block">协议内容（可编辑）</label>
+                              <label className="text-xs text-muted-foreground mb-2 block">协议内容（可编辑�?/label>
                               <textarea
                                 value={newLicenseContent}
                                 onChange={(e) => setNewLicenseContent(e.target.value)}
@@ -3091,21 +3048,21 @@ const ProjectDetail = () => {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-foreground mb-2 block">项目简介</label>
+              <label className="text-sm font-medium text-foreground mb-2 block">项目简�?/label>
               <Textarea
                 value={editedProject.description || ""}
                 onChange={(e) => setEditedProject({ ...editedProject, description: e.target.value })}
-                placeholder="输入项目简介..."
+                placeholder="输入项目简�?.."
                 className="text-sm min-h-[100px]"
               />
             </div>
 
             <div>
-              <label className="text-sm font-medium text-foreground mb-2 block">制作方寄语</label>
+              <label className="text-sm font-medium text-foreground mb-2 block">制作方寄�?/label>
               <Textarea
                 value={editedProject.authorNote || ""}
                 onChange={(e) => setEditedProject({ ...editedProject, authorNote: e.target.value })}
-                placeholder="输入制作方寄语..."
+                placeholder="输入制作方寄�?.."
                 className="text-sm min-h-[80px]"
               />
             </div>
@@ -3119,14 +3076,14 @@ const ProjectDetail = () => {
               >
                 <option value="mod">模组</option>
                 <option value="map">地图</option>
-                <option value="datapack">数据包</option>
-                <option value="modpack">整合包</option>
-                <option value="server">服务器</option>
+                <option value="datapack">数据�?/option>
+                <option value="modpack">整合�?/option>
+                <option value="server">服务�?/option>
                 <option value="resourcepack">材质</option>
                 <option value="shader">光影</option>
                 <option value="building">建筑</option>
                 <option value="audio">音频</option>
-                <option value="ecoTool">生态工具</option>
+                <option value="ecoTool">生态工�?/option>
                 <option value="doc">知识文档</option>
                 <option value="image">形象</option>
               </select>
@@ -3148,7 +3105,7 @@ const ProjectDetail = () => {
                     <div key={tag.id}>
                       <label className="text-sm font-medium text-foreground mb-2 block">
                         {tag.label}
-                        {tag.multiSelect && <span className="text-xs text-muted-foreground ml-1">(可多选)</span>}
+                        {tag.multiSelect && <span className="text-xs text-muted-foreground ml-1">(可多�?</span>}
                       </label>
                       <div className="flex flex-wrap gap-2">
                         {tag.options && tag.options.map((option) => (
@@ -3186,7 +3143,7 @@ const ProjectDetail = () => {
                     <div key={tag.id}>
                       <label className="text-sm font-medium text-foreground mb-2 block">
                         {tag.label}
-                        {tag.multiSelect && <span className="text-xs text-muted-foreground ml-1">(可多选)</span>}
+                        {tag.multiSelect && <span className="text-xs text-muted-foreground ml-1">(可多�?</span>}
                       </label>
                       <div className="flex flex-wrap gap-2">
                         {tag.options && tag.options.map((option) => (
@@ -3277,8 +3234,7 @@ const ProjectDetail = () => {
                         }
                       }}
                     >
-                      使用此分类
-                    </Button>
+                      使用此分�?                    </Button>
                   </div>
                 )}
                 
@@ -3302,7 +3258,7 @@ const ProjectDetail = () => {
                       <Input
                         value={newHotWord}
                         onChange={(e) => setNewHotWord(e.target.value)}
-                        placeholder="输入词条名称后按 Enter 或点击添加..."
+                        placeholder="输入词条名称后按 Enter 或点击添�?.."
                         className="text-sm flex-1"
                         onKeyDown={(e) => {
                           if (e.key === "Enter") handleAddHotWord();
@@ -3323,7 +3279,7 @@ const ProjectDetail = () => {
                     <Input
                       value={newCategoryName}
                       onChange={(e) => setNewCategoryName(e.target.value)}
-                      placeholder="输入新热词名称..."
+                      placeholder="输入新热词名�?.."
                       className="text-sm"
                       onKeyDown={(e) => {
                         if (e.key === "Enter") handleAddNewCategory();
@@ -3364,11 +3320,11 @@ const ProjectDetail = () => {
             <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 mb-4">
               <div className="text-xs font-semibold text-blue-600 mb-2">上传规则</div>
               <ul className="text-[10px] text-muted-foreground space-y-1">
-                <li>• 图片需与该项目相关，展示项目的使用效果或特色内容</li>
-                <li>• 图片内容需健康向上，不得包含违规信息</li>
-                <li>• 图片需为原创或已获得授权，不得侵犯他人版权</li>
-                <li>• 上传的图片需经制作方审核后才会显示在画廊中</li>
-                <li>• 请确保图片清晰，分辨率不低于 800x600</li>
+                <li>�?图片需与该项目相关，展示项目的使用效果或特色内�?/li>
+                <li>�?图片内容需健康向上，不得包含违规信�?/li>
+                <li>�?图片需为原创或已获得授权，不得侵犯他人版权</li>
+                <li>�?上传的图片需经制作方审核后才会显示在画廊�?/li>
+                <li>�?请确保图片清晰，分辨率不低于 800x600</li>
               </ul>
             </div>
 
@@ -3556,9 +3512,9 @@ const ProjectDetail = () => {
                     >
                       <div className="text-sm font-medium text-foreground">{type}</div>
                       <div className="text-xs text-muted-foreground mt-1">
-                        {type === "免费" && "用户可免费获取"}
+                        {type === "免费" && "用户可免费获�?}
                         {type === "定制" && "首位买家独享"}
-                        {type === "买断" && "一次性付费购买"}
+                        {type === "买断" && "一次性付费购�?}
                         {type === "订阅" && "按月订阅使用"}
                       </div>
                     </div>
@@ -3569,7 +3525,7 @@ const ProjectDetail = () => {
               {(selectedAcquisition === "定制" || selectedAcquisition === "买断") && (
                 <div>
                   <label className="text-sm font-medium text-foreground mb-2 block">
-                    {selectedAcquisition === "定制" ? "定制独享价" : "买断价格"} (元)
+                    {selectedAcquisition === "定制" ? "定制独享�? : "买断价格"} (�?
                   </label>
                   <Input
                     type="number"
@@ -3588,17 +3544,16 @@ const ProjectDetail = () => {
 
               {selectedAcquisition === "订阅" && (
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">订阅价格 (元/月)</label>
+                  <label className="text-sm font-medium text-foreground mb-2 block">订阅价格 (�?�?</label>
                   <Input
                     type="number"
                     value={acquisitionSubscriptionPrice}
                     onChange={(e) => setAcquisitionSubscriptionPrice(Number(e.target.value))}
-                    placeholder="输入月订阅价格..."
+                    placeholder="输入月订阅价�?.."
                     className="text-sm"
                   />
                   <p className="text-xs text-muted-foreground mt-1">
-                    用户订阅期间可使用该形象，取消订阅后将无法继续使用
-                  </p>
+                    用户订阅期间可使用该形象，取消订阅后将无法继续使�?                  </p>
                 </div>
               )}
 
@@ -3653,10 +3608,10 @@ const ProjectDetail = () => {
             <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 mb-4">
               <div className="text-xs font-semibold text-blue-600 mb-2">上传规则</div>
               <ul className="text-[10px] text-muted-foreground space-y-1">
-                <li>• 文件需为该形象资源的实际内容文件</li>
-                <li>• 文件内容需健康向上，不得包含违规信息</li>
-                <li>• 文件需为原创或已获得授权，不得侵犯他人版权</li>
-                <li>• 请确保文件完整可用</li>
+                <li>�?文件需为该形象资源的实际内容文�?/li>
+                <li>�?文件内容需健康向上，不得包含违规信�?/li>
+                <li>�?文件需为原创或已获得授权，不得侵犯他人版权</li>
+                <li>�?请确保文件完整可�?/li>
               </ul>
             </div>
 
@@ -3669,7 +3624,7 @@ const ProjectDetail = () => {
                 />
               </div>
               <div>
-                <label className="text-xs text-muted-foreground mb-1 block">版本号</label>
+                <label className="text-xs text-muted-foreground mb-1 block">版本�?/label>
                 <Input
                   placeholder="例如: v1.0.0"
                   className="text-sm"
@@ -3678,7 +3633,7 @@ const ProjectDetail = () => {
               <div>
                 <label className="text-xs text-muted-foreground mb-1 block">更新说明</label>
                 <Textarea
-                  placeholder="描述这个版本的更新内容..."
+                  placeholder="描述这个版本的更新内�?.."
                   className="text-sm min-h-[80px]"
                 />
               </div>
@@ -3708,10 +3663,10 @@ const ProjectDetail = () => {
                 <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
                   <div className="text-xs font-semibold text-blue-600 mb-2">完成筹备须知</div>
                   <ul className="text-[10px] text-muted-foreground space-y-1">
-                    <li>• 完成筹备后将生成项目合同，包含项目方案和合作方信息</li>
-                    <li>• 项目合同提交平台审核通过后，项目将进入制作中状态</li>
-                    <li>• 筹备中状态的项目无需上传初版项目文件</li>
-                    <li>• 请确保已接受合适的合作意向申请</li>
+                    <li>�?完成筹备后将生成项目合同，包含项目方案和合作方信�?/li>
+                    <li>�?项目合同提交平台审核通过后，项目将进入制作中状�?/li>
+                    <li>�?筹备中状态的项目无需上传初版项目文件</li>
+                    <li>�?请确保已接受合适的合作意向申请</li>
                   </ul>
                 </div>
 
@@ -3720,25 +3675,25 @@ const ProjectDetail = () => {
                   <div className="space-y-2 text-xs">
                     <div className="flex gap-2">
                       <span className="text-muted-foreground w-20">项目目标:</span>
-                      <span className="text-foreground">{project.objectives || "未填写"}</span>
+                      <span className="text-foreground">{project.objectives || "未填�?}</span>
                     </div>
                     <div className="flex gap-2">
-                      <span className="text-muted-foreground w-20">人员需求:</span>
+                      <span className="text-muted-foreground w-20">人员需�?</span>
                       <span className="text-foreground">
                         {project.personnel?.preparationStatus === "无需筹备" ? "无需筹备" : 
-                          `${project.personnel?.count || "未填写"} · ${project.personnel?.cooperationType || "未选择"}`}
+                          `${project.personnel?.count || "未填�?} · ${project.personnel?.cooperationType || "未选择"}`}
                       </span>
                     </div>
                     <div className="flex gap-2">
-                      <span className="text-muted-foreground w-20">资金需求:</span>
+                      <span className="text-muted-foreground w-20">资金需�?</span>
                       <span className="text-foreground">
                         {project.funding?.preparationStatus === "无需筹备" ? "无需筹备" : 
-                          `${project.funding?.amount || "未填写"} · ${project.funding?.cooperationType || "未选择"}`}
+                          `${project.funding?.amount || "未填�?} · ${project.funding?.cooperationType || "未选择"}`}
                       </span>
                     </div>
                     <div className="flex gap-2">
                       <span className="text-muted-foreground w-20">实施计划:</span>
-                      <span className="text-foreground">{project.implementation?.timeline || "未填写"}</span>
+                      <span className="text-foreground">{project.implementation?.timeline || "未填�?}</span>
                     </div>
                   </div>
                 </div>
@@ -3770,7 +3725,7 @@ const ProjectDetail = () => {
                 <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-600" />
-                    <span className="text-xs font-semibold text-green-600">项目合同已生成</span>
+                    <span className="text-xs font-semibold text-green-600">项目合同已生�?/span>
                   </div>
                 </div>
 
@@ -3787,9 +3742,9 @@ const ProjectDetail = () => {
                 <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3">
                   <div className="text-xs font-semibold text-orange-600 mb-2">提交审核须知</div>
                   <ul className="text-[10px] text-muted-foreground space-y-1">
-                    <li>• 平台将审核项目合同的完整性和合规性</li>
-                    <li>• 审核通过后项目将进入制作中状态</li>
-                    <li>• 审核期间可继续完善项目内容</li>
+                    <li>�?平台将审核项目合同的完整性和合规�?/li>
+                    <li>�?审核通过后项目将进入制作中状�?/li>
+                    <li>�?审核期间可继续完善项目内�?/li>
                   </ul>
                 </div>
               </div>
@@ -3814,54 +3769,40 @@ const ProjectDetail = () => {
                     
                     const contract = `项目合同
 
-一、项目基本信息
-项目名称：${project.title || "未命名项目"}
-项目类型：${project.type || "未选择"}
-项目发起方：${project.author || "未填写"}
-创建时间：${project.createdAt?.toLocaleDateString() || new Date().toLocaleDateString()}
+一、项目基本信�?项目名称�?{project.title || "未命名项�?}
+项目类型�?{project.type || "未选择"}
+项目发起方：${project.author || "未填�?}
+创建时间�?{project.createdAt?.toLocaleDateString() || new Date().toLocaleDateString()}
 
-二、项目目标
-${project.objectives || "未填写"}
+二、项目目�?${project.objectives || "未填�?}
 
-三、人员事宜
-筹备状态：${project.personnel?.preparationStatus || "未选择"}
-需求人数：${project.personnel?.count || "未填写"}
-合作方式：${project.personnel?.cooperationType || "未选择"}
-详细说明：${project.personnel?.description || "未填写"}
+三、人员事�?筹备状态：${project.personnel?.preparationStatus || "未选择"}
+需求人数：${project.personnel?.count || "未填�?}
+合作方式�?{project.personnel?.cooperationType || "未选择"}
+详细说明�?{project.personnel?.description || "未填�?}
 
 已确认加入的生产方：
 ${personnelRequests.length > 0 ? personnelRequests.map((r, i) => 
-  `${i + 1}. ${r.userName}（${r.userType}）
-   合作说明：${r.message}`
+  `${i + 1}. ${r.userName}�?{r.userType}�?   合作说明�?{r.message}`
 ).join("\n") : "暂无"}
 
-四、资金事宜
-筹备状态：${project.funding?.preparationStatus || "未选择"}
-资金需求：${project.funding?.amount || "未填写"}
-合作方式：${project.funding?.cooperationType || "未选择"}
-详细说明：${project.funding?.description || "未填写"}
+四、资金事�?筹备状态：${project.funding?.preparationStatus || "未选择"}
+资金需求：${project.funding?.amount || "未填�?}
+合作方式�?{project.funding?.cooperationType || "未选择"}
+详细说明�?{project.funding?.description || "未填�?}
 
 已确认加入的投资方：
 ${fundingRequests.length > 0 ? fundingRequests.map((r, i) => 
-  `${i + 1}. ${r.userName}（${r.userType}）
-   合作说明：${r.message}`
+  `${i + 1}. ${r.userName}�?{r.userType}�?   合作说明�?{r.message}`
 ).join("\n") : "暂无"}
 
-五、实施计划
-预计时间：${project.implementation?.timeline || "未填写"}
-详细说明：${project.implementation?.description || "未填写"}
+五、实施计�?预计时间�?{project.implementation?.timeline || "未填�?}
+详细说明�?{project.implementation?.description || "未填�?}
 
-六、合作规则
-1. 项目发起方负责项目的整体规划和管理
-2. 生产方按照分工完成各自负责的开发任务
-3. 投资方按照约定提供资金支持
-4. 收益分配按照各方约定的合作方式执行
-5. 项目相关决策由项目发起方主导，重大决策需各方协商
+六、合作规�?1. 项目发起方负责项目的整体规划和管�?2. 生产方按照分工完成各自负责的开发任�?3. 投资方按照约定提供资金支�?4. 收益分配按照各方约定的合作方式执�?5. 项目相关决策由项目发起方主导，重大决策需各方协商
 
-七、声明
-本合同由项目发起方、生产方、投资方共同确认，各方应遵守合同约定，共同推进项目完成。
-
-合同生成时间：${new Date().toLocaleString()}`;
+七、声�?本合同由项目发起方、生产方、投资方共同确认，各方应遵守合同约定，共同推进项目完成�?
+合同生成时间�?{new Date().toLocaleString()}`;
                     
                     setProjectContract(contract);
                   }}
@@ -3876,8 +3817,8 @@ ${fundingRequests.length > 0 ? fundingRequests.map((r, i) =>
                     setProjectContract(null);
                     setProject({
                       ...project,
-                      projectStatus: "制作中",
-                      status: "审核中"
+                      projectStatus: "制作�?,
+                      status: "审核�?
                     });
                   }}
                 >
@@ -3935,10 +3876,10 @@ ${fundingRequests.length > 0 ? fundingRequests.map((r, i) =>
               <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
                 <div className="text-xs font-semibold text-blue-600 mb-2">申请须知</div>
                 <ul className="text-[10px] text-muted-foreground space-y-1">
-                  <li>• 请详细说明您的技能、经验或可提供的资源</li>
-                  <li>• 项目发起方将审核您的申请并决定是否接受</li>
-                  <li>• 申请通过后，您将成为项目团队成员</li>
-                  <li>• 请保持联系方式畅通，以便项目方与您沟通</li>
+                  <li>�?请详细说明您的技能、经验或可提供的资源</li>
+                  <li>�?项目发起方将审核您的申请并决定是否接�?/li>
+                  <li>�?申请通过后，您将成为项目团队成员</li>
+                  <li>�?请保持联系方式畅通，以便项目方与您沟�?/li>
                 </ul>
               </div>
             </div>
@@ -3959,7 +3900,7 @@ ${fundingRequests.length > 0 ? fundingRequests.map((r, i) =>
                         userId: "current-user",
                         userName: "当前用户",
                         userAvatar: "",
-                        userType: "开发者",
+                        userType: "开发�?,
                         requestType: newCooperationRequest.requestType,
                         message: newCooperationRequest.message,
                         status: "pending" as const,
@@ -3996,9 +3937,9 @@ ${fundingRequests.length > 0 ? fundingRequests.map((r, i) =>
                 <label className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
                   <FileText className="w-4 h-4" /> 项目目标
                 </label>
-                <p className="text-xs text-muted-foreground mb-2">描述该项目创建后目的是产出一个具体怎样的内容</p>
+                <p className="text-xs text-muted-foreground mb-2">描述该项目创建后目的是产出一个具体怎样的内�?/p>
                 <Textarea
-                  placeholder="请输入项目目标..."
+                  placeholder="请输入项目目�?.."
                   className="text-sm min-h-[100px]"
                   value={project.objectives || ""}
                   onChange={(e) => setProject({ ...project, objectives: e.target.value })}
@@ -4013,9 +3954,9 @@ ${fundingRequests.length > 0 ? fundingRequests.map((r, i) =>
                 </label>
                 <p className="text-xs text-muted-foreground mb-3">说明完成该项目需要多少人参与以及合作方式</p>
                 <div className="mb-3">
-                  <label className="text-xs text-muted-foreground mb-1 block">筹备状态</label>
+                  <label className="text-xs text-muted-foreground mb-1 block">筹备状�?/label>
                   <div className="flex flex-wrap gap-1">
-                    {["筹备中", "筹备完成", "无需筹备"].map((status) => (
+                    {["筹备�?, "筹备完成", "无需筹备"].map((status) => (
                       <button
                         key={status}
                         type="button"
@@ -4038,7 +3979,7 @@ ${fundingRequests.length > 0 ? fundingRequests.map((r, i) =>
                   <div>
                     <label className="text-xs text-muted-foreground mb-1 block">预计参与人数</label>
                     <Input
-                      placeholder="例如: 5人"
+                      placeholder="例如: 5�?
                       className="text-sm"
                       value={project.personnel?.count || ""}
                       onChange={(e) => setProject({ 
@@ -4050,7 +3991,7 @@ ${fundingRequests.length > 0 ? fundingRequests.map((r, i) =>
                   <div>
                     <label className="text-xs text-muted-foreground mb-1 block">合作方式</label>
                     <div className="flex flex-wrap gap-1">
-                      {["无偿", "仅分成", "仅报酬", "全部"].map((type) => (
+                      {["无偿", "仅分�?, "仅报�?, "全部"].map((type) => (
                         <button
                           key={type}
                           type="button"
@@ -4087,11 +4028,11 @@ ${fundingRequests.length > 0 ? fundingRequests.map((r, i) =>
                 <label className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
                   <Heart className="w-4 h-4" /> 资金事宜
                 </label>
-                <p className="text-xs text-muted-foreground mb-3">说明完成该项目需要多少资金以及合作方式</p>
+                <p className="text-xs text-muted-foreground mb-3">说明完成该项目需要多少资金以及合作方�?/p>
                 <div className="mb-3">
-                  <label className="text-xs text-muted-foreground mb-1 block">筹备状态</label>
+                  <label className="text-xs text-muted-foreground mb-1 block">筹备状�?/label>
                   <div className="flex flex-wrap gap-1">
-                    {["筹备中", "筹备完成", "无需筹备"].map((status) => (
+                    {["筹备�?, "筹备完成", "无需筹备"].map((status) => (
                       <button
                         key={status}
                         type="button"
@@ -4112,9 +4053,9 @@ ${fundingRequests.length > 0 ? fundingRequests.map((r, i) =>
                 </div>
                 <div className="grid grid-cols-2 gap-4 mb-3">
                   <div>
-                    <label className="text-xs text-muted-foreground mb-1 block">预计资金需求</label>
+                    <label className="text-xs text-muted-foreground mb-1 block">预计资金需�?/label>
                     <Input
-                      placeholder="例如: 5000元"
+                      placeholder="例如: 5000�?
                       className="text-sm"
                       value={project.funding?.amount || ""}
                       onChange={(e) => setProject({ 
@@ -4126,7 +4067,7 @@ ${fundingRequests.length > 0 ? fundingRequests.map((r, i) =>
                   <div>
                     <label className="text-xs text-muted-foreground mb-1 block">合作方式</label>
                     <div className="flex flex-wrap gap-1">
-                      {["无偿", "仅分成", "仅报酬", "全部"].map((type) => (
+                      {["无偿", "仅分�?, "仅报�?, "全部"].map((type) => (
                         <button
                           key={type}
                           type="button"
@@ -4167,7 +4108,7 @@ ${fundingRequests.length > 0 ? fundingRequests.map((r, i) =>
                 <div className="mb-3">
                   <label className="text-xs text-muted-foreground mb-1 block">预计完成时间</label>
                   <Input
-                    placeholder="例如: 2024年12月"
+                    placeholder="例如: 2024�?2�?
                     className="text-sm"
                     value={project.timeline?.deadline || ""}
                     onChange={(e) => setProject({ 
@@ -4211,3 +4152,4 @@ ${fundingRequests.length > 0 ? fundingRequests.map((r, i) =>
 };
 
 export default ProjectDetail;
+

@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Input } from "#/components/ui/input";
 
 interface SearchBarProps {
   value: string;
@@ -23,3 +23,4 @@ const SearchBar = ({ value, onChange, placeholder = "搜索..." }: SearchBarProp
 };
 
 export default SearchBar;
+
